@@ -4,16 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Typography · Netlify Brand Hub</title>
-<meta name="description" content="Systemia and IBM Plex Mono, the Netlify type scale, and how to set type.">
+<meta name="description" content="Systemia and Systemia Mono, the Netlify type scale, and how to set type.">
 
 <meta property="og:title" content="Typography · Netlify Brand Hub">
-<meta property="og:description" content="Systemia and IBM Plex Mono, the Netlify type scale, and how to set type.">
+<meta property="og:description" content="Systemia and Systemia Mono, the Netlify type scale, and how to set type.">
 <meta name="theme-color" content="#f7f6f4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1b1a17" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="/assets/logo/netlify-mark-offblack.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap">
+<link rel="preload" href="/assets/fonts/systemia/Systemia-VF.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/systemia/SystemiaMono-VF.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/hub.css">
 <script>try{var t=localStorage.getItem("nf-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
@@ -33,21 +32,21 @@
 <section class="panel" aria-labelledby="faces">
   <div class="panel-head">
     <h2 class="h-xs" id="faces">Typefaces</h2>
-    <div class="prose b-l"><p>Systemia is the workhorse: headlines, subheads and body, in Regular, Medium and SemiBold with italics. IBM Plex Mono is a small supporting voice for eyebrows, badges and tabs, where a set-in-code feel adds character.</p></div>
+    <div class="prose b-l"><p>Systemia is the workhorse: headlines, subheads and body, in Regular, Medium and SemiBold with italics. Systemia Mono is its monospaced companion: a small supporting voice for eyebrows, badges, tabs and code, where a set-in-code feel adds character. Both are variable fonts from Thin to Black, with italics.</p></div>
   </div>
   <div class="grid g2">
     <div class="tile face">
       <div class="face-aa">Aa</div>
-      <div class="face-meta"><div><b>Systemia</b><span>Regular · Medium · SemiBold · Italics</span></div><a class="btn tertiary sm" href="/locked/#fonts"><svg class="icon-s"><use href="/assets/icons/sprite.svg#ph-lock-simple"></use></svg>Licensed font files</a></div>
+      <div class="face-meta"><div><b>Systemia</b><span>Variable · Thin–Black · width 100–125 · italics</span></div><a class="btn tertiary sm" href="/locked/#fonts"><svg class="icon-s"><use href="/assets/icons/sprite.svg#ph-lock-simple"></use></svg>Licensed font files</a></div>
       <p class="glyphs">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 ! ? . , : ;</p>
     </div>
     <div class="tile face">
       <div class="face-aa mono" style="font-weight:400;letter-spacing:0">Aa</div>
-      <div class="face-meta"><div><b>IBM Plex Mono</b><span>Regular · Medium</span></div><a class="btn tertiary sm" href="https://fonts.google.com/specimen/IBM+Plex+Mono" rel="noopener">Google Fonts<svg class="icon-s"><use href="/assets/icons/sprite.svg#ph-arrow-square-out"></use></svg></a></div>
+      <div class="face-meta"><div><b>Systemia Mono</b><span>Variable · Thin–Black · italics</span></div><a class="btn tertiary sm" href="/locked/#fonts"><svg class="icon-s"><use href="/assets/icons/sprite.svg#ph-lock-simple"></use></svg>Licensed font files</a></div>
       <p class="glyphs mono">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 ! ? . , : ;</p>
     </div>
   </div>
-  <div class="note sub"><svg><use href="/assets/icons/sprite.svg#ph-info"></use></svg><span>Can't install Systemia, like in Google Slides or system apps? Use <b>IBM Plex Sans</b> and <b>IBM Plex Mono</b> from Google Fonts, or <b>Helvetica Neue</b> and <b>SF Mono</b> as system fallbacks.</span></div>
+  <div class="note sub"><svg><use href="/assets/icons/sprite.svg#ph-info"></use></svg><span>Can't install Systemia, like in Google Slides or system apps? Use <b>Helvetica Neue</b> and <b>SF Mono</b> as system fallbacks.</span></div>
 </section>
 
 <section class="panel" aria-labelledby="scale">
@@ -115,9 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ["UI"],
     ["UI / Button","14 / 100% / +2% / Medium","ui-btn","Get started"],
     ["UI / Link","15 / auto / Regular","ui-link","View the docs"],
-    ["UI / Tab","14 / 115% / +8% / Plex Mono","ui-tab","Build & deploy"],
-    ["UI / Eyebrow","12 / 140% / +8% / Plex Mono Medium / Caps","eyebrow","Platform primitives"],
-    ["UI / Badge","10 / 12px / +8% / Plex Mono Medium / Caps","badge-s","Most popular"]
+    ["UI / Tab","14 / 115% / +8% / Systemia Mono","ui-tab","Build & deploy"],
+    ["UI / Eyebrow","12 / 140% / +8% / Systemia Mono Medium / Caps","eyebrow","Platform primitives"],
+    ["UI / Badge","10 / 12px / +8% / Systemia Mono Medium / Caps","badge-s","Most popular"]
   ];
   const tag = c => c.startsWith("h-") ? "p" : "p";
   document.getElementById("specimens").innerHTML = S.map(r => r.length === 1 ? `<h3 class="spec-group b-m">${r[0]}</h3>` :

@@ -1,10 +1,11 @@
 @import url("../tokens/tokens.css");
 
-/* Systemia web fonts: drop licensed WOFF2 files into /assets/fonts/systemia/ (public web use only).
-   Desktop files live behind /locked/. Until then the stack falls back to Inter Tight. */
-@font-face { font-family:"Systemia"; src:url("/assets/fonts/systemia/Systemia-Regular.woff2") format("woff2"); font-weight:400; font-display:swap; }
-@font-face { font-family:"Systemia"; src:url("/assets/fonts/systemia/Systemia-Medium.woff2") format("woff2"); font-weight:500; font-display:swap; }
-@font-face { font-family:"Systemia"; src:url("/assets/fonts/systemia/Systemia-SemiBold.woff2") format("woff2"); font-weight:600; font-display:swap; }
+/* Systemia and Systemia Mono · variable web fonts (wght 100–900; Systemia also wdth 100–125).
+   Licensed for Netlify web use. Desktop files live behind /locked/. */
+@font-face { font-family:"Systemia"; src:url("/assets/fonts/systemia/Systemia-VF.woff2") format("woff2-variations"), url("/assets/fonts/systemia/Systemia-VF.woff2") format("woff2"); font-weight:100 900; font-stretch:100% 125%; font-style:normal; font-display:swap; }
+@font-face { font-family:"Systemia"; src:url("/assets/fonts/systemia/Systemia-Italic-VF.woff2") format("woff2-variations"), url("/assets/fonts/systemia/Systemia-Italic-VF.woff2") format("woff2"); font-weight:100 900; font-stretch:100% 125%; font-style:italic; font-display:swap; }
+@font-face { font-family:"Systemia Mono"; src:url("/assets/fonts/systemia/SystemiaMono-VF.woff2") format("woff2-variations"), url("/assets/fonts/systemia/SystemiaMono-VF.woff2") format("woff2"); font-weight:100 900; font-style:normal; font-display:swap; }
+@font-face { font-family:"Systemia Mono"; src:url("/assets/fonts/systemia/SystemiaMono-Italic-VF.woff2") format("woff2-variations"), url("/assets/fonts/systemia/SystemiaMono-Italic-VF.woff2") format("woff2"); font-weight:100 900; font-style:italic; font-display:swap; }
 
 *,*::before,*::after { box-sizing:border-box; }
 html { -webkit-text-size-adjust:100%; scroll-padding-top:calc(24px + env(safe-area-inset-top,0px)); }

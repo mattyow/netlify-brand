@@ -26,8 +26,10 @@ Never put licensed files anywhere else in `public/`.
 
 Large or many files? Keep the repo lean by storing them in a private location and linking from `src/pages/locked.html`.
 
+## Fonts
+The site uses the variable web fonts in `public/assets/fonts/systemia/` (Systemia and Systemia Mono, upright and italic), declared in `public/assets/css/hub.css`. Tokens: `--font-sans`, `--font-mono`.
+
 ## Other files to add
-- Systemia web fonts for the site itself: `public/assets/fonts/systemia/Systemia-{Regular,Medium,SemiBold}.woff2` (falls back to Inter Tight).
 - Gradient generator: replace `src/pages/gradient-generator.html` output by copying the generator's `index.html` to `public/tools/gradient-generator/index.html` and deleting the placeholder page source.
 - Update `brand@netlify.com` in `src/shell.html` if needed.
 

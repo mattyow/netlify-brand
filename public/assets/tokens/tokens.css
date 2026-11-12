@@ -12,8 +12,8 @@
   --nf-warm-grey-800:#3d3a35; --nf-warm-grey-850:#33302c; --nf-warm-grey-900:#282622; --nf-warm-grey-950:#1b1a17;
 
   /* Typography */
-  --font-sans:"Systemia","Inter Tight",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
-  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --font-sans:"Systemia",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"Systemia Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
   --size-heading-xl:120px; --size-heading-l:80px; --size-heading-m:60px; --size-heading-s:42px; --size-heading-xs:32px; --size-heading-xxs:26px;
   --size-body-l:18px; --size-body-m:16px; --size-body-s:14px; --size-body-xs:12px;
   --lh-body-l:28px; --lh-body-m:24px; --lh-body-s:20px; --lh-body-xs:18px;
