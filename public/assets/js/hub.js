@@ -47,13 +47,13 @@
 
   /* ── Navigation ── */
   const NAV = [
-    { title: "Start", items: [["/", "Overview", "app-window"], ["/downloads", "Downloads", "download-simple"]] },
+    { title: "Start", items: [["/", "Overview", "app-window"], ["/platform", "Brand platform"], ["/downloads", "Downloads", "download-simple"]] },
     { title: "Foundations", items: [["/logo", "Logo"], ["/color", "Color"], ["/typography", "Typography"], ["/layout", "Spacing & shape"], ["/iconography", "Icons"], ["/illustration", "Illustration"], ["/motion", "Motion"]] },
     { title: "Building blocks", items: [["/components", "Components"], ["/patterns", "Patterns"], ["/tools", "Tools"]] },
-    { title: "Restricted", items: [["/locked/", "Locked assets", "lock-simple"], ["/access", "Request access"]] }
+    { title: "Restricted", items: [["/locked/", "Locked assets", "lock-simple"], ["/locked/strategy", "Brand strategy", "lock-simple"], ["/access", "Request access"]] }
   ];
   const here = location.pathname.replace(/\.html$/, "").replace(/\/index$/, "/") || "/";
-  const isCurrent = href => href === "/" ? here === "/" : here === href || here.startsWith(href.endsWith("/") ? href : href + "/");
+  const isCurrent = href => href === "/" ? here === "/" : href.endsWith("/") ? here === href || here === href.slice(0, -1) : here === href || here.startsWith(href + "/");
 
   function buildShell() {
     const side = document.querySelector("[data-side]");

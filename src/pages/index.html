@@ -11,10 +11,16 @@
   </div>
 </section>
 
+<section class="panel mission" aria-labelledby="mission">
+  <p class="eyebrow" id="mission">Our mission</p>
+  <p class="h-l">We exist to turn imagination into reality.</p>
+  <div class="mission-foot"><p class="b-l muted">Netlify is the Builder: the platform for builders of the web, from the first daydream to software that shapes culture.</p><a class="btn secondary" href="/platform">Read the brand platform</a></div>
+</section>
+
 <section class="panel" aria-labelledby="found">
   <div class="panel-head">
     <h2 class="h-xs" id="found">Start with the foundations</h2>
-    <div class="prose b-l"><p>Create a brand identity the domain expert can see themselves in and the developer still respects. Every page below is built from the same tokens the product uses, so what you see here is what ships.</p></div>
+    <div class="prose b-l"><p>Every page below is built from the same tokens the product uses, so what you see here is what ships.</p></div>
   </div>
   <div class="grid g3 index-grid">
     <a class="index-card" href="/logo"><div class="thumb" data-grad="07"><svg><use href="/assets/icons/sprite.svg#nf-mark"></use></svg></div><b>Logo</b><span>Symbol, lockup, clear space, partnerships</span></a>
@@ -60,6 +66,10 @@
 
 <style>
 .home-hero { min-height:min(78vh,720px); }
+.mission { display:flex; flex-direction:column; gap:28px; padding-top:96px; padding-bottom:96px; }
+.mission .h-l { max-width:16ch; }
+.mission-foot { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
+.mission-foot p { max-width:52ch; }
 .home-hero h1 { max-width:12ch; }
 .index-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
 .index-card { display:flex; flex-direction:column; gap:4px; text-decoration:none; padding:12px 12px 18px; border-radius:var(--radius-sm); transition:background var(--dur-short) var(--ease-direct); }
