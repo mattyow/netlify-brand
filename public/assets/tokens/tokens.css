@@ -1,0 +1,86 @@
+/* Netlify brand tokens · v1.0
+   Source: Netlify-Rebrand-2026 → UI Kit [Netlify's version]
+   Collections: Color / Primitives, Color (Light, Dark), Typography, Spacing, Shape, Effects */
+:root {
+  /* Primitives */
+  --nf-white:#ffffff; --nf-off-black:#131619;
+  --nf-sky:#01d4e5; --nf-sky-tint-100:#a9f0f5; --nf-sky-tint-200:#74e6ef; --nf-sky-tint-300:#2bd8e6;
+  --nf-cobalt:#065eff; --nf-lilac:#c1b5ff; --nf-peach:#ffbc8a; --nf-gold:#fdcb65; --nf-red:#f84747;
+  --nf-pink:#ff3d9c; --nf-orange:#ff7542; --nf-lime:#bbee3c; --nf-green:#3fb66b;
+  --nf-warm-grey-50:#f7f6f4; --nf-warm-grey-100:#f0eeea; --nf-warm-grey-200:#e7e5e0; --nf-warm-grey-300:#dad8d2;
+  --nf-warm-grey-400:#b8b4ad; --nf-warm-grey-500:#949087; --nf-warm-grey-600:#736f67; --nf-warm-grey-700:#56534c;
+  --nf-warm-grey-800:#3d3a35; --nf-warm-grey-850:#33302c; --nf-warm-grey-900:#282622; --nf-warm-grey-950:#1b1a17;
+
+  /* Typography */
+  --font-sans:"Systemia","Inter Tight",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --size-heading-xl:120px; --size-heading-l:80px; --size-heading-m:60px; --size-heading-s:42px; --size-heading-xs:32px; --size-heading-xxs:26px;
+  --size-body-l:18px; --size-body-m:16px; --size-body-s:14px; --size-body-xs:12px;
+  --lh-body-l:28px; --lh-body-m:24px; --lh-body-s:20px; --lh-body-xs:18px;
+  --size-ui-button:14px; --size-ui-link:15px; --size-ui-tab:14px; --size-ui-eyebrow:12px; --size-ui-badge:10px;
+
+  /* Spacing (4px base) */
+  --space-none:0; --space-3xs:4px; --space-2xs:8px; --space-xs:12px; --space-s:16px; --space-m:20px; --space-l:24px;
+  --space-xl:32px; --space-2xl:40px; --space-3xl:48px; --space-4xl:64px; --space-5xl:80px; --space-6xl:96px; --space-7xl:128px;
+  --space-section:128px; --space-block:64px; --space-stack:24px; --space-inline:8px; --grid-gutter:20px; --grid-margin:40px;
+
+  /* Shape */
+  --radius-none:0; --radius-xs:10px; --radius-sm:20px; --radius-md:30px; --radius-full:9999px;
+
+  /* Elevation */
+  --elevation-xs:0 6px 24px rgb(18 23 26 / .04); --elevation-s:0 2px 4px rgb(18 23 26 / .12);
+  --elevation-m:0 10px 20px rgb(0 0 0 / .06); --elevation-l:0 12px 40px rgb(0 0 0 / .12);
+
+  /* Motion */
+  --ease-direct:cubic-bezier(.2,0,0,1); --ease-settle:cubic-bezier(.22,1,.36,1); --ease-standard:cubic-bezier(.4,0,.2,1);
+  --dur-short:160ms; --dur-quick:240ms; --dur-subtle:360ms; --dur-gentle:800ms;
+}
+
+/* Semantic · Light */
+:root, [data-theme="light"], .theme-light {
+  --text-primary:var(--nf-off-black); --text-secondary:var(--nf-warm-grey-700); --text-tertiary:var(--nf-warm-grey-600);
+  --text-inverse:var(--nf-white); --text-on-accent:var(--nf-off-black); --text-on-image:var(--nf-white); --text-on-image-secondary:rgb(255 255 255 / .8);
+  --bg-page:var(--nf-warm-grey-50); --bg-surface:var(--nf-white); --bg-subtle:var(--nf-warm-grey-100); --bg-inset:var(--nf-white);
+  --bg-input:var(--nf-white); --bg-inverse:var(--nf-off-black); --bg-code:var(--nf-off-black);
+  --bg-glass:rgb(255 255 255 / .8); --bg-glass-subtle:rgb(255 255 255 / .5);
+  --border-subtle:var(--nf-warm-grey-100); --border-default:var(--nf-warm-grey-200); --border-medium:var(--nf-warm-grey-300); --border-strong:var(--nf-off-black);
+  --action-primary:var(--nf-sky); --action-primary-hover:var(--nf-sky-tint-300); --action-primary-pressed:var(--nf-sky-tint-200);
+  --action-primary-text:var(--nf-off-black); --action-primary-disabled:var(--nf-warm-grey-200); --action-primary-disabled-text:var(--nf-warm-grey-500);
+  --action-secondary:var(--nf-off-black); --action-secondary-hover:var(--nf-warm-grey-900); --action-secondary-pressed:var(--nf-warm-grey-800); --action-secondary-text:var(--nf-white);
+  --action-tertiary:var(--nf-white); --action-tertiary-hover:var(--nf-warm-grey-100); --action-tertiary-pressed:var(--nf-warm-grey-200);
+  --action-disabled:var(--nf-warm-grey-200); --action-disabled-text:var(--nf-warm-grey-500);
+  --status-success:var(--nf-green); --status-warning:var(--nf-gold); --status-error:var(--nf-red);
+  --accent-container-purple:var(--nf-lilac); --accent-container-pink:var(--nf-pink); --accent-container-orange:var(--nf-orange);
+  --accent-container-sky:var(--nf-sky); --accent-container-lime:var(--nf-lime);
+  --on-accent-container-purple:var(--nf-off-black); --on-accent-container-pink:var(--nf-off-black); --on-accent-container-orange:var(--nf-off-black);
+  --on-accent-container-sky:var(--nf-off-black); --on-accent-container-lime:var(--nf-off-black);
+  --pattern-dot:var(--nf-warm-grey-300);
+
+}
+
+/* Semantic · Dark */
+[data-theme="dark"], .theme-dark {
+  --text-primary:var(--nf-warm-grey-100); --text-secondary:var(--nf-warm-grey-400); --text-tertiary:var(--nf-warm-grey-500);
+  --text-inverse:var(--nf-warm-grey-950);
+  --bg-page:var(--nf-warm-grey-950); --bg-surface:var(--nf-warm-grey-900); --bg-subtle:var(--nf-warm-grey-800); --bg-inset:var(--nf-warm-grey-950);
+  --bg-input:var(--nf-warm-grey-850); --bg-inverse:var(--nf-warm-grey-100); --bg-code:var(--nf-warm-grey-900);
+  --bg-glass:rgb(27 26 23 / .6); --bg-glass-subtle:rgb(27 26 23 / .6);
+  --border-subtle:var(--nf-warm-grey-900); --border-default:var(--nf-warm-grey-800); --border-medium:var(--nf-warm-grey-700); --border-strong:var(--nf-warm-grey-100);
+  --action-primary-hover:var(--nf-sky-tint-200); --action-primary-pressed:var(--nf-sky-tint-100);
+  --action-primary-disabled:rgb(1 212 229 / .5); --action-primary-disabled-text:var(--nf-off-black);
+  --action-secondary:var(--nf-warm-grey-100); --action-secondary-hover:var(--nf-warm-grey-100); --action-secondary-pressed:var(--nf-warm-grey-200); --action-secondary-text:var(--nf-off-black);
+  --action-tertiary:var(--nf-warm-grey-800); --action-tertiary-hover:var(--nf-warm-grey-700); --action-tertiary-pressed:var(--nf-warm-grey-600);
+  --action-disabled:var(--nf-warm-grey-950); --action-disabled-text:var(--nf-warm-grey-600);
+  --accent-container-purple:var(--nf-warm-grey-800); --accent-container-pink:var(--nf-warm-grey-800); --accent-container-orange:var(--nf-warm-grey-800);
+  --accent-container-sky:var(--nf-warm-grey-800); --accent-container-lime:var(--nf-warm-grey-800);
+  --on-accent-container-purple:var(--nf-lilac); --on-accent-container-pink:var(--nf-pink); --on-accent-container-orange:var(--nf-orange);
+  --on-accent-container-sky:var(--nf-sky); --on-accent-container-lime:var(--nf-lime);
+  --pattern-dot:rgb(218 216 210 / .4);
+}
+
+@media (max-width: 767px) {
+  :root {
+    --size-heading-xl:56px; --size-heading-l:44px; --size-heading-m:36px; --size-heading-s:32px; --size-heading-xs:26px; --size-heading-xxs:22px;
+    --space-section:80px; --space-block:48px; --space-stack:16px; --grid-margin:20px; --radius-md:20px;
+  }
+}

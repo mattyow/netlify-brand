@@ -1,0 +1,88 @@
+<!-- title: Access requests · Netlify Brand Hub | desc: Review requests for locked brand assets. | out: admin.html | robots: noindex, nofollow -->
+<section class="panel" aria-labelledby="t">
+  <div class="adm-head">
+    <div><h1 class="h-s" id="t">Access requests</h1><p class="b-m muted" style="margin-top:10px">Approve a request to create a personal sign-in link, then send it to the requester.</p></div>
+    <button class="btn tertiary sm" type="button" id="signout" hidden>Sign out</button>
+  </div>
+
+  <form id="login" class="adm-login">
+    <div class="field"><label for="tok">Admin token</label><input class="input" id="tok" type="password" autocomplete="current-password" required><span class="help">The <code class="inline">ADMIN_TOKEN</code> set in Netlify environment variables. Kept for this browser tab only.</span></div>
+    <button class="btn secondary" type="submit">Sign in</button>
+    <p class="b-s" id="login-err" role="alert" style="color:var(--status-error)"></p>
+  </form>
+
+  <div id="queue" hidden>
+    <div class="pill-tabs" role="tablist" aria-label="Filter requests"><span class="pill-ind" aria-hidden="true"></span>
+      <button role="tab" aria-selected="true" data-f="pending">Pending</button><button role="tab" aria-selected="false" data-f="approved">Approved</button><button role="tab" aria-selected="false" data-f="denied">Denied</button><button role="tab" aria-selected="false" data-f="all">All</button></div>
+    <div id="list" class="adm-list" aria-live="polite"></div>
+  </div>
+</section>
+
+<style>
+.adm-head { display:flex; justify-content:space-between; gap:16px; align-items:flex-start; margin-bottom:32px; }
+.adm-login { display:flex; flex-direction:column; gap:16px; max-width:420px; }
+.adm-login .btn { align-self:flex-start; }
+.pill-tabs { position:relative; display:inline-flex; padding:4px; border-radius:99px; background:var(--bg-subtle); margin-bottom:20px; }
+.pill-tabs button { position:relative; z-index:1; border:0; background:none; height:36px; padding:0 14px; border-radius:99px; cursor:pointer; font:400 13px/1 var(--font-mono); letter-spacing:.04em; color:var(--text-secondary); }
+.pill-tabs button[aria-selected="true"] { color:var(--action-secondary-text); }
+.pill-ind { position:absolute; top:4px; height:36px; border-radius:99px; background:var(--action-secondary); transition:left 240ms var(--ease-settle), width 240ms var(--ease-settle); }
+.adm-list { display:flex; flex-direction:column; gap:12px; }
+.req { background:var(--bg-subtle); border-radius:var(--radius-sm); padding:20px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:12px 20px; }
+.req h3 { font-weight:500; font-size:var(--size-body-l); margin:0; }
+.req .meta { font-size:var(--size-body-s); color:var(--text-secondary); }
+.req .use { grid-column:1/-1; font-size:var(--size-body-s); line-height:20px; background:var(--bg-surface); border-radius:var(--radius-xs); padding:12px 14px; white-space:pre-wrap; }
+.req .acts { display:flex; gap:8px; align-items:flex-start; flex-wrap:wrap; justify-content:flex-end; }
+.req .link-out { grid-column:1/-1; display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+.req .link-out code { font:400 12px/1.4 var(--font-mono); background:var(--bg-surface); padding:8px 10px; border-radius:8px; word-break:break-all; flex:1; min-width:200px; }
+.empty { padding:40px 0; color:var(--text-secondary); }
+@media (max-width:640px){ .req { grid-template-columns:1fr; } .req .acts { justify-content:flex-start; } }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const $ = id => document.getElementById(id);
+  let token = sessionStorage.getItem("nf-admin") || "", filter = "pending", rows = [];
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+  const api = async (path, opts = {}) => {
+    const r = await fetch(path, { ...opts, headers:{ "Content-Type":"application/json", Authorization:`Bearer ${token}` } });
+    const j = await r.json().catch(() => ({}));
+    if (r.status === 401) { signOut(); throw new Error("That token wasn't accepted."); }
+    if (!r.ok) throw new Error(j.error || "Request failed.");
+    return j;
+  };
+  const signOut = () => { token = ""; sessionStorage.removeItem("nf-admin"); $("queue").hidden = true; $("login").hidden = false; $("signout").hidden = true; };
+  $("signout").onclick = signOut;
+  const fmt = t => new Date(t).toLocaleString(undefined, { dateStyle:"medium", timeStyle:"short" });
+  const badge = s => ({ pending:'<span class="badge orange">Pending</span>', approved:'<span class="badge lime">Approved</span>', denied:'<span class="badge neutral">Denied</span>', revoked:'<span class="badge pink">Revoked</span>' }[s] || "");
+  function render() {
+    const show = rows.filter(r => filter === "all" || r.status === filter || (filter === "denied" && r.status === "revoked"));
+    $("list").innerHTML = show.length ? show.map(r => `
+      <article class="req" data-id="${esc(r.id)}">
+        <div><h3>${esc(r.name)} ${badge(r.status)}</h3><p class="meta">${esc(r.email)} · ${esc(r.org)} · ${esc(r.relationship)}</p><p class="meta">Wants: ${esc((r.assets||[]).join(", "))} · ${fmt(r.created)}</p></div>
+        <div class="acts">${r.status === "pending" ? `<button class="btn sm" data-act="approve">Approve</button><button class="btn tertiary sm" data-act="deny">Deny</button>` : ""}
+          ${r.status === "approved" ? `<button class="btn tertiary sm" data-act="relink">New link</button><button class="btn tertiary sm" data-act="revoke">Revoke</button>` : ""}
+          ${r.status === "denied" || r.status === "revoked" ? `<button class="btn tertiary sm" data-act="approve">Approve</button>` : ""}</div>
+        <p class="use">${esc(r.use)}</p>
+        ${r._link ? `<div class="link-out"><code>${esc(r._link)}</code><button class="btn secondary sm" data-copy="${esc(r._link)}" data-copy-label="sign-in link">Copy link</button><a class="btn tertiary sm" href="mailto:${encodeURIComponent(r.email)}?subject=${encodeURIComponent("Your Netlify brand assets access")}&body=${encodeURIComponent(`Hi ${r.name},\n\nYour request for Netlify's locked brand assets is approved. Use this personal link to sign in (it expires in 14 days):\n\n${r._link}\n\nPlease don't forward it.\n\nNetlify Brand`)}">Email it</a></div>` : ""}
+      </article>`).join("") : `<p class="empty">No ${filter === "all" ? "" : filter + " "}requests.</p>`;
+  }
+  async function load() { const j = await api("/api/admin/requests"); rows = j.requests; render(); }
+  async function enter() { try { await load(); $("login").hidden = true; $("queue").hidden = false; $("signout").hidden = false; placeInd(); } catch (e) { $("login-err").textContent = e.message; } }
+  $("login").addEventListener("submit", e => { e.preventDefault(); token = $("tok").value.trim(); sessionStorage.setItem("nf-admin", token); $("login-err").textContent = ""; enter(); });
+  $("list").addEventListener("click", async e => {
+    const b = e.target.closest("[data-act]"); if (!b) return;
+    const id = b.closest(".req").dataset.id, act = b.dataset.act;
+    if (act === "revoke" && !confirm("Revoke access? Their current session stops working right away.")) return;
+    b.disabled = true;
+    try {
+      const j = await api("/api/admin/decide", { method:"POST", body:JSON.stringify({ id, action:act }) });
+      const i = rows.findIndex(r => r.id === id); rows[i] = { ...j.request, _link:j.link };
+      nfToast(act === "deny" ? "Request denied" : act === "revoke" ? "Access revoked" : "Approved. Copy the link and send it.");
+      render();
+    } catch (err) { nfToast(err.message); b.disabled = false; }
+  });
+  const tabs = document.querySelector(".pill-tabs"), ind = tabs.querySelector(".pill-ind");
+  const placeInd = () => { const s = tabs.querySelector('[aria-selected="true"]'); ind.style.left = s.offsetLeft + "px"; ind.style.width = s.offsetWidth + "px"; };
+  tabs.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; tabs.querySelectorAll("button").forEach(x => x.setAttribute("aria-selected", String(x === b))); filter = b.dataset.f; placeInd(); render(); });
+  if (token) enter();
+});
+</script>

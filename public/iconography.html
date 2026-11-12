@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Icons · Netlify Brand Hub</title>
+<meta name="description" content="Phosphor icons for UI and the Netlify Pixel set for branded moments.">
+
+<meta property="og:title" content="Icons · Netlify Brand Hub">
+<meta property="og:description" content="Phosphor icons for UI and the Netlify Pixel set for branded moments.">
+<meta name="theme-color" content="#f7f6f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b1a17" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/assets/logo/netlify-mark-offblack.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/css/hub.css">
+<script>try{var t=localStorage.getItem("nf-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="mobile-bar" data-mobile-bar></div>
+<div class="shell">
+  <aside class="side" id="side" data-side aria-label="Site navigation"></aside>
+  <main class="main" id="main">
+    <div class="page">
+<section class="hero" data-grad="22" aria-labelledby="t">
+  <div class="hero-top"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#nf-mark"></use></svg><p class="eyebrow">06 · Icons</p></div>
+  <div><h1 class="h-l" id="t">Icons</h1>
+  <p class="b-l lede">Phosphor for everyday UI. Netlify Pixel for the moments that should feel unmistakably ours.</p></div>
+</section>
+
+<section class="panel" aria-labelledby="pix">
+  <div class="panel-head">
+    <h2 class="h-xs" id="pix">Netlify Pixel</h2>
+    <div class="prose b-l"><p>Custom icons built from the diamond in our symbol. Save them for intentional, higher branded moments: feature callouts, empty states and marketing modules. Don't use them as everyday UI controls.</p></div>
+  </div>
+  <div class="grid g6" id="pixel-grid"></div>
+</section>
+
+<section class="panel" aria-labelledby="ui">
+  <div class="panel-head">
+    <h2 class="h-xs" id="ui">UI icons</h2>
+    <div class="prose b-l"><p>We use <a class="link" href="https://phosphoricons.com" rel="noopener">Phosphor Icons</a> at Regular weight, 24px. Don't mix weights or styles. Pair unfamiliar actions with a label, and give every interactive icon an accessible name. Add new icons with the Phosphor Figma plugin; matching packages exist for web, React, Vue, Flutter and more.</p></div>
+  </div>
+  <div class="icon-grid" id="ui-grid"></div>
+  <pre class="code sub"><code>npm install @phosphor-icons/web
+
+&lt;i class="ph ph-magnifying-glass" aria-hidden="true"&gt;&lt;/i&gt;</code></pre>
+</section>
+
+<section class="panel" aria-labelledby="brands">
+  <div class="panel-head">
+    <h2 class="h-xs" id="brands">Third-party marks</h2>
+    <div class="prose b-l"><p>The Figma library includes approved marks for social platforms, AI agents, frameworks and Git providers. Use each company's official artwork and follow its brand rules. Never redraw or recolor a partner's mark.</p></div>
+  </div>
+  <div class="grid g4">
+    <div class="tile"><b class="b-m medium">Social</b><p class="b-s muted">LinkedIn, YouTube, X, Instagram, Bluesky</p></div>
+    <div class="tile"><b class="b-m medium">Agents</b><p class="b-s muted">Claude, Codex, Cursor</p></div>
+    <div class="tile"><b class="b-m medium">Frameworks</b><p class="b-s muted">Astro, Next.js, React, TanStack, WordPress</p></div>
+    <div class="tile"><b class="b-m medium">Developer platforms</b><p class="b-s muted">GitHub, GitLab, Bitbucket, Azure DevOps</p></div>
+  </div>
+</section>
+
+<style>
+.px-card { background:var(--bg-subtle); border-radius:var(--radius-sm); padding:18px; display:flex; flex-direction:column; gap:28px; border:0; cursor:pointer; text-align:left; text-decoration:none; }
+.px-card svg { width:48px; height:48px; color:var(--text-primary); transition:transform var(--dur-quick) var(--ease-settle); }
+.px-card:hover svg { transform:scale(1.12); }
+.px-card span { display:flex; justify-content:space-between; font:400 12px/1.3 var(--font-mono); color:var(--text-secondary); }
+.icon-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(112px,1fr)); border-top:1px solid var(--border-default); border-left:1px solid var(--border-default); }
+.icon-grid button { aspect-ratio:1; border:0; border-right:1px solid var(--border-default); border-bottom:1px solid var(--border-default); background:none; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; cursor:pointer; padding:8px; }
+.icon-grid button:hover { background:var(--bg-subtle); }
+.icon-grid svg { width:24px; height:24px; }
+.icon-grid span { font:400 10.5px/1.2 var(--font-mono); color:var(--text-tertiary); text-align:center; word-break:break-word; }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const px = ["spark","chat","plus","scatter","arrow","mail"];
+  document.getElementById("pixel-grid").innerHTML = px.map(n => `<a class="px-card" href="/assets/icons/netlify-pixel-${n}.svg" download><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#px-${n}"></use></svg><span>Pixel${n[0].toUpperCase()+n.slice(1)}<svg class="icon-s" style="width:14px;height:14px"><use href="/assets/icons/sprite.svg#ph-download-simple"></use></svg></span></a>`).join("");
+  const ui = ["app-window","arrow-counter-clockwise","arrow-down","arrow-left","arrow-right","arrow-up","arrows-clockwise","book-open-text","brain","browser","caret-down","caret-left","caret-right","caret-up","check","check-circle","control","eye","info","list","list-magnifying-glass","magnifying-glass","plugs-connected","shield-check","toolbox","upload-simple","warning-circle","x"];
+  document.getElementById("ui-grid").innerHTML = ui.map(n => `<button type="button" data-copy="${n}" data-copy-label="ph-${n}"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#ph-${n}"></use></svg><span>${n}</span></button>`).join("");
+});
+</script>
+    </div>
+    <footer class="foot">
+      <span>© <span data-year>2026</span> Netlify. Logos, type and artwork are trademarks of Netlify, Inc.</span>
+      <span><a href="/downloads">Downloads</a> · <a href="/access">Request locked assets</a> · <a href="mailto:brand@netlify.com">brand@netlify.com</a></span>
+    </footer>
+  </main>
+</div>
+<script src="/assets/js/hub.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Components · Netlify Brand Hub</title>
+<meta name="description" content="Live, token-driven Netlify web components in light and dark mode.">
+
+<meta property="og:title" content="Components · Netlify Brand Hub">
+<meta property="og:description" content="Live, token-driven Netlify web components in light and dark mode.">
+<meta name="theme-color" content="#f7f6f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b1a17" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/assets/logo/netlify-mark-offblack.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/css/hub.css">
+<script>try{var t=localStorage.getItem("nf-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="mobile-bar" data-mobile-bar></div>
+<div class="shell">
+  <aside class="side" id="side" data-side aria-label="Site navigation"></aside>
+  <main class="main" id="main">
+    <div class="page">
+<section class="hero" data-grad="10" aria-labelledby="t">
+  <div class="hero-top"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#nf-mark"></use></svg><p class="eyebrow">09 · Components</p></div>
+  <div><h1 class="h-l" id="t">Components</h1>
+  <p class="b-l lede">The reusable pieces of the Netlify web experience. Use a component as it is before making something new, and if you need a variation, add it to the library so everyone benefits.</p></div>
+</section>
+
+<nav class="panel jump" aria-label="Components on this page">
+  <a href="#buttons" class="chip">Buttons</a><a href="#icon-buttons" class="chip">Icon buttons</a><a href="#labels" class="chip">Labels &amp; badges</a><a href="#tabs" class="chip">Tabs</a>
+  <a href="#selector" class="chip">Selector</a><a href="#faq" class="chip">Accordion</a><a href="#inputs" class="chip">Inputs</a><a href="#prompt" class="chip">Prompt box</a>
+  <a href="#cards" class="chip">Cards</a><a href="#terminal" class="chip">Terminal</a><a href="#quote" class="chip">Testimonial</a><a href="#tooltip" class="chip">Tooltip</a>
+</nav>
+
+<section class="panel" aria-labelledby="buttons">
+  <div class="panel-head"><h2 class="h-xs" id="buttons">Buttons</h2><div class="prose b-l"><p>Primary (sky) is the one action you want people to take, so use one per view. Secondary is for the next most important action. Tertiary covers everything else. All buttons are pill-shaped, 40px tall, with UI / Button text.</p></div></div>
+  <div class="grid g2 modes">
+    <div class="mode-card" data-theme="light"><p class="eyebrow">Light</p><div class="bmatrix" data-matrix></div></div>
+    <div class="mode-card" data-theme="dark"><p class="eyebrow">Dark</p><div class="bmatrix" data-matrix></div></div>
+  </div>
+  <div class="sub"><div class="sub-title"><h3 class="b-l medium">Variants</h3><span class="b-s muted">Text button, button with icon, glass</span></div>
+    <div class="row-demo">
+      <a class="text-btn" href="#buttons">Learn more<svg class="icon"><use href="/assets/icons/sprite.svg#ph-arrow-right"></use></svg></a>
+      <button class="btn tertiary" type="button"><svg class="icon"><use href="/assets/icons/sprite.svg#ph-copy"></use></svg>Copy prompt</button>
+      <button class="btn secondary" type="button"><svg class="icon" style="color:currentColor"><use href="/assets/icons/sprite.svg#nf-mark"></use></svg>Deploy to Netlify</button>
+      <span class="glass-demo" data-grad="12"><button class="btn glass" type="button">Read the docs</button></span>
+    </div>
+  </div>
+<pre class="code sub"><code>&lt;a class="btn" href="/signup"&gt;Get started&lt;/a&gt;
+&lt;a class="btn secondary" href="/docs"&gt;View docs&lt;/a&gt;
+&lt;button class="btn tertiary" type="button"&gt;Contact sales&lt;/button&gt;</code></pre>
+</section>
+
+<section class="panel" aria-labelledby="icon-buttons">
+  <div class="panel-head"><h2 class="h-xs" id="icon-buttons">Icon buttons</h2><div class="prose b-l"><p>40px circles for compact actions like carousels and close. Always give them an accessible name.</p></div></div>
+  <div class="row-demo">
+    <button class="btn icon-only" type="button" aria-label="Next"><svg class="icon"><use href="/assets/icons/sprite.svg#ph-arrow-right"></use></svg></button>
+    <button class="btn secondary icon-only" type="button" aria-label="Upload"><svg class="icon"><use href="/assets/icons/sprite.svg#ph-arrow-up"></use></svg></button>
+    <button class="btn tertiary icon-only" type="button" aria-label="Previous"><svg class="icon"><use href="/assets/icons/sprite.svg#ph-caret-left"></use></svg></button>
+    <button class="btn tertiary icon-only" type="button" aria-label="Next slide"><svg class="icon"><use href="/assets/icons/sprite.svg#ph-caret-right"></use></svg></button>
+    <button class="btn tertiary icon-only" type="button" aria-label="Close"><svg class="icon"><use href="/assets/icons/sprite.svg#ph-x"></use></svg></button>
+    <button class="btn icon-only is-disabled" type="button" aria-label="Unavailable" disabled><svg class="icon"><use href="/assets/icons/sprite.svg#ph-arrow-right"></use></svg></button>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="labels">
+  <div class="panel-head"><h2 class="h-xs" id="labels">Labels, chips &amp; badges</h2><div class="prose b-l"><p>Chips filter and categorize. Badges flag status in UI / Badge type. Badge fills use accent containers, which switch to a dark fill with colored text in dark mode.</p></div></div>
+  <div class="row-demo">
+    <span class="chip">Platform</span><span class="chip"><svg class="icon-s"><use href="/assets/icons/sprite.svg#ph-shield-check"></use></svg>Enterprise</span>
+    <a class="chip" href="#labels">Label CTA<svg class="icon-s"><use href="/assets/icons/sprite.svg#ph-arrow-right"></use></svg></a>
+  </div>
+  <div class="row-demo" style="margin-top:16px">
+    <span class="badge">Most popular</span><span class="badge lime">New</span><span class="badge purple">Beta</span><span class="badge pink">Live</span><span class="badge orange">Preview</span><span class="badge neutral">Deprecated</span>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="tabs">
+  <div class="panel-head"><h2 class="h-xs" id="tabs">Tabs</h2><div class="prose b-l"><p>Pill tabs switch views and prompt modes. The indicator slides between options using the Guide preset (Settle, 240ms). Labels use UI / Tab.</p></div></div>
+  <div class="pill-tabs" role="tablist" aria-label="Start from"><span class="pill-ind" aria-hidden="true"></span><button role="tab" aria-selected="true">Prompt</button><button role="tab" aria-selected="false">Drop</button><button role="tab" aria-selected="false">Import</button></div>
+</section>
+
+<section class="panel" aria-labelledby="selector">
+  <div class="panel-head"><h2 class="h-xs" id="selector">Case study selector</h2><div class="prose b-l"><p>A vertical list for switching between examples. The active row expands to show a short description.</p></div></div>
+  <div class="selector" role="tablist" aria-label="Example projects" aria-orientation="vertical">
+    <button role="tab" aria-selected="true"><span>Hiring dashboard</span><small>Tracks the hiring pipeline in one place, replacing a spreadsheet three people updated by hand.</small></button>
+    <button role="tab" aria-selected="false"><span>AI agent</span><small>An assistant that answers questions from your docs and opens pull requests.</small></button>
+    <button role="tab" aria-selected="false"><span>Marketing site</span><small>A fast, editable site your whole team can ship to.</small></button>
+    <button role="tab" aria-selected="false"><span>Gaming</span><small>A browser game with leaderboards and accounts.</small></button>
+    <button role="tab" aria-selected="false"><span>Complex product</span><small>A product people sign in to, with accounts, data and daily deploys.</small></button>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="faq">
+  <div class="panel-head"><h2 class="h-xs" id="faq">Accordion</h2><div class="prose b-l"><p>For FAQs and long lists of detail. Expands with the Arrange preset (Settle, 360ms).</p></div></div>
+  <div class="faq">
+    <details class="acc" open><summary>Can I use Free for a commercial project?<svg class="icon"><use href="/assets/icons/sprite.svg#ph-caret-down"></use></svg></summary><div class="acc-body"><p>Answer copy sits in Body / M, secondary text color, with a max width of about 64 characters.</p></div></details>
+    <details class="acc"><summary>Can I set a hard spending limit?<svg class="icon"><use href="/assets/icons/sprite.svg#ph-caret-down"></use></svg></summary><div class="acc-body"><p>Keep answers short. Link to the docs for anything longer than a paragraph.</p></div></details>
+    <details class="acc"><summary>Where do I find the source files?<svg class="icon"><use href="/assets/icons/sprite.svg#ph-caret-down"></use></svg></summary><div class="acc-body"><p>Request access on this site. Approved requests get a sign-in link by email.</p></div></details>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="inputs">
+  <div class="panel-head"><h2 class="h-xs" id="inputs">Inputs</h2><div class="prose b-l"><p>48px fields with a 10px radius. Labels sit above the field. Helper text explains the format; error text says what went wrong and how to fix it.</p></div></div>
+  <div class="grid g2">
+    <div class="field"><label for="c-name">First name<span class="req" aria-hidden="true">*</span></label><input class="input" id="c-name" placeholder="Ada" autocomplete="given-name"></div>
+    <div class="field"><label for="c-email">Work email<span class="req" aria-hidden="true">*</span></label><input class="input" id="c-email" type="email" placeholder="you@company.com"><span class="help">We'll only use this to reply.</span></div>
+    <div class="field invalid"><label for="c-err">Company</label><input class="input" id="c-err" value="" aria-invalid="true" aria-describedby="c-err-h"><span class="help" id="c-err-h">Enter your company name.</span></div>
+    <div class="field"><label for="c-sel">What can we help with?</label><select class="select input" id="c-sel"><option>Pricing for my team</option><option>Enterprise security and controls</option><option>Scaling an existing project</option><option>Migrating to Netlify</option><option>Something else</option></select></div>
+  </div>
+  <div class="field sub"><span class="b-s medium">Topics</span><div class="choice-row"><input type="checkbox" id="t1" checked><label for="t1">Prototypes</label><input type="checkbox" id="t2"><label for="t2">Agents</label><input type="checkbox" id="t3"><label for="t3">Enterprise</label></div></div>
+</section>
+
+<section class="panel" aria-labelledby="prompt">
+  <div class="panel-head"><h2 class="h-xs" id="prompt">Prompt box</h2><div class="prose b-l"><p>The signature input for building with agents. Glass surface on a gradient, mode tabs above and a primary send button.</p></div></div>
+  <div class="prompt-stage" data-grad="16">
+    <div class="prompt">
+      <label class="sr-only" for="pb">Describe what you want to build</label>
+      <textarea id="pb" rows="3">Build a landing page for my product with a hero section, feature highlights, testimonials and a newsletter signup.</textarea>
+      <div class="prompt-bar"><span class="chip"><svg class="icon-s"><use href="/assets/icons/sprite.svg#ph-upload-simple"></use></svg>Attach</span><button class="btn icon-only" type="button" aria-label="Send prompt"><svg class="icon"><use href="/assets/icons/sprite.svg#ph-arrow-up"></use></svg></button></div>
+    </div>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="cards">
+  <div class="panel-head"><h2 class="h-xs" id="cards">Cards</h2><div class="prose b-l"><p>Feature cards pair a gradient or illustration with a short title and one action. Step cards are for real sequences only. Team cards show who's involved.</p></div></div>
+  <div class="grid g3">
+    <article class="fcard"><div class="fthumb" data-grad="01"><svg><use href="/assets/icons/sprite.svg#px-spark"></use></svg></div><h3 class="h-xxs medium">Create prototypes</h3><p class="b-s muted">Go from idea to working app without setup overhead. Your prototype runs on the same infrastructure as production.</p><a class="text-btn" href="#cards">Learn more<svg class="icon"><use href="/assets/icons/sprite.svg#ph-arrow-right"></use></svg></a></article>
+    <article class="fcard step"><span class="stepn">01</span><h3 class="h-xxs medium">Enter a prompt</h3><p class="b-s muted">Start with a prompt to build your app or site, ask for a bug fix, add a new page, or adjust design.</p><span class="stepn">02</span><h3 class="h-xxs medium">Use agents you trust</h3><p class="b-s muted">Agents get the context they need to add forms, configure auth and more.</p></article>
+    <article class="fcard team"><div class="avatars"><i style="background:#c1b5ff"></i><i style="background:#ffbc8a"></i><i style="background:#bbee3c"></i><i style="background:#01d4e5"></i><b>+37</b></div><h3 class="h-xxs medium">For your team</h3><p class="b-s muted">The same role-based access that governs your deploys decides who can run agents.</p><p class="b-xs" style="color:var(--text-tertiary)">40 members</p></article>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="terminal">
+  <div class="panel-head"><h2 class="h-xs" id="terminal">Terminal window</h2><div class="prose b-l"><p>For product moments that show agents or the CLI at work. Always off black, with Plex Mono at 13px.</p></div></div>
+  <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>~/my-site</span></div>
+<pre><span class="t-dim">&gt;</span> deploy this site to Netlify
+<span class="t-ok">✓</span> Netlify connected
+<span class="t-ok">✓</span> Build complete in 14s
+<span class="t-sky">→</span> my-site.netlify.app is live</pre></div>
+</section>
+
+<section class="panel" aria-labelledby="quote">
+  <div class="panel-head"><h2 class="h-xs" id="quote">Testimonial</h2><div class="prose b-l"><p>Quotes in Heading / XS Medium, attribution in Body / S. Keep quotes under 30 words.</p></div></div>
+  <figure class="tquote"><blockquote class="h-xs medium">“Quote copy goes here. Keep it specific, short and in the customer's own words.”</blockquote><figcaption><i></i><span><b>Name Surname</b><br><span class="muted">Role, Company</span></span></figcaption></figure>
+</section>
+
+<section class="panel" aria-labelledby="tooltip">
+  <div class="panel-head"><h2 class="h-xs" id="tooltip">Tooltip</h2><div class="prose b-l"><p>Short, helpful hints on hover and focus. 10px radius, inverse surface, Body / S.</p></div></div>
+  <div class="row-demo"><span class="tip-wrap"><button class="btn tertiary icon-only" type="button" aria-describedby="tip1"><svg class="icon"><use href="/assets/icons/sprite.svg#ph-info"></use></svg><span class="sr-only">More info</span></button><span class="tip" role="tooltip" id="tip1">Scope environment variables per deploy context</span></span></div>
+</section>
+
+<style>
+.jump { display:flex; flex-wrap:wrap; gap:8px; padding:20px 24px; }
+.jump .chip { text-decoration:none; }
+.jump .chip:hover { background:var(--bg-subtle); }
+.mode-card { background:var(--bg-page); color:var(--text-primary); border-radius:var(--radius-sm); padding:24px; border:1px solid var(--border-default); }
+.bmatrix { display:grid; grid-template-columns:auto repeat(4,minmax(0,1fr)); gap:14px 10px; align-items:center; margin-top:18px; }
+.bmatrix .h { font:400 11px/1.2 var(--font-mono); color:var(--text-tertiary); }
+.bmatrix .btn { width:100%; padding:0 8px; }
+.row-demo { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+.glass-demo { padding:16px 20px; border-radius:var(--radius-sm); }
+.pill-tabs { position:relative; display:inline-flex; padding:4px; border-radius:99px; background:var(--bg-subtle); }
+.pill-tabs button { position:relative; z-index:1; border:0; background:none; height:36px; padding:0 16px; border-radius:99px; cursor:pointer; font:400 14px/1.15 var(--font-mono); letter-spacing:.08em; color:var(--text-secondary); transition:color var(--dur-quick) var(--ease-settle); }
+.pill-tabs button[aria-selected="true"] { color:var(--action-secondary-text); }
+.pill-ind { position:absolute; top:4px; height:36px; border-radius:99px; background:var(--action-secondary); transition:left 240ms var(--ease-settle), width 240ms var(--ease-settle); }
+.selector { display:flex; flex-direction:column; max-width:640px; }
+.selector button { text-align:left; border:0; background:none; border-top:1px solid var(--border-default); padding:14px 4px; cursor:pointer; display:flex; flex-direction:column; gap:0; }
+.selector button:last-child { border-bottom:1px solid var(--border-default); }
+.selector span { font-size:var(--size-heading-xxs); line-height:28px; font-weight:500; color:var(--text-tertiary); transition:color var(--dur-quick) var(--ease-settle); }
+.selector small { font-size:var(--size-body-s); line-height:20px; color:var(--text-secondary); max-height:0; overflow:hidden; opacity:0; transition:max-height var(--dur-subtle) var(--ease-settle), opacity var(--dur-subtle) var(--ease-settle), margin var(--dur-subtle) var(--ease-settle); }
+.selector [aria-selected="true"] span { color:var(--text-primary); }
+.selector [aria-selected="true"] small { max-height:60px; opacity:1; margin-top:6px; }
+.faq { display:flex; flex-direction:column; gap:8px; max-width:720px; }
+.acc { background:var(--bg-subtle); border-radius:var(--radius-sm); }
+.acc summary { list-style:none; display:flex; justify-content:space-between; align-items:center; gap:12px; padding:18px 20px; cursor:pointer; font-weight:500; }
+.acc summary::-webkit-details-marker { display:none; }
+.acc summary svg { width:20px; height:20px; flex:none; transition:transform 360ms var(--ease-settle); }
+.acc[open] summary svg { transform:rotate(180deg); }
+.acc-body p { padding:0 20px 18px; color:var(--text-secondary); max-width:64ch; }
+.prompt-stage { border-radius:var(--radius-md); padding:clamp(24px,6vw,72px); display:grid; place-items:center; }
+.prompt { width:min(640px,100%); background:var(--bg-glass); backdrop-filter:blur(18px); border-radius:var(--radius-sm); padding:16px; box-shadow:var(--elevation-l); }
+.prompt textarea { width:100%; border:0; background:transparent; resize:none; font-size:var(--size-body-m); line-height:24px; color:var(--text-primary); }
+.prompt textarea:focus { outline:none; }
+.prompt-bar { display:flex; justify-content:space-between; align-items:center; margin-top:8px; }
+.fcard { background:var(--bg-subtle); border-radius:var(--radius-sm); padding:16px 16px 22px; display:flex; flex-direction:column; gap:10px; align-items:flex-start; }
+.fthumb { width:100%; aspect-ratio:16/10; border-radius:var(--radius-xs); display:grid; place-items:center; margin-bottom:8px; }
+.fthumb svg { width:56px; height:56px; color:#fff; }
+.step { padding:24px; }
+.stepn { font:500 12px/1 var(--font-mono); color:var(--text-tertiary); letter-spacing:.08em; margin-top:8px; }
+.team { padding:24px; }
+.avatars { display:flex; align-items:center; margin-bottom:12px; }
+.avatars i { width:40px; height:40px; border-radius:50%; border:3px solid var(--bg-subtle); margin-right:-10px; }
+.avatars b { margin-left:18px; font-weight:500; font-size:var(--size-body-s); }
+.term { background:#131619; color:#f0eeea; border-radius:var(--radius-sm); overflow:hidden; max-width:640px; }
+.term-bar { display:flex; align-items:center; gap:6px; padding:12px 16px; border-bottom:1px solid #282622; }
+.term-bar i { width:10px; height:10px; border-radius:50%; background:#3d3a35; }
+.term-bar span { margin-left:10px; font:400 12px/1 var(--font-mono); color:#949087; }
+.term pre { margin:0; padding:18px 20px 22px; font:400 13px/1.7 var(--font-mono); overflow-x:auto; }
+.t-dim { color:#949087; } .t-ok { color:#3fb66b; } .t-sky { color:#01d4e5; }
+.tquote { margin:0; max-width:760px; }
+.tquote blockquote { margin:0 0 24px; }
+.tquote figcaption { display:flex; gap:14px; align-items:center; font-size:var(--size-body-s); line-height:20px; }
+.tquote figcaption > i { width:44px; height:44px; border-radius:50%; background:var(--bg-subtle); }
+.tquote b { font-weight:500; }
+.tip-wrap { position:relative; display:inline-flex; }
+.tip { position:absolute; left:50%; bottom:calc(100% + 10px); transform:translate(-50%,4px); width:max-content; max-width:240px; background:var(--bg-inverse); color:var(--text-inverse); font-size:var(--size-body-s); line-height:20px; padding:8px 12px; border-radius:var(--radius-xs); opacity:0; pointer-events:none; transition:opacity var(--dur-short) var(--ease-direct), transform var(--dur-short) var(--ease-direct); }
+.tip::after { content:""; position:absolute; left:50%; top:100%; width:10px; height:10px; background:inherit; transform:translate(-50%,-50%) rotate(45deg); border-radius:2px; }
+.tip-wrap:hover .tip, .tip-wrap:focus-within .tip { opacity:1; transform:translate(-50%,0); }
+@media (max-width:640px){ .bmatrix { grid-template-columns:auto repeat(2,minmax(0,1fr)); } .bmatrix .c3,.bmatrix .c4 { display:none; } }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const types = [["Primary",""],["Secondary","secondary"],["Tertiary","tertiary"]];
+  const states = [["Default",""],["Hover","is-hover"],["Pressed","is-pressed"],["Disabled","is-disabled"]];
+  document.querySelectorAll("[data-matrix]").forEach(m => {
+    m.innerHTML = `<span></span>${states.map((s,i)=>`<span class="h c${i+1}">${s[0]}</span>`).join("")}` +
+      types.map(([t,c]) => `<span class="h">${t}</span>${states.map(([s,sc],i)=>`<button class="btn ${c} ${sc} c${i+1}" type="button" tabindex="-1" aria-hidden="true">Label</button>`).join("")}`).join("");
+  });
+  document.querySelectorAll(".pill-tabs").forEach(t => {
+    const ind = t.querySelector(".pill-ind");
+    const place = b => { ind.style.left = b.offsetLeft + "px"; ind.style.width = b.offsetWidth + "px"; };
+    t.querySelectorAll("button").forEach(b => b.addEventListener("click", () => { t.querySelectorAll("button").forEach(x => x.setAttribute("aria-selected", String(x === b))); place(b); }));
+    requestAnimationFrame(() => place(t.querySelector('[aria-selected="true"]')));
+  });
+  document.querySelectorAll(".selector").forEach(s => s.querySelectorAll("button").forEach(b => b.addEventListener("click", () => s.querySelectorAll("button").forEach(x => x.setAttribute("aria-selected", String(x === b))))));
+});
+</script>
+    </div>
+    <footer class="foot">
+      <span>© <span data-year>2026</span> Netlify. Logos, type and artwork are trademarks of Netlify, Inc.</span>
+      <span><a href="/downloads">Downloads</a> · <a href="/access">Request locked assets</a> · <a href="mailto:brand@netlify.com">brand@netlify.com</a></span>
+    </footer>
+  </main>
+</div>
+<script src="/assets/js/hub.js" defer></script>
+</body>
+</html>

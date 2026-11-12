@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Request access · Netlify Brand Hub</title>
+<meta name="description" content="Request access to Netlify's licensed fonts and brand source files.">
+
+<meta property="og:title" content="Request access · Netlify Brand Hub">
+<meta property="og:description" content="Request access to Netlify's licensed fonts and brand source files.">
+<meta name="theme-color" content="#f7f6f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b1a17" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/assets/logo/netlify-mark-offblack.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/css/hub.css">
+<script>try{var t=localStorage.getItem("nf-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="mobile-bar" data-mobile-bar></div>
+<div class="shell">
+  <aside class="side" id="side" data-side aria-label="Site navigation"></aside>
+  <main class="main" id="main">
+    <div class="page">
+<section class="panel acc-wrap" aria-labelledby="t">
+  <div class="acc-intro">
+    <p class="lock-pill"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#ph-lock-simple"></use></svg>Locked assets</p>
+    <h1 class="h-m" id="t" style="margin-top:16px">Request access</h1>
+    <p class="b-l muted" style="margin-top:16px">Systemia, gradient originals and Figma source files are licensed for Netlify work only. Tell us who you are and what you're making. The brand team reviews every request, usually within two working days.</p>
+    <ol class="steps b-m">
+      <li><b>Send a request</b><span>Takes about a minute.</span></li>
+      <li><b>We review it</b><span>We may email you with a question.</span></li>
+      <li><b>Get your link</b><span>Approved requests get a personal sign-in link. It works for 14 days and keeps you signed in for 90.</span></li>
+    </ol>
+  </div>
+
+  <div class="acc-form-card">
+    <div class="note" id="link-note" hidden role="alert" style="margin-bottom:20px;background:var(--bg-surface)"><svg><use href="/assets/icons/sprite.svg#ph-warning-circle"></use></svg><span></span></div>
+    <form id="req" novalidate>
+      <div class="grid g2">
+        <div class="field"><label for="f-name">Full name<span class="req" aria-hidden="true">*</span></label><input class="input" id="f-name" name="name" autocomplete="name" required maxlength="120"><span class="help" data-err></span></div>
+        <div class="field"><label for="f-email">Work email<span class="req" aria-hidden="true">*</span></label><input class="input" id="f-email" name="email" type="email" autocomplete="email" required maxlength="200"><span class="help" data-err>We send your sign-in link here.</span></div>
+      </div>
+      <div class="grid g2">
+        <div class="field"><label for="f-org">Company or team<span class="req" aria-hidden="true">*</span></label><input class="input" id="f-org" name="org" autocomplete="organization" required maxlength="160"><span class="help" data-err></span></div>
+        <div class="field"><label for="f-rel">Relationship to Netlify<span class="req" aria-hidden="true">*</span></label>
+          <select class="select input" id="f-rel" name="relationship" required><option value="">Choose one</option><option>Netlify employee</option><option>Agency or contractor</option><option>Technology partner</option><option>Press or media</option><option>Event or community organizer</option><option>Other</option></select><span class="help" data-err></span></div>
+      </div>
+      <fieldset class="field" style="border:0;padding:0;margin:0">
+        <legend class="b-s medium" style="margin-bottom:8px">What do you need?<span class="req" aria-hidden="true" style="color:var(--status-error);margin-left:2px">*</span></legend>
+        <div class="choice-row">
+          <input type="checkbox" id="a1" name="assets" value="fonts"><label for="a1">Systemia fonts</label>
+          <input type="checkbox" id="a2" name="assets" value="gradients"><label for="a2">Gradient originals</label>
+          <input type="checkbox" id="a3" name="assets" value="figma"><label for="a3">Figma library</label>
+          <input type="checkbox" id="a4" name="assets" value="templates"><label for="a4">Templates</label>
+        </div>
+        <span class="help" data-err id="assets-err"></span>
+      </fieldset>
+      <div class="field"><label for="f-use">What are you making?<span class="req" aria-hidden="true">*</span></label><textarea class="textarea" id="f-use" name="use" required maxlength="1500" placeholder="For example: launch landing page for our joint integration, shipping in March."></textarea><span class="help" data-err></span></div>
+      <div class="hp" aria-hidden="true"><label for="f-web">Leave this empty</label><input id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
+      <label class="check"><input type="checkbox" name="agree" id="f-agree" required><span>I'll use these assets only for Netlify-related work and won't share the files with anyone else.</span></label>
+      <span class="help" data-err id="agree-err"></span>
+      <div class="form-foot"><button class="btn secondary" type="submit" id="send">Send request</button><span class="b-s muted" role="status" id="form-status"></span></div>
+    </form>
+    <div class="done" id="done" hidden tabindex="-1">
+      <svg class="done-ic" aria-hidden="true"><use href="/assets/icons/sprite.svg#ph-check-circle"></use></svg>
+      <h2 class="h-xs">Request sent</h2>
+      <p class="b-m muted">We'll email <b id="done-email"></b> once it's reviewed. Nothing else to do for now.</p>
+      <a class="btn tertiary" href="/">Back to the hub</a>
+    </div>
+  </div>
+</section>
+
+<style>
+.acc-wrap { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.25fr); gap:var(--space-4xl); align-items:start; }
+.acc-intro { position:sticky; top:24px; }
+.steps { list-style:none; counter-reset:s; margin:32px 0 0; padding:0; display:flex; flex-direction:column; gap:18px; }
+.steps li { counter-increment:s; display:grid; grid-template-columns:32px 1fr; column-gap:12px; }
+.steps li::before { content:counter(s); grid-row:span 2; width:28px; height:28px; border-radius:50%; background:var(--bg-subtle); display:grid; place-items:center; font:500 12px/1 var(--font-mono); }
+.steps b { font-weight:500; }
+.steps span { font-size:var(--size-body-s); line-height:20px; color:var(--text-secondary); }
+.acc-form-card { background:var(--bg-subtle); border-radius:var(--radius-md); padding:32px; }
+#req { display:flex; flex-direction:column; gap:20px; }
+.hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+.form-foot { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+.done { display:flex; flex-direction:column; gap:14px; align-items:flex-start; padding:24px 0; }
+.done-ic { width:40px; height:40px; color:var(--status-success); }
+.done:focus { outline:none; }
+@media (max-width:1000px){ .acc-wrap { grid-template-columns:1fr; } .acc-intro { position:static; } .acc-form-card { padding:20px; } }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const q = new URLSearchParams(location.search).get("link");
+  if (q) { const n = document.getElementById("link-note"); n.hidden = false;
+    n.querySelector("span").textContent = q === "expired" ? "That sign-in link has expired. Request access again, or ask the brand team for a new link." : "That sign-in link is no longer valid. A newer link may have been sent to you, or access was changed. Request access again if you need it."; }
+  const f = document.getElementById("req"), status = document.getElementById("form-status"), send = document.getElementById("send");
+  const setErr = (el, msg) => { const fld = el.closest(".field") || el.closest("fieldset"); const h = (fld && fld.querySelector("[data-err]")) || null;
+    if (fld) fld.classList.toggle("invalid", !!msg); if (h) { if (!h.dataset.def) h.dataset.def = h.textContent; h.textContent = msg || h.dataset.def; } if (el.setAttribute) el.setAttribute("aria-invalid", msg ? "true" : "false"); };
+  f.addEventListener("submit", async e => {
+    e.preventDefault();
+    const d = new FormData(f); let first = null;
+    const need = (id, msg) => { const el = document.getElementById(id); const bad = !el.value.trim(); setErr(el, bad ? msg : ""); if (bad && !first) first = el; };
+    need("f-name", "Enter your full name."); need("f-org", "Enter your company or team."); need("f-rel", "Choose how you work with Netlify."); need("f-use", "Tell us what you're making.");
+    const em = document.getElementById("f-email"); const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim());
+    setErr(em, okEmail ? "" : "Enter an email address like you@company.com."); if (!okEmail && !first) first = em;
+    const assets = d.getAll("assets"); const ae = document.getElementById("assets-err");
+    ae.textContent = assets.length ? "" : "Choose at least one."; ae.closest("fieldset").classList.toggle("invalid", !assets.length); if (!assets.length && !first) first = document.getElementById("a1");
+    const ag = document.getElementById("f-agree"); const age = document.getElementById("agree-err"); age.textContent = ag.checked ? "" : "Agree to the usage terms to continue."; age.style.color = "var(--status-error)"; if (!ag.checked && !first) first = ag;
+    if (first) { first.focus(); status.textContent = "Fix the highlighted fields."; return; }
+    send.disabled = true; status.textContent = "Sending…";
+    try {
+      const r = await fetch("/api/access/request", { method:"POST", headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify({ name:d.get("name"), email:d.get("email"), org:d.get("org"), relationship:d.get("relationship"), assets, use:d.get("use"), website:d.get("website") }) });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(j.error || "The request didn't go through. Try again in a minute.");
+      f.hidden = true; const done = document.getElementById("done"); document.getElementById("done-email").textContent = d.get("email"); done.hidden = false; done.focus();
+    } catch (err) { status.textContent = err.message; send.disabled = false; }
+  });
+});
+</script>
+    </div>
+    <footer class="foot">
+      <span>© <span data-year>2026</span> Netlify. Logos, type and artwork are trademarks of Netlify, Inc.</span>
+      <span><a href="/downloads">Downloads</a> · <a href="/access">Request locked assets</a> · <a href="mailto:brand@netlify.com">brand@netlify.com</a></span>
+    </footer>
+  </main>
+</div>
+<script src="/assets/js/hub.js" defer></script>
+</body>
+</html>

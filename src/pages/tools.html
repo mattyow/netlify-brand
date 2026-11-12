@@ -1,0 +1,53 @@
+<!-- title: Tools · Netlify Brand Hub | desc: Gradient generator, design tokens and templates for working with the Netlify brand. | out: tools.html -->
+<section class="hero" data-grad="12" aria-labelledby="t">
+  <div class="hero-top"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#nf-mark"></use></svg><p class="eyebrow">11 · Tools</p></div>
+  <div><h1 class="h-l" id="t">Tools</h1>
+  <p class="b-l lede">Make on-brand work faster, without opening Figma.</p></div>
+</section>
+
+<section class="panel" aria-labelledby="list">
+  <h2 class="sr-only" id="list">All tools</h2>
+  <div class="tools">
+    <article class="tool">
+      <div class="tthumb" data-grad="18"><span class="aa">Aa</span></div>
+      <div class="tbody"><h3 class="h-xs medium">Gradient generator</h3>
+        <p class="b-m muted">Start from the 24 palette tiles, animate them as shaders, add Systemia text and export. Text color is picked automatically to pass WCAG contrast.</p>
+        <div class="row"><a class="btn secondary" href="/tools/gradient-generator/">Open generator</a><span class="b-s muted">Images, MP4 and HTML embed</span></div></div>
+    </article>
+    <article class="tool">
+      <div class="tthumb tok"><code>--action-primary</code><code>--radius-full</code><code>--space-stack</code></div>
+      <div class="tbody"><h3 class="h-xs medium">Design tokens</h3>
+        <p class="b-m muted">Every color, type, spacing, radius, elevation and motion value as CSS custom properties and JSON. Light and dark modes included.</p>
+        <div class="row"><a class="btn secondary" href="/assets/tokens/tokens.css" download>tokens.css</a><a class="btn tertiary" href="/assets/tokens/tokens.json" download>tokens.json</a></div></div>
+    </article>
+    <article class="tool">
+      <div class="tthumb slides" data-grad="16"><i></i><i></i></div>
+      <div class="tbody"><h3 class="h-xs medium">Slide templates</h3>
+        <p class="b-m muted">Google Slides and web deck templates with cover, section, stat, quote and closing layouts already on brand.</p>
+        <div class="row"><a class="btn tertiary" href="/locked/#templates"><svg class="icon-s"><use href="/assets/icons/sprite.svg#ph-lock-simple"></use></svg>In locked assets</a></div></div>
+    </article>
+    <article class="tool">
+      <div class="tthumb fig"><svg><use href="/assets/icons/sprite.svg#ph-toolbox"></use></svg></div>
+      <div class="tbody"><h3 class="h-xs medium">Figma library</h3>
+        <p class="b-m muted">The UI kit, component library and patterns this site documents, with variables for light and dark mode.</p>
+        <div class="row"><a class="btn tertiary" href="/locked/#figma"><svg class="icon-s"><use href="/assets/icons/sprite.svg#ph-lock-simple"></use></svg>In locked assets</a></div></div>
+    </article>
+  </div>
+</section>
+
+<style>
+.tools { display:flex; flex-direction:column; gap:20px; }
+.tool { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:32px; align-items:center; padding:12px; border-radius:var(--radius-md); background:var(--bg-subtle); }
+.tthumb { aspect-ratio:16/10; border-radius:var(--radius-sm); display:grid; place-items:center; }
+.tthumb .aa { font-size:88px; font-weight:500; letter-spacing:-.03em; color:#fff; }
+.tthumb.tok { background:#131619; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:10px; padding:28px; }
+.tthumb.tok code { font:400 14px/1 var(--font-mono); color:#01d4e5; }
+.tthumb.tok code:nth-child(2) { color:#bbee3c; } .tthumb.tok code:nth-child(3) { color:#c1b5ff; }
+.tthumb.slides { display:flex; gap:12px; }
+.tthumb.slides i { width:38%; aspect-ratio:16/9; background:rgb(255 255 255 / .9); border-radius:8px; box-shadow:var(--elevation-m); }
+.tthumb.fig { background:var(--bg-surface); }
+.tthumb.fig svg { width:64px; height:64px; }
+.tbody { display:flex; flex-direction:column; gap:14px; padding:12px 24px 12px 0; }
+.tbody .row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:6px; }
+@media (max-width:900px){ .tool { grid-template-columns:1fr; gap:16px; } .tbody { padding:8px; } }
+</style>

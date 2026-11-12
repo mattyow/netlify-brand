@@ -1,0 +1,43 @@
+<!-- title: Illustration · Netlify Brand Hub | desc: How Netlify uses hero illustration, spot illustration and texture. | out: illustration.html -->
+<section class="hero" data-grad="03" aria-labelledby="t">
+  <div class="hero-top"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#nf-mark"></use></svg><p class="eyebrow">07 · Illustration</p></div>
+  <div><h1 class="h-l" id="t">Illustration</h1>
+  <p class="b-l lede">Where Netlify shows the people behind the product: stacking, reaching, arranging screens and shapes into something new.</p></div>
+</section>
+
+<section class="panel" aria-labelledby="role">
+  <div class="panel-head">
+    <h2 class="h-xs" id="role">A brand moment, not decoration</h2>
+    <div class="prose b-l"><p>Our scenes are set in bright, painterly worlds lit by the gradient palette, so the human side of the brand and the color system feel like one thing. Illustration leads in the hero and returns in the closing section, framing the main action rather than competing with it. Everywhere else, texture and gradients stay restrained, and text and UI always sit on clear backgrounds.</p></div>
+  </div>
+  <div class="scale">
+    <div class="sc big" data-grad="16"><span class="tag">Hero</span><div class="figs"><i></i><i></i><i></i></div></div>
+    <div class="sc mid" data-grad="06"><span class="tag">Spot</span><div class="figs"><i></i></div></div>
+    <div class="sc small" data-grad="18"><span class="tag">Texture</span></div>
+  </div>
+  <p class="b-s muted sub" style="margin-top:16px">Complexity follows size: full scenes for heroes, a single figure or object for spots, texture alone for the smallest shapes.</p>
+</section>
+
+<section class="panel" aria-labelledby="types">
+  <div class="panel-head">
+    <h2 class="h-xs" id="types">Types</h2>
+    <div class="prose b-l"><p>The illustration library is still in progress. Final artwork and source files will be shared through locked assets.</p></div>
+  </div>
+  <div class="grid g2">
+    <div class="tile"><h3 class="h-xxs medium">Hero illustrations</h3><p class="b-m muted" style="margin-top:12px">Full scenes of people creating together, with wide crops, soft light and color drawn from the gradient palette. Use one at the top of a page and one in the closing section. Keep faces and key actions clear of the headline and CTA.</p></div>
+    <div class="tile"><h3 class="h-xxs medium">Spot illustrations</h3><p class="b-m muted" style="margin-top:12px">Smaller moments for cards, feature blocks and empty states: one person or one object on a simple background, in the same palette and light. They should read at a glance at card size.</p></div>
+  </div>
+</section>
+
+<style>
+.scale { display:grid; grid-template-columns:3fr 1.6fr 1fr; gap:20px; align-items:end; }
+.sc { border-radius:var(--radius-md); position:relative; display:flex; align-items:flex-end; justify-content:center; }
+.sc.big { height:380px; } .sc.mid { height:260px; border-radius:var(--radius-sm); } .sc.small { height:160px; border-radius:var(--radius-sm); }
+.tag { position:absolute !important; left:16px; top:16px; background:var(--bg-glass); color:var(--text-primary); backdrop-filter:blur(10px); padding:6px 12px; border-radius:99px; font:500 11px/1 var(--font-mono); letter-spacing:.06em; text-transform:uppercase; }
+.figs { display:flex; gap:18px; align-items:flex-end; padding-bottom:0; }
+.figs i { width:56px; height:150px; border-radius:28px 28px 0 0; background:rgb(19 22 25 / .82); position:relative; }
+.figs i::before { content:""; position:absolute; left:50%; top:-46px; width:40px; height:40px; transform:translateX(-50%); border-radius:50%; background:inherit; }
+.figs i:nth-child(2) { height:190px; } .figs i:nth-child(3) { height:120px; }
+.mid .figs i { height:110px; width:44px; }
+@media (max-width:767px){ .scale { grid-template-columns:1fr 1fr; } .sc.big { grid-column:1/-1; height:280px; } }
+</style>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Typography · Netlify Brand Hub</title>
+<meta name="description" content="Systemia and IBM Plex Mono, the Netlify type scale, and how to set type.">
+
+<meta property="og:title" content="Typography · Netlify Brand Hub">
+<meta property="og:description" content="Systemia and IBM Plex Mono, the Netlify type scale, and how to set type.">
+<meta name="theme-color" content="#f7f6f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b1a17" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/assets/logo/netlify-mark-offblack.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/css/hub.css">
+<script>try{var t=localStorage.getItem("nf-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="mobile-bar" data-mobile-bar></div>
+<div class="shell">
+  <aside class="side" id="side" data-side aria-label="Site navigation"></aside>
+  <main class="main" id="main">
+    <div class="page">
+<section class="hero" data-grad="23" aria-labelledby="t">
+  <div class="hero-top"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#nf-mark"></use></svg><p class="eyebrow">04 · Typography</p></div>
+  <div><h1 class="h-l" id="t">Typography</h1>
+  <p class="b-l lede">Our words are what we say. Typography is how we say it.</p></div>
+</section>
+
+<section class="panel" aria-labelledby="faces">
+  <div class="panel-head">
+    <h2 class="h-xs" id="faces">Typefaces</h2>
+    <div class="prose b-l"><p>Systemia is the workhorse: headlines, subheads and body, in Regular, Medium and SemiBold with italics. IBM Plex Mono is a small supporting voice for eyebrows, badges and tabs, where a set-in-code feel adds character.</p></div>
+  </div>
+  <div class="grid g2">
+    <div class="tile face">
+      <div class="face-aa">Aa</div>
+      <div class="face-meta"><div><b>Systemia</b><span>Regular · Medium · SemiBold · Italics</span></div><a class="btn tertiary sm" href="/locked/#fonts"><svg class="icon-s"><use href="/assets/icons/sprite.svg#ph-lock-simple"></use></svg>Licensed font files</a></div>
+      <p class="glyphs">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 ! ? . , : ;</p>
+    </div>
+    <div class="tile face">
+      <div class="face-aa mono" style="font-weight:400;letter-spacing:0">Aa</div>
+      <div class="face-meta"><div><b>IBM Plex Mono</b><span>Regular · Medium</span></div><a class="btn tertiary sm" href="https://fonts.google.com/specimen/IBM+Plex+Mono" rel="noopener">Google Fonts<svg class="icon-s"><use href="/assets/icons/sprite.svg#ph-arrow-square-out"></use></svg></a></div>
+      <p class="glyphs mono">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 ! ? . , : ;</p>
+    </div>
+  </div>
+  <div class="note sub"><svg><use href="/assets/icons/sprite.svg#ph-info"></use></svg><span>Can't install Systemia, like in Google Slides or system apps? Use <b>IBM Plex Sans</b> and <b>IBM Plex Mono</b> from Google Fonts, or <b>Helvetica Neue</b> and <b>SF Mono</b> as system fallbacks.</span></div>
+</section>
+
+<section class="panel" aria-labelledby="scale">
+  <div class="panel-head">
+    <h2 class="h-xs" id="scale">Type scale</h2>
+    <div class="prose b-l"><p>SemiBold headings carry the hierarchy from 120 down to 26pt, with Medium variants for titles inside cards and panels. Tight 90% leading and negative tracking give headlines presence. Body copy opens up on a 4px rhythm so information stays easy to scan. Sizes in brackets are mobile.</p></div>
+  </div>
+  <div class="specimens" id="specimens"></div>
+</section>
+
+<section class="panel" aria-labelledby="set">
+  <div class="panel-head">
+    <h2 class="h-xs" id="set">Setting type</h2>
+    <div class="prose b-l"><p>Range text left. Center only short statements meant to make an impact, or narrow formats. Separate paragraphs with a line space, never an indent. Set headlines in sentence case.</p></div>
+  </div>
+  <div class="grid g3">
+    <figure class="rule do"><div class="stage set-s"><div><b>Build your way. Ship on one platform.</b><p>Prototype, test and scale AI-powered experiences on the same platform.</p></div></div><figcaption class="verdict"><svg><use href="/assets/icons/sprite.svg#ph-check"></use></svg>Left aligned, sentence case.</figcaption></figure>
+    <figure class="rule dont"><div class="stage set-s"><div style="text-align:justify"><b style="text-transform:uppercase">Build your way.</b><p>Prototype, test and scale AI-powered experiences faster on one platform for every team.</p></div></div><figcaption class="verdict"><svg><use href="/assets/icons/sprite.svg#ph-x"></use></svg>Don't justify, right align or set headlines in caps.</figcaption></figure>
+    <figure class="rule dont"><div class="stage set-s"><div><b style="color:#dad8d2">Build your way.</b><p style="color:#b8b4ad">Low-contrast text fails accessibility checks.</p></div></div><figcaption class="verdict"><svg><use href="/assets/icons/sprite.svg#ph-x"></use></svg>Don't use low-contrast combinations.</figcaption></figure>
+  </div>
+</section>
+
+<style>
+.face { display:flex; flex-direction:column; gap:20px; }
+.face-aa { font-size:clamp(96px,12vw,160px); font-weight:600; letter-spacing:-.04em; line-height:.9; }
+.face-meta { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+.face-meta b { display:block; font-weight:500; font-size:var(--size-body-l); }
+.face-meta span { font-size:var(--size-body-s); color:var(--text-secondary); }
+.glyphs { font-size:15px; line-height:1.6; color:var(--text-secondary); word-break:break-all; }
+.spec { display:grid; grid-template-columns:minmax(0,1fr) 240px; gap:24px; padding:24px 0; border-bottom:1px solid var(--border-default); align-items:end; }
+.spec:last-child { border-bottom:0; }
+.spec .sample { min-width:0; overflow-wrap:anywhere; }
+.spec .label { display:flex; flex-direction:column; gap:4px; text-align:right; }
+.spec .label b { font:500 12px/1.3 var(--font-mono); letter-spacing:.06em; text-transform:uppercase; }
+.spec .label span { font:400 12px/1.4 var(--font-mono); color:var(--text-tertiary); }
+.spec-group { font-weight:500; margin:32px 0 0; padding-bottom:8px; color:var(--text-secondary); }
+.spec-group:first-child { margin-top:0; }
+.set-s { background:var(--nf-warm-grey-100) !important; color:#131619; }
+.set-s > div { max-width:240px; display:flex; flex-direction:column; gap:10px; }
+.set-s b { font-size:24px; line-height:1.05; letter-spacing:-.02em; font-weight:600; }
+.set-s p { font-size:13px; line-height:18px; }
+@media (max-width:767px){ .spec { grid-template-columns:1fr; } .spec .label { text-align:left; } }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const S = [
+    ["Headings"],
+    ["Heading / XL","120 (56) / 90% / −4% / SemiBold","h-xl","Where apps come to life"],
+    ["Heading / L","80 (44) / 90% / −4% / SemiBold","h-l","Start free. Pay for what your app actually uses."],
+    ["Heading / M","60 (36) / 90% / −4% / SemiBold","h-m","Focus on your app. Not everything around it"],
+    ["Heading / S","42 (32) / 90% / −2% / SemiBold","h-s","Turn your imagination into reality"],
+    ["Heading / S Medium","42 (32) / 90% / −2% / Medium","h-s medium","Already have a workflow?"],
+    ["Heading / XS","32 (26) / 90% / −2% / SemiBold","h-xs","Make it"],
+    ["Heading / XS Medium","32 (26) / 90% / −2% / Medium","h-xs medium","Marketing site"],
+    ["Heading / XXS","26 (22) / 28px / 0% / SemiBold","h-xxs","Security & compliance"],
+    ["Heading / XXS Medium","26 (22) / 28px / 0% / Medium","h-xxs medium","Personal"],
+    ["Body"],
+    ["Body / L","18 / 28px / Regular","b-l","Open your project, describe what you need, and run. No code or server setup required."],
+    ["Body / L Strong","18 / 28px / Medium","b-l medium","Track exactly who prompted what, when."],
+    ["Body / M","16 / 24px / Regular","b-m","An idea you're testing out: a prompt, a dropped file, a weekend build."],
+    ["Body / M Strong","16 / 24px / Medium","b-m medium","What changes"],
+    ["Body / S","14 / 20px / Regular · tables, footer links","b-s","Agent Runners"],
+    ["Body / S Strong","14 / 20px / Medium · row labels","b-s medium","Scope environment variables per deploy context"],
+    ["Body / XS","12 / 18px / Regular","b-xs","The company runs on it, and IT needs a say."],
+    ["UI"],
+    ["UI / Button","14 / 100% / +2% / Medium","ui-btn","Get started"],
+    ["UI / Link","15 / auto / Regular","ui-link","View the docs"],
+    ["UI / Tab","14 / 115% / +8% / Plex Mono","ui-tab","Build & deploy"],
+    ["UI / Eyebrow","12 / 140% / +8% / Plex Mono Medium / Caps","eyebrow","Platform primitives"],
+    ["UI / Badge","10 / 12px / +8% / Plex Mono Medium / Caps","badge-s","Most popular"]
+  ];
+  const tag = c => c.startsWith("h-") ? "p" : "p";
+  document.getElementById("specimens").innerHTML = S.map(r => r.length === 1 ? `<h3 class="spec-group b-m">${r[0]}</h3>` :
+    `<div class="spec"><${tag(r[2])} class="sample ${r[2]}" ${r[2]==="ui-btn"?'style="font-weight:500;font-size:14px;letter-spacing:.02em;line-height:1"':""}${r[2]==="ui-link"?'style="font-size:15px;text-decoration:underline;text-underline-offset:3px"':""}${r[2]==="ui-tab"?'style="font-family:var(--font-mono);font-size:14px;line-height:1.15;letter-spacing:.08em"':""}${r[2]==="badge-s"?'style="font:500 10px/12px var(--font-mono);letter-spacing:.08em;text-transform:uppercase"':""}>${r[3]}</${tag(r[2])}><div class="label"><b>${r[0]}</b><span>${r[1]}</span></div></div>`).join("");
+});
+</script>
+    </div>
+    <footer class="foot">
+      <span>© <span data-year>2026</span> Netlify. Logos, type and artwork are trademarks of Netlify, Inc.</span>
+      <span><a href="/downloads">Downloads</a> · <a href="/access">Request locked assets</a> · <a href="mailto:brand@netlify.com">brand@netlify.com</a></span>
+    </footer>
+  </main>
+</div>
+<script src="/assets/js/hub.js" defer></script>
+</body>
+</html>

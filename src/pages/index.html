@@ -1,0 +1,89 @@
+<!-- title: Netlify Brand Hub | desc: Logos, color, type, components and the rules for using them. | out: index.html -->
+<section class="hero home-hero" data-grad="02" aria-labelledby="t">
+  <div class="hero-top"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#nf-mark"></use></svg><p class="eyebrow">Brand hub · v1.0 · 2026</p></div>
+  <div>
+    <h1 class="h-xl" id="t">Everything you need to build with Netlify.</h1>
+    <p class="b-l lede">Logos, color, type, components and the rules for using them. Most of it is free to download. Fonts and source files are available on request.</p>
+    <div class="hero-actions">
+      <a class="btn secondary" href="/downloads">Download the logo kit</a>
+      <a class="btn glass" href="/access">Request locked assets</a>
+    </div>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="found">
+  <div class="panel-head">
+    <h2 class="h-xs" id="found">Start with the foundations</h2>
+    <div class="prose b-l"><p>Create a brand identity the domain expert can see themselves in and the developer still respects. Every page below is built from the same tokens the product uses, so what you see here is what ships.</p></div>
+  </div>
+  <div class="grid g3 index-grid">
+    <a class="index-card" href="/logo"><div class="thumb" data-grad="07"><svg><use href="/assets/icons/sprite.svg#nf-mark"></use></svg></div><b>Logo</b><span>Symbol, lockup, clear space, partnerships</span></a>
+    <a class="index-card" href="/color"><div class="thumb swatches"><i style="background:#01d4e5"></i><i style="background:#131619"></i><i style="background:#f7f6f4"></i><i style="background:#ffffff"></i></div><b>Color</b><span>Palette, light and dark tokens, 24 gradients</span></a>
+    <a class="index-card" href="/typography"><div class="thumb type"><span>Aa</span><span class="mono">Aa</span></div><b>Typography</b><span>Systemia and IBM Plex Mono, full type scale</span></a>
+    <a class="index-card" href="/layout"><div class="thumb spacing"><i style="width:8px"></i><i style="width:16px"></i><i style="width:24px"></i><i style="width:40px"></i><i style="width:64px"></i></div><b>Spacing &amp; shape</b><span>4px scale, 8-column grid, radius, elevation</span></a>
+    <a class="index-card" href="/iconography"><div class="thumb icons"><svg><use href="/assets/icons/sprite.svg#px-spark"></use></svg><svg><use href="/assets/icons/sprite.svg#ph-browser"></use></svg><svg><use href="/assets/icons/sprite.svg#px-chat"></use></svg></div><b>Icons</b><span>Phosphor for UI, Netlify Pixel for brand moments</span></a>
+    <a class="index-card" href="/motion"><div class="thumb motion"><i></i></div><b>Motion</b><span>Easing, timing and interaction presets</span></a>
+    <a class="index-card" href="/components"><div class="thumb comps"><span class="btn sm">Get started</span><span class="btn sm secondary">Docs</span></div><b>Components</b><span>Buttons, chips, inputs, tabs, cards and more</span></a>
+    <a class="index-card" href="/patterns"><div class="thumb pats"><i></i><i></i><i></i></div><b>Patterns</b><span>Heroes, content modules, CTAs, forms</span></a>
+    <a class="index-card" href="/tools"><div class="thumb" data-grad="18"></div><b>Tools</b><span>Gradient generator, tokens, Figma library</span></a>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="open">
+  <div class="panel-head">
+    <h2 class="h-xs" id="open">Public by default, locked where it counts</h2>
+    <div class="prose b-l"><p>Anyone can use the logo, colors and tokens to talk about Netlify. Licensed fonts and master source files are shared with partners, agencies and Netlifolk after a quick review.</p></div>
+  </div>
+  <div class="grid g2">
+    <div class="tile">
+      <p class="eyebrow">Public</p>
+      <ul class="plain-list b-m">
+        <li>Logo, symbol and wordmark in SVG</li>
+        <li>Design tokens as CSS and JSON</li>
+        <li>Netlify Pixel icon set</li>
+        <li>Brand and usage guidelines on this site</li>
+      </ul>
+      <a class="btn secondary" href="/downloads">Go to downloads</a>
+    </div>
+    <div class="tile">
+      <p class="lock-pill"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#ph-lock-simple"></use></svg>Request access</p>
+      <ul class="plain-list b-m">
+        <li>Systemia desktop and web font files</li>
+        <li>Gradient palette originals at full resolution</li>
+        <li>Figma master file and component library</li>
+        <li>Illustration sources and templates</li>
+      </ul>
+      <a class="btn tertiary" href="/access">Request access</a>
+    </div>
+  </div>
+</section>
+
+<style>
+.home-hero { min-height:min(78vh,720px); }
+.home-hero h1 { max-width:12ch; }
+.index-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.index-card { display:flex; flex-direction:column; gap:4px; text-decoration:none; padding:12px 12px 18px; border-radius:var(--radius-sm); transition:background var(--dur-short) var(--ease-direct); }
+.index-card:hover { background:var(--bg-subtle); }
+.index-card b { font-weight:500; font-size:var(--size-body-l); line-height:28px; margin-top:14px; }
+.index-card span { font-size:var(--size-body-s); line-height:20px; color:var(--text-secondary); }
+.thumb { aspect-ratio:16/10; border-radius:var(--radius-xs); background:var(--bg-subtle); display:flex; align-items:center; justify-content:center; gap:14px; overflow:hidden; }
+.index-card:hover .thumb:not(.grad) { background:var(--bg-surface); }
+.thumb > svg { width:56px; height:56px; color:#fff; }
+.thumb.swatches i { width:44px; height:44px; border-radius:50%; border:1px solid var(--border-default); }
+.thumb.type span { font-size:64px; font-weight:600; letter-spacing:-.04em; line-height:1; }
+.thumb.type .mono { font-weight:400; letter-spacing:0; }
+.thumb.spacing { align-items:flex-end; padding-bottom:26%; gap:6px; }
+.thumb.spacing i { height:40px; background:var(--nf-sky); border-radius:4px; opacity:.9; }
+.thumb.icons svg { width:36px; height:36px; color:var(--text-primary); }
+.thumb.motion i { width:40px; height:40px; border-radius:50%; background:var(--text-primary); animation:slide 2.4s var(--ease-settle) infinite alternate; }
+@keyframes slide { from { transform:translateX(-70px); } to { transform:translateX(70px); } }
+.thumb.pats { flex-direction:column; gap:8px; }
+.thumb.pats i { width:62%; height:14px; border-radius:6px; background:var(--border-medium); }
+.thumb.pats i:first-child { height:28px; background:var(--text-primary); }
+.thumb.pats i:last-child { width:30%; border-radius:99px; background:var(--nf-sky); }
+.plain-list { margin:16px 0 24px; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px; }
+.plain-list li { padding-left:22px; position:relative; }
+.plain-list li::before { content:""; position:absolute; left:2px; top:8px; width:8px; height:8px; transform:rotate(45deg); border-radius:2px; background:var(--text-primary); }
+@media (max-width:1100px){ .index-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:640px){ .index-grid { grid-template-columns:1fr; } }
+</style>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Patterns · Netlify Brand Hub</title>
+<meta name="description" content="How Netlify components combine into navigation, heroes, content modules, CTAs, forms and editorial layouts.">
+
+<meta property="og:title" content="Patterns · Netlify Brand Hub">
+<meta property="og:description" content="How Netlify components combine into navigation, heroes, content modules, CTAs, forms and editorial layouts.">
+<meta name="theme-color" content="#f7f6f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b1a17" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/assets/logo/netlify-mark-offblack.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/css/hub.css">
+<script>try{var t=localStorage.getItem("nf-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="mobile-bar" data-mobile-bar></div>
+<div class="shell">
+  <aside class="side" id="side" data-side aria-label="Site navigation"></aside>
+  <main class="main" id="main">
+    <div class="page">
+<section class="hero" data-grad="20" aria-labelledby="t">
+  <div class="hero-top"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#nf-mark"></use></svg><p class="eyebrow">10 · Patterns</p></div>
+  <div><h1 class="h-l" id="t">Patterns</h1>
+  <p class="b-l lede">Components assembled into the sections that make up a Netlify page. Start from these before designing something new.</p></div>
+</section>
+
+<section class="panel" aria-labelledby="global">
+  <div class="panel-head"><h2 class="h-xs" id="global">Global</h2><div class="prose b-l"><p>Navigation floats as a glass bar over the page. The footer is the one place we set white text on an off black background.</p></div></div>
+  <div class="frame">
+    <div class="pnav"><svg class="pm"><use href="/assets/icons/sprite.svg#nf-mark"></use></svg><span class="links"><span>Platform</span><span>Solutions</span><span>Developers</span><span>Resources</span><span>Pricing</span></span><span class="acts"><span class="text-btn" style="height:32px">Log in</span><span class="btn sm">Sign up</span></span></div>
+  </div>
+  <div class="frame pfoot sub">
+    <div><svg style="width:120px;height:40px;color:#fff"><use href="/assets/icons/sprite.svg#nf-wordmark"></use></svg><p class="b-s" style="color:#b8b4ad;margin-top:12px;max-width:28ch">Where apps come to life.</p></div>
+    <div class="fcols"><div><b>Platform</b><span>Agent Runners</span><span>Deploys</span><span>Functions</span></div><div><b>Developers</b><span>Docs</span><span>Changelog</span><span>CLI</span></div><div><b>Company</b><span>About</span><span>Careers</span><span>Brand</span></div></div>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="heroes">
+  <div class="panel-head"><h2 class="h-xs" id="heroes">Heroes</h2><div class="prose b-l"><p>One hero per page. Lead with the headline in Heading / XL, one supporting line, and either the prompt box or two buttons. Illustration or a gradient frames the action; it never sits behind the headline.</p></div></div>
+  <div class="grid g2">
+    <div class="frame phero"><p class="h-m">Where apps come to life</p><p class="b-s muted">Explain it like you'd tell a coworker. You'll get a working version you can share.</p><div class="mini-prompt" data-grad="02"><span>Describe your app…</span><i class="btn icon-only sm" style="width:32px"><svg class="icon-s"><use href="/assets/icons/sprite.svg#ph-arrow-up"></use></svg></i></div></div>
+    <div class="frame phero split"><div><p class="h-s">Focus on your app. Not everything around it</p><p class="b-s muted" style="margin-top:12px">Whether you code or not, you'll get the tools to make your application sing.</p><div class="row-demo" style="margin-top:18px"><span class="btn sm">Get started</span><span class="btn sm tertiary">Contact sales</span></div></div><div class="art" data-grad="15"></div></div>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="content">
+  <div class="panel-head"><h2 class="h-xs" id="content">Content modules</h2><div class="prose b-l"><p>Sections separated by <code class="inline">semantic/section</code>. Blocks inside them by <code class="inline">semantic/block</code>. Stats use Heading / M for the number and Body / S for the label.</p></div></div>
+  <div class="grid g2">
+    <div class="frame pstats"><div><b class="h-m">1B+</b><span>Requests served today</span></div><div><b class="h-m">1.3M</b><span>Deploys today</span></div><div><b class="h-m">99.99%</b><span>Uptime</span></div></div>
+    <div class="frame pfeat"><p class="h-xs">Go from day 1 to 100 on one platform</p><div class="ftabs"><span class="on">Hiring dashboard</span><span>AI agent</span><span>Marketing site</span></div><div class="fimg" data-grad="08"></div></div>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="ctas">
+  <div class="panel-head"><h2 class="h-xs" id="ctas">CTAs</h2><div class="prose b-l"><p>The closing call to action is the second place illustration or a full gradient appears. Keep it to one headline and at most two buttons.</p></div></div>
+  <div class="frame pcta" data-grad="21"><p class="h-m">Make it.</p><p class="b-m" style="opacity:.9">Create an app in minutes from a prompt, code or project.</p><div class="row-demo" style="justify-content:center;margin-top:20px"><span class="btn">Get started</span><span class="btn glass">Talk to sales</span></div></div>
+</section>
+
+<section class="panel" aria-labelledby="forms">
+  <div class="panel-head"><h2 class="h-xs" id="forms">Forms &amp; input</h2><div class="prose b-l"><p>Two-column layout on desktop: context on the left, the form on a surface card on the right. Ask only for what you need, and say what happens after submit on the button.</p></div></div>
+  <div class="frame pform"><div><p class="h-s">Talk to our team</p><p class="b-s muted" style="margin-top:12px">Pricing for your team, enterprise security, or help migrating.</p></div>
+    <div class="fcard-s"><div class="field"><label>Work email</label><span class="input" style="display:flex;align-items:center;color:var(--text-tertiary)">you@company.com</span></div><div class="field"><label>What can we help with?</label><span class="input" style="display:flex;align-items:center">Migrating to Netlify</span></div><span class="btn secondary" style="align-self:flex-start">Send message</span></div></div>
+</section>
+
+<section class="panel" aria-labelledby="editorial">
+  <div class="panel-head"><h2 class="h-xs" id="editorial">Editorial</h2><div class="prose b-l"><p>Blog and changelog layouts. Posters use a gradient from the palette as the cover, with the title in white or off black per the tile's text color.</p></div></div>
+  <div class="grid g3">
+    <article class="poster" data-grad="09"><span class="badge neutral" style="background:rgb(255 255 255 / .85);color:#131619">Product</span><p class="h-xxs">Run agents in isolated environments</p></article>
+    <article class="poster" data-grad="14"><span class="badge neutral" style="background:rgb(255 255 255 / .85);color:#131619">Guides</span><p class="h-xxs">Scope environment variables per deploy context</p></article>
+    <article class="poster" data-grad="17"><span class="badge neutral" style="background:rgb(255 255 255 / .85);color:#131619">Changelog</span><p class="h-xxs">Track exactly who prompted what, when</p></article>
+  </div>
+</section>
+
+<style>
+.frame { border:1px solid var(--border-default); border-radius:var(--radius-sm); padding:24px; background:var(--bg-page); overflow:hidden; }
+.pnav { display:flex; align-items:center; gap:24px; padding:10px 12px 10px 18px; border-radius:99px; background:var(--bg-glass); box-shadow:var(--elevation-xs); }
+.pnav .pm { width:22px; height:22px; }
+.pnav .links { display:flex; gap:20px; font-size:14px; color:var(--text-secondary); flex:1; }
+.pnav .acts { display:flex; gap:8px; align-items:center; }
+.pfoot { background:#131619; color:#fff; border:0; display:flex; justify-content:space-between; gap:32px; flex-wrap:wrap; padding:36px; }
+.fcols { display:flex; gap:48px; flex-wrap:wrap; }
+.fcols div { display:flex; flex-direction:column; gap:8px; font-size:14px; color:#b8b4ad; }
+.fcols b { color:#fff; font-weight:500; }
+.phero { display:flex; flex-direction:column; gap:14px; align-items:center; text-align:center; padding:48px 28px; }
+.phero .h-m { font-size:44px; max-width:12ch; }
+.phero.split { flex-direction:row; text-align:left; align-items:stretch; gap:20px; }
+.phero.split .h-s { font-size:30px; }
+.phero .art { flex:0 0 42%; border-radius:var(--radius-sm); min-height:220px; }
+.mini-prompt { width:100%; max-width:360px; padding:10px; border-radius:var(--radius-sm); display:flex; justify-content:space-between; align-items:flex-end; min-height:84px; }
+.mini-prompt span { background:rgb(255 255 255 / .82); color:#56534c; border-radius:12px; padding:8px 12px; font-size:13px; }
+.pstats { display:flex; flex-direction:column; gap:22px; justify-content:center; }
+.pstats div { display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--border-default); padding-bottom:12px; gap:12px; }
+.pstats .h-m { font-size:44px; }
+.pstats span { font-size:14px; color:var(--text-secondary); }
+.pfeat { display:flex; flex-direction:column; gap:16px; }
+.ftabs { display:flex; gap:6px; flex-wrap:wrap; }
+.ftabs span { font:400 12px/1 var(--font-mono); letter-spacing:.06em; padding:9px 12px; border-radius:99px; background:var(--bg-subtle); color:var(--text-secondary); }
+.ftabs .on { background:var(--action-secondary); color:var(--action-secondary-text); }
+.fimg { border-radius:var(--radius-sm); flex:1; min-height:160px; }
+.pcta { text-align:center; padding:72px 24px; color:#fff; border:0; }
+.pcta .h-m { margin-bottom:12px; }
+.pform { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start; }
+.fcard-s { background:var(--bg-surface); border-radius:var(--radius-sm); padding:20px; display:flex; flex-direction:column; gap:16px; box-shadow:var(--elevation-xs); }
+.poster { aspect-ratio:4/5; border-radius:var(--radius-sm); padding:18px; display:flex; flex-direction:column; justify-content:space-between; align-items:flex-start; color:#fff; }
+.poster[data-ink="dark"] { color:#131619; }
+.row-demo { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+@media (max-width:900px){ .pnav .links { display:none; } .phero.split, .pform { grid-template-columns:1fr; flex-direction:column; } }
+</style>
+    </div>
+    <footer class="foot">
+      <span>© <span data-year>2026</span> Netlify. Logos, type and artwork are trademarks of Netlify, Inc.</span>
+      <span><a href="/downloads">Downloads</a> · <a href="/access">Request locked assets</a> · <a href="mailto:brand@netlify.com">brand@netlify.com</a></span>
+    </footer>
+  </main>
+</div>
+<script src="/assets/js/hub.js" defer></script>
+</body>
+</html>

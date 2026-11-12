@@ -1,0 +1,99 @@
+<!-- title: Spacing & shape · Netlify Brand Hub | desc: Netlify spacing scale, semantic spacing, grid, corner radius and elevation. | out: layout.html -->
+<section class="hero" data-grad="11" aria-labelledby="t">
+  <div class="hero-top"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#nf-mark"></use></svg><p class="eyebrow">05 · Spacing &amp; shape</p></div>
+  <div><h1 class="h-l" id="t">Spacing &amp; shape</h1>
+  <p class="b-l lede">A 4px rhythm, an 8-column grid and a radius scale that grows with the element.</p></div>
+</section>
+
+<section class="panel" aria-labelledby="scale">
+  <div class="panel-head">
+    <h2 class="h-xs" id="scale">Spacing scale</h2>
+    <div class="prose b-l"><p>Steps go up by 4 until 24, then widen to 8, 16 and 32 up to 128, so small gaps can be fine-tuned while large gaps keep a steady rhythm. Reach for semantic tokens first and use the scale for anything they don't cover. Avoid typing raw numbers.</p></div>
+  </div>
+  <div class="space-list" id="space-list"></div>
+</section>
+
+<section class="panel" aria-labelledby="sem">
+  <div class="panel-head">
+    <h2 class="h-xs" id="sem">Semantic spacing</h2>
+    <div class="prose b-l"><p>Semantic tokens describe what the space is for, not how big it is. They switch between desktop and mobile, so large gaps tighten on small screens automatically.</p></div>
+  </div>
+  <div class="scroll-x"><table class="ttable">
+    <thead><tr><th>Token</th><th>Desktop</th><th>Mobile</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td><code>semantic/section</code></td><td><code>128 · 7XL</code></td><td><code>80 · 5XL</code></td><td class="muted">Between major page sections</td></tr>
+      <tr><td><code>semantic/block</code></td><td><code>64 · 4XL</code></td><td><code>48 · 3XL</code></td><td class="muted">Between blocks inside a section</td></tr>
+      <tr><td><code>semantic/stack</code></td><td><code>24 · L</code></td><td><code>16 · S</code></td><td class="muted">Heading to body, list items</td></tr>
+      <tr><td><code>semantic/inline</code></td><td><code>8 · 2XS</code></td><td><code>8 · 2XS</code></td><td class="muted">Icon to label, button contents</td></tr>
+      <tr><td><code>grid/gutter</code></td><td><code>20 · M</code></td><td><code>20 · M</code></td><td class="muted">Column gap, gap between cards in a row</td></tr>
+      <tr><td><code>grid/margin</code></td><td><code>40 · 2XL</code></td><td><code>20 · M</code></td><td class="muted">Outer page edge</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="panel" aria-labelledby="grid">
+  <div class="panel-head">
+    <h2 class="h-xs" id="grid">Grid</h2>
+    <div class="prose b-l"><p>8 columns on desktop and 4 on mobile, with 20px gutters. Outer margins are 40px on desktop and 20px on mobile. Content snaps to the columns, and the space around it is left open so each idea has room to breathe.</p></div>
+  </div>
+  <div class="grid-demo">
+    <div class="gd desk"><div class="cols"></div><p class="cap"><b>Desktop · 1440</b><span>8 col · 20 gutter · 40 margin</span></p></div>
+    <div class="gd mob"><div class="cols"></div><p class="cap"><b>Mobile · 390</b><span>4 col · 20 / 20</span></p></div>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="radius">
+  <div class="panel-head">
+    <h2 class="h-xs" id="radius">Corner radius</h2>
+    <div class="prose b-l"><p>Radius scales with the size of the element, in steps of 10. The bigger the element, the bigger the radius, and anything you click that is pill-shaped uses full. MD steps down to 20 on mobile.</p></div>
+  </div>
+  <div class="grid g5 radii">
+    <div><div class="rbox" style="border-radius:0"></div><p class="cap"><b>None · 0</b><span>Full-bleed images, table cells</span></p></div>
+    <div><div class="rbox" style="border-radius:10px"></div><p class="cap"><b>XS · 10</b><span>Tags, tooltips, thumbnails</span></p></div>
+    <div><div class="rbox" style="border-radius:20px"></div><p class="cap"><b>SM · 20</b><span>Cards, panels, inputs</span></p></div>
+    <div><div class="rbox" style="border-radius:30px"></div><p class="cap"><b>MD · 30 (20)</b><span>Large cards, feature media</span></p></div>
+    <div><div class="rbox pill"></div><p class="cap"><b>Full · 9999</b><span>Buttons, chips, badges</span></p></div>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="elev">
+  <div class="panel-head">
+    <h2 class="h-xs" id="elev">Elevation</h2>
+    <div class="prose b-l"><p>Most surfaces sit flat. Use elevation for things that float above the page: menus, tooltips, the active nav item and modals.</p></div>
+  </div>
+  <div class="grid g4 elev">
+    <div><div class="ebox" style="box-shadow:var(--elevation-xs)"></div><p class="cap"><b>XS</b><span>0 6 24 · 4%</span></p></div>
+    <div><div class="ebox" style="box-shadow:var(--elevation-s)"></div><p class="cap"><b>S</b><span>0 2 4 · 12%</span></p></div>
+    <div><div class="ebox" style="box-shadow:var(--elevation-m)"></div><p class="cap"><b>M</b><span>0 10 20 · 6%</span></p></div>
+    <div><div class="ebox" style="box-shadow:var(--elevation-l)"></div><p class="cap"><b>L</b><span>0 12 40 · 12%</span></p></div>
+  </div>
+</section>
+
+<style>
+.space-list { display:flex; flex-direction:column; }
+.srow { display:grid; grid-template-columns:72px 64px minmax(0,1fr) 140px; gap:16px; align-items:center; padding:10px 0; border-bottom:1px solid var(--border-subtle); cursor:pointer; background:none; border-left:0; border-right:0; border-top:0; text-align:left; width:100%; }
+.srow b { font:500 13px/1 var(--font-mono); }
+.srow span { font:400 13px/1 var(--font-mono); color:var(--text-tertiary); }
+.srow i { display:block; height:16px; background:var(--nf-sky); border-radius:3px; }
+.srow code { font:400 12px/1 var(--font-mono); color:var(--text-tertiary); text-align:right; }
+.srow:hover code { color:var(--text-primary); }
+.grid-demo { display:grid; grid-template-columns:minmax(0,3fr) minmax(0,1fr); gap:20px; align-items:end; }
+.gd .cols { display:grid; gap:4%; padding:0 3%; height:260px; background:var(--bg-subtle); border-radius:var(--radius-sm); }
+.gd.desk .cols { grid-template-columns:repeat(8,1fr); gap:1.4%; padding:0 2.8%; }
+.gd.mob .cols { grid-template-columns:repeat(4,1fr); gap:5%; padding:0 5%; }
+.gd i { background:rgb(1 212 229 / .22); border-left:1px solid rgb(1 212 229 / .6); border-right:1px solid rgb(1 212 229 / .6); }
+.g5 { grid-template-columns:repeat(5,minmax(0,1fr)); }
+.rbox { aspect-ratio:1; background:var(--bg-subtle); border:2px solid var(--text-primary); }
+.rbox.pill { aspect-ratio:auto; height:72px; margin-top:calc(50% - 36px); margin-bottom:calc(50% - 36px); border-radius:9999px; }
+.ebox { height:140px; border-radius:var(--radius-sm); background:var(--bg-surface); border:1px solid var(--border-subtle); }
+.elev { background:var(--bg-subtle); padding:32px; border-radius:var(--radius-sm); }
+@media (max-width:1100px){ .g5 { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media (max-width:767px){ .grid-demo { grid-template-columns:1fr; } .srow { grid-template-columns:56px 44px minmax(0,1fr); } .srow code { display:none; } .g5 { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const sc = [["3XS",4],["2XS",8],["XS",12],["S",16],["M",20],["L",24],["XL",32],["2XL",40],["3XL",48],["4XL",64],["5XL",80],["6XL",96],["7XL",128]];
+  document.getElementById("space-list").innerHTML = sc.map(([n,v]) => `<button type="button" class="srow" data-copy="var(--space-${n.toLowerCase()})"><b>${n}</b><span>${v}px</span><i style="width:${v*3}px;max-width:100%"></i><code>--space-${n.toLowerCase()}</code></button>`).join("");
+  document.querySelectorAll(".gd .cols").forEach(c => c.innerHTML = "<i></i>".repeat(c.closest(".desk") ? 8 : 4));
+});
+</script>

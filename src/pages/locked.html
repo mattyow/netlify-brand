@@ -1,0 +1,52 @@
+<!-- title: Locked assets · Netlify Brand Hub | desc: Licensed fonts and source files for approved partners. | out: locked/index.html | robots: noindex, nofollow -->
+<section class="hero" data-grad="24" aria-labelledby="t" style="min-height:360px">
+  <div class="hero-top"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#nf-mark"></use></svg><p class="eyebrow" data-who>Locked assets</p></div>
+  <div><h1 class="h-l" id="t">Locked assets</h1>
+  <p class="b-l lede">Licensed for Netlify-related work only. Please don't share these files or this page's links. Your access is personal and can be revoked.</p></div>
+</section>
+
+<section class="panel" aria-labelledby="fonts">
+  <div class="panel-head"><h2 class="h-xs" id="fonts">Systemia</h2><div class="prose b-l"><p>Install the desktop files for design and documents. Use the web files only on Netlify-owned or approved partner sites.</p></div></div>
+  <ul class="dl-list">
+    <li><div class="dl-ic"><svg><use href="/assets/icons/sprite.svg#ph-text-aa"></use></svg></div><div><b>Systemia desktop</b><span>OTF · Regular, Medium, SemiBold and italics</span></div><div class="dl-acts"><a class="btn secondary sm" href="/locked/fonts/Systemia-Desktop.zip" download>Download</a></div></li>
+    <li><div class="dl-ic"><svg><use href="/assets/icons/sprite.svg#ph-browser"></use></svg></div><div><b>Systemia web</b><span>WOFF2 · Regular, Medium, SemiBold and italics</span></div><div class="dl-acts"><a class="btn secondary sm" href="/locked/fonts/Systemia-Web.zip" download>Download</a></div></li>
+  </ul>
+</section>
+
+<section class="panel" aria-labelledby="gradients">
+  <div class="panel-head"><h2 class="h-xs" id="gradients">Gradient originals</h2><div class="prose b-l"><p>All 24 palette textures at full resolution with grain. Use them for UI cards, posters and decoration, and check text contrast on every placement.</p></div></div>
+  <ul class="dl-list">
+    <li><div class="dl-ic"><svg><use href="/assets/icons/sprite.svg#ph-file-zip"></use></svg></div><div><b>Gradient palette</b><span>24 PNGs</span></div><div class="dl-acts"><a class="btn secondary sm" href="/locked/source/Netlify-Gradients.zip" download>Download</a></div></li>
+  </ul>
+</section>
+
+<section class="panel" aria-labelledby="figma">
+  <div class="panel-head"><h2 class="h-xs" id="figma">Figma</h2><div class="prose b-l"><p>The UI kit, component library, patterns and guideline masters. You'll need view access in Figma; ask the brand team if the file won't open.</p></div></div>
+  <ul class="dl-list">
+    <li><div class="dl-ic"><svg><use href="/assets/icons/sprite.svg#ph-toolbox"></use></svg></div><div><b>Netlify Rebrand 2026</b><span>UI Kit, Mini Guidelines, page designs</span></div><div class="dl-acts"><a class="btn secondary sm" href="https://www.figma.com/design/qHEB4k7cnZ8Eelmby722Qm/Netlify-Rebrand-2026" rel="noopener">Open in Figma<svg class="icon-s"><use href="/assets/icons/sprite.svg#ph-arrow-square-out"></use></svg></a></div></li>
+  </ul>
+</section>
+
+<section class="panel" aria-labelledby="templates">
+  <div class="panel-head"><h2 class="h-xs" id="templates">Templates</h2><div class="prose b-l"><p>Ready-made layouts for presentations and social.</p></div></div>
+  <ul class="dl-list">
+    <li><div class="dl-ic"><svg><use href="/assets/icons/sprite.svg#ph-app-window"></use></svg></div><div><b>Slide deck template</b><span>Web deck · cover, section, stat, quote and closing layouts</span></div><div class="dl-acts"><a class="btn secondary sm" href="https://netlify-deck-template-2026.netlify.app" rel="noopener">Open<svg class="icon-s"><use href="/assets/icons/sprite.svg#ph-arrow-square-out"></use></svg></a></div></li>
+  </ul>
+</section>
+
+<style>
+.dl-list { list-style:none; margin:0; padding:0; }
+.dl-list li { display:grid; grid-template-columns:48px minmax(0,1fr) auto; gap:16px; align-items:center; padding:14px 0; border-bottom:1px solid var(--border-subtle); }
+.dl-list li:last-child { border-bottom:0; }
+.dl-ic { width:48px; height:48px; border-radius:var(--radius-xs); background:var(--bg-subtle); display:grid; place-items:center; }
+.dl-ic svg { width:22px; height:22px; }
+.dl-list b { display:block; font-weight:500; }
+.dl-list span { font-size:var(--size-body-s); color:var(--text-secondary); }
+.dl-acts { display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+@media (max-width:640px){ .dl-list li { grid-template-columns:40px minmax(0,1fr); } .dl-acts { grid-column:2; justify-content:flex-start; } }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  try { const r = await fetch("/api/access/status"); const s = await r.json(); if (s.access) document.querySelector("[data-who]").textContent = `Signed in as ${s.email}`; } catch {}
+});
+</script>
