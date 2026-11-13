@@ -23,6 +23,11 @@
   <aside class="side" id="side" data-side aria-label="Site navigation"></aside>
   <main class="main" id="main">
     <div class="page">
+<!-- Hidden copy of the request form so Netlify Forms detects it at deploy time. Submissions come from the script below. -->
+<form name="access-request" data-netlify="true" netlify-honeypot="bot-field" hidden aria-hidden="true">
+  <input name="bot-field"><input name="name"><input name="email"><input name="org"><input name="relationship"><input name="assets"><textarea name="use"></textarea><input name="review">
+</form>
+
 <section class="panel acc-wrap" aria-labelledby="t">
   <div class="acc-intro">
     <p class="lock-pill"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#ph-lock-simple"></use></svg>Locked assets</p>
@@ -114,6 +119,11 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify({ name:d.get("name"), email:d.get("email"), org:d.get("org"), relationship:d.get("relationship"), assets, use:d.get("use"), website:d.get("website") }) });
       const j = await r.json().catch(() => ({}));
       if (!r.ok) throw new Error(j.error || "The request didn't go through. Try again in a minute.");
+      // Copy to Netlify Forms so Netlify can email the brand team (Forms → Form notifications).
+      // Best effort: the request is already saved, so a failure here doesn't matter to the requester.
+      if (!d.get("website")) fetch("/", { method:"POST", headers:{ "Content-Type":"application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ "form-name":"access-request", name:d.get("name"), email:d.get("email"), org:d.get("org"),
+          relationship:d.get("relationship"), assets:assets.join(", "), use:d.get("use"), review:location.origin + "/admin" }).toString() }).catch(() => {});
       f.hidden = true; const done = document.getElementById("done"); document.getElementById("done-email").textContent = d.get("email"); done.hidden = false; done.focus();
     } catch (err) { status.textContent = err.message; send.disabled = false; }
   });
