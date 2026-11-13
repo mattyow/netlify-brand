@@ -10,18 +10,16 @@
   <a class="btn secondary" href="/locked/strategy">Open brand strategy</a>
 </section>
 
+<section class="panel" aria-labelledby="gtools">
+  <div class="panel-head"><h2 class="h-xs" id="gtools">Gradient generator</h2><div class="prose b-l"><p>Make on-brand gradients and collages from the 24 presets, animate them, and export images up to 4K, video, SVG layers or a live embed. This replaces the old gradient originals download: every preset is here at any size. Developers can render the same gradients through the API; ask the brand team for the API key.</p></div></div>
+  <div class="row-acts"><a class="btn secondary" href="/locked/tools/gradient-generator/">Open generator</a><a class="btn tertiary" href="/locked/tools/gradient-generator/docs">API docs</a></div>
+</section>
+
 <section class="panel" aria-labelledby="fonts">
   <div class="panel-head"><h2 class="h-xs" id="fonts">Systemia &amp; Systemia Mono</h2><div class="prose b-l"><p>Install the desktop files for design and documents. Use the web files only on Netlify-owned or approved partner sites.</p></div></div>
   <ul class="dl-list">
     <li><div class="dl-ic"><svg><use href="/assets/icons/sprite.svg#ph-text-aa"></use></svg></div><div><b>Systemia desktop</b><span>OTF · 16 styles, Thin to Black with italics</span></div><div class="dl-acts"><a class="btn secondary sm" href="/locked/fonts/Systemia-Desktop.zip" download>Download</a></div></li>
     <li><div class="dl-ic"><svg><use href="/assets/icons/sprite.svg#ph-browser"></use></svg></div><div><b>Web fonts</b><span>WOFF2 · variable · weight 100–900, Systemia width 100–125</span></div><div class="dl-acts"><a class="btn secondary sm" href="/locked/fonts/Systemia-Web.zip" download>Download</a></div></li>
-  </ul>
-</section>
-
-<section class="panel" aria-labelledby="gradients">
-  <div class="panel-head"><h2 class="h-xs" id="gradients">Gradient originals</h2><div class="prose b-l"><p>All 24 palette textures at full resolution with grain. Use them for UI cards, posters and decoration, and check text contrast on every placement.</p></div></div>
-  <ul class="dl-list">
-    <li><div class="dl-ic"><svg><use href="/assets/icons/sprite.svg#ph-file-zip"></use></svg></div><div><b>Gradient palette</b><span>24 PNGs</span></div><div class="dl-acts"><a class="btn secondary sm" href="/locked/source/Netlify-Gradients.zip" download>Download</a></div></li>
   </ul>
 </section>
 
@@ -40,6 +38,7 @@
 </section>
 
 <style>
+.row-acts { display:flex; gap:12px; flex-wrap:wrap; }
 .dl-list { list-style:none; margin:0; padding:0; }
 .dl-list li { display:grid; grid-template-columns:48px minmax(0,1fr) auto; gap:16px; align-items:center; padding:14px 0; border-bottom:1px solid var(--border-subtle); }
 .dl-list li:last-child { border-bottom:0; }

@@ -35,8 +35,9 @@
     <article class="tool">
       <div class="tthumb" data-grad="18"><span class="aa">Aa</span></div>
       <div class="tbody"><h3 class="h-xs medium">Gradient generator</h3>
-        <p class="b-m muted">Start from the 24 palette tiles, animate them as shaders, add Systemia text and export. Text color is picked automatically to pass WCAG contrast.</p>
-        <div class="row"><a class="btn secondary" href="/tools/gradient-generator/">Open generator</a><span class="b-s muted">Images, MP4 and HTML embed</span></div></div>
+        <p class="b-m muted">Start from the 24 palette presets or make collages, animate them, add Systemia text and export. Text color is picked automatically to pass WCAG contrast. A REST API renders the same gradients for your own apps.</p>
+        <div class="row"><a class="btn secondary" href="/locked/tools/gradient-generator/"><svg class="icon-s"><use href="/assets/icons/sprite.svg#ph-lock-simple"></use></svg>Open generator</a><a class="btn tertiary" href="/locked/tools/gradient-generator/docs">API docs</a></div>
+        <span class="b-s muted">PNG, MP4, SVG layers and HTML embed. Locked asset.</span></div>
     </article>
     <article class="tool">
       <div class="tthumb tok"><code>--action-primary</code><code>--radius-full</code><code>--space-stack</code></div>
@@ -63,7 +64,7 @@
 .tools { display:flex; flex-direction:column; gap:20px; }
 .tool { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:32px; align-items:center; padding:12px; border-radius:var(--radius-md); background:var(--bg-subtle); }
 .tthumb { aspect-ratio:16/10; border-radius:var(--radius-sm); display:grid; place-items:center; }
-.tthumb .aa { font-size:88px; font-weight:500; letter-spacing:-.03em; color:#fff; }
+.tthumb .aa { font-size:88px; font-weight:500; letter-spacing:-.03em; }
 .tthumb.tok { background:#131619; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:10px; padding:28px; }
 .tthumb.tok code { font:400 14px/1 var(--font-mono); color:#01d4e5; }
 .tthumb.tok code:nth-child(2) { color:#bbee3c; } .tthumb.tok code:nth-child(3) { color:#c1b5ff; }

@@ -45,10 +45,10 @@
 <section class="panel" aria-labelledby="grads">
   <div class="panel-head">
     <h2 class="h-xs" id="grads">Gradient palette</h2>
-    <div class="prose b-l"><p>Gradients bring depth and energy to UI cards, illustration and decoration. Always check contrast: light text on dark gradients, dark text on light ones. The <em>Aa</em> on each tile shows the approved text color.</p></div>
+    <div class="prose b-l"><p>Gradients bring depth and energy to UI cards, illustration and decoration. Always check contrast: light text on dark gradients, dark text on light ones. The <em>Aa</em> on each tile shows the text color the gradient generator picks for contrast.</p></div>
   </div>
   <div class="grid g6 grad-grid" id="grad-grid"></div>
-  <div class="note sub"><svg><use href="/assets/icons/sprite.svg#ph-info"></use></svg><span>These tiles are CSS approximations for previewing. Use the full-resolution originals from <a class="link" href="/locked/">locked assets</a> in production, or make your own with the <a class="link" href="/tools">gradient generator</a>.</span></div>
+  <div class="note sub"><svg><use href="/assets/icons/sprite.svg#ph-lock-simple"></use></svg><span>These are preview renders. Select a tile to open that preset in the <a class="link" href="/locked/tools/gradient-generator/">gradient generator</a>, where you can animate it, add text and export at any size. The generator is a locked asset; <a class="link" href="/access">request access</a> if you don't have it yet.</span></div>
 </section>
 
 <style>
@@ -61,8 +61,8 @@
 .ex b { font-size:28px; font-weight:600; letter-spacing:-.02em; line-height:1; }
 .ex span { font-size:14px; }
 .ex .btn { margin-top:8px; font-style:normal; }
-.grad-tile { aspect-ratio:1; border-radius:var(--radius-sm); border:0; padding:14px; cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; text-align:left; color:#fff; }
-.grad-tile[data-ink="dark"] { color:#131619; }
+.grad-tile { aspect-ratio:1; border-radius:var(--radius-sm); border:0; padding:14px; cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; text-align:left; text-decoration:none; transition:transform var(--dur-short) var(--ease-direct); }
+.grad-tile:hover { transform:scale(1.02); }
 .grad-tile .aa { font-size:clamp(40px,5vw,64px); font-weight:500; letter-spacing:-.03em; line-height:1; align-self:center; margin-top:8%; }
 .grad-tile .gname { font:500 11px/1.3 var(--font-mono); letter-spacing:.04em; display:flex; justify-content:space-between; gap:6px; }
 .grad-tile:hover .copyhint { opacity:1; }
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const dot = h => `<span class="dot" style="background:${h}"></span>`;
   document.querySelector("#token-table tbody").innerHTML = T.map(([n,l,d,u]) => `<tr><td><button class="text-btn" style="height:auto;padding:0" data-copy="var(--${n.replace("/","-")})"><code>${n}</code></button></td><td>${dot(l)}<code>${l}</code></td><td>${dot(d)}<code>${d}</code></td><td class="muted">${u}</td></tr>`).join("");
 
-  document.getElementById("grad-grid").innerHTML = NF_GRADIENTS.map(g => `<button class="grad-tile" type="button" data-grad="${g.id}" data-copy="background: ${g.css};" data-copy-label="${g.name} CSS" aria-label="${g.id} ${g.name}, ${g.ink} text. Copy CSS"><span class="gname"><span>${g.id} ${g.name}</span><span class="copyhint">Copy</span></span><span class="aa">Aa</span><span></span></button>`).join("");
+  document.getElementById("grad-grid").innerHTML = NF_GRADIENTS.map(g => `<a class="grad-tile" href="/locked/tools/gradient-generator/#${+g.id}" data-grad="${g.id}" aria-label="${g.id} ${g.name}, ${g.ink === "dark" ? "dark" : "white"} text. Open in the gradient generator"><span class="gname"><span>${g.id} ${g.name}</span><span class="copyhint">Open</span></span><span class="aa">Aa</span><span></span></a>`).join("");
   nfPaintGradients(document.getElementById("grad-grid"));
 });
 </script>

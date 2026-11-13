@@ -21,7 +21,6 @@ Functions and the edge gate need a Git-connected site or the CLI (Netlify Drop w
 ## Add locked files
 Drop files into `public/locked/` (they're gated by `netlify/edge-functions/locked-gate.js`):
 - `public/locked/fonts/Systemia-Desktop.zip`, `Systemia-Web.zip`
-- `public/locked/source/Netlify-Gradients.zip`
 Never put licensed files anywhere else in `public/`.
 
 Large or many files? Keep the repo lean by storing them in a private location and linking from `src/pages/locked.html`.
@@ -29,8 +28,12 @@ Large or many files? Keep the repo lean by storing them in a private location an
 ## Fonts
 The site uses the variable web fonts in `public/assets/fonts/systemia/` (Systemia and Systemia Mono, upright and italic), declared in `public/assets/css/hub.css`. Tokens: `--font-sans`, `--font-mono`.
 
+## Gradient generator and API
+- Generator: `public/locked/tools/gradient-generator/` (index, docs, fonts.css). Behind the lock. `#1`–`#24` in the URL opens that preset.
+- API: `netlify/functions/gradient-api.mjs` + `netlify/lib/` at `/api/v1/*`. Needs env var `GRADIENT_API_KEY`. Uses `sharp` (native binaries configured in `netlify.toml`).
+- Hub previews: `public/assets/gradients/NN-sq.webp` and `NN-wide.webp`, rendered by the same engine. Re-render after changing presets with `node scripts/render-gradients.mjs`.
+
 ## Other files to add
-- Gradient generator: replace `src/pages/gradient-generator.html` output by copying the generator's `index.html` to `public/tools/gradient-generator/index.html` and deleting the placeholder page source.
 - Update `brand@netlify.com` in `src/shell.html` if needed.
 
 ## Edit pages

@@ -83,6 +83,9 @@ p { margin:0; }
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1.4 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 .grad > * { position:relative; z-index:1; }
+.grad[data-ink="light"] { color:#fff; }
+.grad[data-ink="dark"] { color:#131619; }
+.grad.grad-img::after { display:none; } /* rendered images already carry the grain */
 .grad.soft { filter:saturate(1.05); }
 
 /* ───────── Page hero ───────── */

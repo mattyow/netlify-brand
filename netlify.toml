@@ -5,6 +5,22 @@
 [functions]
   node_bundler = "esbuild"
 
+# Gradient API: sharp ships native binaries, so keep it out of the bundle and ship them alongside
+# (scoped to this one function so the access functions stay small).
+[functions."gradient-api"]
+  external_node_modules = ["sharp"]
+  included_files = ["node_modules/@img/sharp-linux-x64/**", "node_modules/@img/sharp-libvips-linux-x64/**"]
+
+[[redirects]]
+  from = "/tools/gradient-generator"
+  to = "/locked/tools/gradient-generator/"
+  status = 301
+
+[[redirects]]
+  from = "/tools/gradient-generator/*"
+  to = "/locked/tools/gradient-generator/:splat"
+  status = 301
+
 # Locked files are guarded by netlify/edge-functions/locked-gate.js.
 
 [[headers]]
