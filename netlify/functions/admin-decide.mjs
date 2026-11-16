@@ -6,6 +6,17 @@ import { sign, INVITE_TTL, nonce } from "../shared/token.js";
 import { json, isAdmin, env, STORE } from "../shared/http.js";
 
 export default async req => {
+  try { return await decide(req); }
+  catch (err) {
+    console.error("admin-decide failed:", err);
+    const msg = /ACCESS_SECRET/.test(err?.message || "")
+      ? "ACCESS_SECRET is missing or shorter than 32 characters. Check Environment variables, then redeploy."
+      : `Approval failed: ${err?.message || "unknown error"}. Details are in the admin-decide function log.`;
+    return json({ error: msg }, 500);
+  }
+};
+
+async function decide(req) {
   if (!isAdmin(req)) return json({ error: "Unauthorized" }, 401);
   if (req.method !== "POST") return json({ error: "Use POST." }, 405);
   const { id, action } = await req.json().catch(() => ({}));
@@ -33,6 +44,6 @@ export default async req => {
   await store.setJSON(`req/${r.id}`, r);
   await store.delete(`pending/${r.email}`);
   return json({ request: r, link });
-};
+}
 
 export const config = { path: "/api/admin/decide" };
