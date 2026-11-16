@@ -32,12 +32,6 @@
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
 [[headers]]
-  for = "/admin*"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
-    Cache-Control = "no-store"
-
-[[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"

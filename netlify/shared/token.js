@@ -1,9 +1,9 @@
 // Signed tokens shared by Functions (Node) and Edge Functions (Deno). Web Crypto only.
 // Format: base64url(JSON payload) + "." + base64url(HMAC-SHA256(payload))
-// Payload: { e: email, p: "invite" | "session", x: expiry (ms), v: ACCESS_VERSION, n: nonce }
+// Payload: { p: "session", x: expiry (ms), v: password fingerprint, n: nonce }
+// The fingerprint ties every session to the current LOCKED_PASSWORD: change the password and everyone is signed out.
 
 export const COOKIE = "nf_brand_access";
-export const INVITE_TTL = 14 * 24 * 3600 * 1000;
 export const SESSION_TTL = 90 * 24 * 3600 * 1000;
 
 const enc = new TextEncoder();
@@ -45,3 +45,9 @@ export function readCookie(header, name = COOKIE) {
 }
 
 export const nonce = () => b64u(crypto.getRandomValues(new Uint8Array(12)));
+
+// Short, non-reversible fingerprint of the shared password, used as the session version.
+export async function fingerprint(password) {
+  const d = await crypto.subtle.digest("SHA-256", enc.encode(`nf-brand:${password}`));
+  return b64u(d).slice(0, 16);
+}

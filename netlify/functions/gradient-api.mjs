@@ -25,7 +25,7 @@ const USAGE = {
 }
 
 export const config = {
-  // Only /api/v1: the hub's own /api/access and /api/admin routes live beside it.
+  // Only /api/v1: the hub's own /api/access routes live beside it.
   path: ['/api/v1', '/api/v1/*'],
   rateLimit: { ...RATE_LIMIT, aggregateBy: ['ip', 'domain'] },
 }

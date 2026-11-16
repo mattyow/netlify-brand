@@ -1,8 +1,8 @@
-<!-- title: Locked assets · Netlify Brand Hub | desc: Licensed fonts and source files for approved partners. | out: locked/index.html | robots: noindex, nofollow -->
+<!-- title: Locked assets · Netlify Brand Hub | desc: Licensed fonts and source files for Netlify work. | out: locked/index.html | robots: noindex, nofollow -->
 <section class="hero" data-grad="24" aria-labelledby="t" style="min-height:360px">
   <div class="hero-top"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#nf-mark"></use></svg><p class="eyebrow" data-who>Locked assets</p></div>
   <div><h1 class="h-l" id="t">Locked assets</h1>
-  <p class="b-l lede">Licensed for Netlify-related work only. Please don't share these files or this page's links. Your access is personal and can be revoked.</p></div>
+  <p class="b-l lede">Licensed for Netlify-related work only. Please don't share these files or this page's links. Don’t pass the password on; point people to the design team instead.</p></div>
 </section>
 
 <section class="panel" aria-labelledby="strat">
@@ -50,7 +50,8 @@
 @media (max-width:640px){ .dl-list li { grid-template-columns:40px minmax(0,1fr); } .dl-acts { grid-column:2; justify-content:flex-start; } }
 </style>
 <script>
-document.addEventListener("DOMContentLoaded", async () => {
-  try { const r = await fetch("/api/access/status"); const s = await r.json(); if (s.access) document.querySelector("[data-who]").textContent = `Signed in as ${s.email}`; } catch {}
+document.addEventListener("DOMContentLoaded", () => {
+  const top = document.querySelector(".hero-top");
+  const a = document.createElement("a"); a.className = "btn glass sm"; a.href = "/api/access/signout"; a.textContent = "Sign out"; top.appendChild(a);
 });
 </script>

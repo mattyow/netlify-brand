@@ -1,13 +1,12 @@
-// GET /api/access/status — tells the page whether this browser has a live session.
-import { getStore } from "@netlify/blobs";
-import { verify, readCookie } from "../shared/token.js";
-import { json, env, STORE } from "../shared/http.js";
+// GET /api/access/status — tells the page whether this browser is signed in.
+import { verify, readCookie, fingerprint } from "../shared/token.js";
+import { json, env } from "../shared/http.js";
 
 export default async req => {
-  const s = await verify(readCookie(req.headers.get("cookie")), env("ACCESS_SECRET"), { purpose: "session", version: env("ACCESS_VERSION") || "1" }).catch(() => null);
-  if (!s) return json({ access: false });
-  const user = await getStore(STORE).get(`user/${s.e}`, { type: "json" }).catch(() => null);
-  return json(user?.status === "approved" && user.invite === s.n ? { access: true, email: s.e } : { access: false });
+  const pw = env("LOCKED_PASSWORD"), secret = env("ACCESS_SECRET");
+  if (!pw || !secret) return json({ access: false });
+  const s = await verify(readCookie(req.headers.get("cookie")), secret, { purpose: "session", version: await fingerprint(pw) }).catch(() => null);
+  return json({ access: !!s });
 };
 
 export const config = { path: "/api/access/status" };

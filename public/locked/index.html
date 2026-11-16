@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Locked assets · Netlify Brand Hub</title>
-<meta name="description" content="Licensed fonts and source files for approved partners.">
+<meta name="description" content="Licensed fonts and source files for Netlify work.">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="Locked assets · Netlify Brand Hub">
-<meta property="og:description" content="Licensed fonts and source files for approved partners.">
+<meta property="og:description" content="Licensed fonts and source files for Netlify work.">
 <meta name="theme-color" content="#f7f6f4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1b1a17" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="/assets/logo/netlify-mark-offblack.svg" type="image/svg+xml">
@@ -26,7 +26,7 @@
 <section class="hero" data-grad="24" aria-labelledby="t" style="min-height:360px">
   <div class="hero-top"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#nf-mark"></use></svg><p class="eyebrow" data-who>Locked assets</p></div>
   <div><h1 class="h-l" id="t">Locked assets</h1>
-  <p class="b-l lede">Licensed for Netlify-related work only. Please don't share these files or this page's links. Your access is personal and can be revoked.</p></div>
+  <p class="b-l lede">Licensed for Netlify-related work only. Please don't share these files or this page's links. Don’t pass the password on; point people to the design team instead.</p></div>
 </section>
 
 <section class="panel" aria-labelledby="strat">
@@ -74,14 +74,15 @@
 @media (max-width:640px){ .dl-list li { grid-template-columns:40px minmax(0,1fr); } .dl-acts { grid-column:2; justify-content:flex-start; } }
 </style>
 <script>
-document.addEventListener("DOMContentLoaded", async () => {
-  try { const r = await fetch("/api/access/status"); const s = await r.json(); if (s.access) document.querySelector("[data-who]").textContent = `Signed in as ${s.email}`; } catch {}
+document.addEventListener("DOMContentLoaded", () => {
+  const top = document.querySelector(".hero-top");
+  const a = document.createElement("a"); a.className = "btn glass sm"; a.href = "/api/access/signout"; a.textContent = "Sign out"; top.appendChild(a);
 });
 </script>
     </div>
     <footer class="foot">
       <span>© <span data-year>2026</span> Netlify. Logos, type and artwork are trademarks of Netlify, Inc.</span>
-      <span><a href="/downloads">Downloads</a> · <a href="/access">Request locked assets</a> · <a href="mailto:brand@netlify.com">brand@netlify.com</a></span>
+      <span><a href="/downloads">Downloads</a> · <a href="/access">Get access</a> · <a href="mailto:design@netlify.com">design@netlify.com</a></span>
     </footer>
   </main>
 </div>

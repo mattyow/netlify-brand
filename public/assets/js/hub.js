@@ -54,7 +54,7 @@
     { title: "Start", items: [["/", "Overview", "app-window"], ["/platform", "Brand platform"], ["/downloads", "Downloads", "download-simple"]] },
     { title: "Foundations", items: [["/logo", "Logo"], ["/color", "Color"], ["/typography", "Typography"], ["/layout", "Spacing & shape"], ["/iconography", "Icons"], ["/illustration", "Illustration"], ["/motion", "Motion"]] },
     { title: "Building blocks", items: [["/components", "Components"], ["/patterns", "Patterns"], ["/tools", "Tools"], ["/email-signature", "Email signature"]] },
-    { title: "Restricted", items: [["/locked/", "Locked assets", "lock-simple"], ["/locked/strategy", "Brand strategy", "lock-simple"], ["/locked/tools/gradient-generator/", "Gradient generator", "lock-simple"], ["/access", "Request access"]] }
+    { title: "Restricted", items: [["/locked/", "Locked assets", "lock-simple"], ["/locked/strategy", "Brand strategy", "lock-simple"], ["/locked/tools/gradient-generator/", "Gradient generator", "lock-simple"], ["/access", "Get access"]] }
   ];
   const here = location.pathname.replace(/\.html$/, "").replace(/\/index$/, "/") || "/";
   const isCurrent = href => href === "/" ? here === "/" : href.endsWith("/") ? here === href || here === href.slice(0, -1) : here === href || here.startsWith(href + "/");
@@ -122,7 +122,7 @@
       const s = await r.json();
       document.documentElement.dataset.access = s.access ? "granted" : "none";
       const line = document.querySelector("[data-access-line]");
-      if (line && s.access) line.textContent = `Locked assets unlocked for ${s.email}.`;
+      if (line && s.access) line.textContent = "Locked assets are unlocked on this browser.";
     } catch {}
   }
 

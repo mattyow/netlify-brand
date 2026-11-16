@@ -1,25 +1,20 @@
 // Guards everything under /locked/. Runs before static files are served.
-import { getStore } from "@netlify/blobs";
-import { verify, readCookie } from "../shared/token.js";
+// A browser gets in by entering the shared password at /access, which sets a signed cookie.
+import { verify, readCookie, fingerprint } from "../shared/token.js";
 
 export default async (request, context) => {
   const secret = Netlify.env.get("ACCESS_SECRET");
-  const version = Netlify.env.get("ACCESS_VERSION") || "1";
-  const session = secret ? await verify(readCookie(request.headers.get("cookie")), secret, { purpose: "session", version }) : null;
-
-  // Per-person revocation: the session is only honored while the person is still approved.
-  let approved = false;
-  if (session) {
-    try {
-      const user = await getStore("brand-access").get(`user/${session.e}`, { type: "json" });
-      approved = user?.status === "approved" && user.invite === session.n;
-    } catch { approved = false; }
+  const password = Netlify.env.get("LOCKED_PASSWORD");
+  let ok = false;
+  if (secret && password) {
+    const session = await verify(readCookie(request.headers.get("cookie")), secret, { purpose: "session", version: await fingerprint(password) });
+    ok = !!session;
   }
 
-  if (!approved) {
+  if (!ok) {
     const url = new URL(request.url);
     const to = new URL("/access", url);
-    to.searchParams.set("next", url.pathname);
+    to.searchParams.set("next", url.pathname + url.hash);
     return Response.redirect(to, 302);
   }
 
