@@ -53,7 +53,7 @@
   const NAV = [
     { title: "Start", items: [["/", "Overview", "app-window"], ["/platform", "Brand platform"], ["/downloads", "Downloads", "download-simple"]] },
     { title: "Foundations", items: [["/logo", "Logo"], ["/color", "Color"], ["/typography", "Typography"], ["/layout", "Spacing & shape"], ["/iconography", "Icons"], ["/illustration", "Illustration"], ["/motion", "Motion"]] },
-    { title: "Building blocks", items: [["/components", "Components"], ["/patterns", "Patterns"], ["/tools", "Tools"]] },
+    { title: "Building blocks", items: [["/components", "Components"], ["/patterns", "Patterns"], ["/tools", "Tools"], ["/email-signature", "Email signature"]] },
     { title: "Restricted", items: [["/locked/", "Locked assets", "lock-simple"], ["/locked/strategy", "Brand strategy", "lock-simple"], ["/locked/tools/gradient-generator/", "Gradient generator", "lock-simple"], ["/access", "Request access"]] }
   ];
   const here = location.pathname.replace(/\.html$/, "").replace(/\/index$/, "/") || "/";
