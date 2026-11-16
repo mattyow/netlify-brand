@@ -12,7 +12,7 @@
   </div>
   <div class="grid g4" id="core-swatches"></div>
   <div class="sub"><div class="sub-title"><h3 class="b-l medium">Sky tints</h3><span class="b-s muted">Buttons, focus and data visualization</span></div><div class="grid g4" id="sky-swatches"></div></div>
-  <div class="sub"><div class="sub-title"><h3 class="b-l medium">Accents</h3><span class="b-s muted">Illustration, charts and accent containers only</span></div><div class="grid g6" id="accent-swatches"></div></div>
+  <div class="sub"><div class="sub-title"><h3 class="b-l medium">Accents</h3><span class="b-s muted">Drawn from the gradients. Illustration, charts and accent containers only</span></div><div class="grid g6" id="accent-swatches"></div></div>
   <div class="sub"><div class="sub-title"><h3 class="b-l medium">Warm grey</h3><span class="b-s muted">Surfaces, borders and secondary text</span></div><div class="ramp" id="grey-ramp"></div></div>
 </section>
 
@@ -76,8 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("core-swatches").innerHTML = core.map(c => sw(...c)).join("");
   const sky = [["Sky","#01d4e5","action/primary"],["Sky tint 300","#2bd8e6","primary hover"],["Sky tint 200","#74e6ef","primary pressed"],["Sky tint 100","#a9f0f5","dark pressed"]];
   document.getElementById("sky-swatches").innerHTML = sky.map(c => sw(...c)).join("");
-  const acc = [["Cobalt","#065eff","","#fff"],["Lilac","#c1b5ff",""],["Pink","#ff3d9c",""],["Red","#f84747",""],["Orange","#ff7542",""],["Peach","#ffbc8a",""],["Gold","#fdcb65",""],["Lime","#bbee3c",""],["Green","#3fb66b",""]];
-  document.getElementById("accent-swatches").innerHTML = acc.map(([n,h,s,i]) => sw(n,h,"accent/"+n.toLowerCase(),i)).join("");
+  const acc = [["Red","#f84747",""],["Orange","#ff7542",""],["Peach","#ffbc8a",""],["Gold","#fdcb65",""],["Lime","#bbee3c",""],["Green","#3fb66b",""],["Turquoise","#10ddc4",""],["Deep teal","#0a77a2","","#fff"],["Cobalt","#065eff","","#fff"],["Purple","#4e49ff","","#fff"],["Lilac","#c1b5ff",""],["Plum","#612d68","","#fff"],["Pink","#ff3d9c",""]];
+  document.getElementById("accent-swatches").innerHTML = acc.map(([n,h,s,i]) => sw(n,h,"accent/"+n.toLowerCase().replace(" ","-"),i)).join("");
   const greys = [["50","#f7f6f4"],["100","#f0eeea"],["200","#e7e5e0"],["300","#dad8d2"],["400","#b8b4ad"],["500","#949087"],["600","#736f67"],["700","#56534c"],["800","#3d3a35"],["850","#33302c"],["900","#282622"],["950","#1b1a17"]];
   document.getElementById("grey-ramp").innerHTML = greys.map(([n,h],i) => `<button type="button" data-copy="${h}" data-copy-label="warm grey ${n}" style="background:${h};color:${i>4?"#fff":"#131619"}"><b>${n}</b>${h}</button>`).join("");
 

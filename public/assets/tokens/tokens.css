@@ -1,4 +1,4 @@
-/* Netlify brand tokens · v1.0
+/* Netlify brand tokens · v2.0
    Source: Netlify-Rebrand-2026 → UI Kit [Netlify's version]
    Collections: Color / Primitives, Color (Light, Dark), Typography, Spacing, Shape, Effects */
 :root {
@@ -7,6 +7,7 @@
   --nf-sky:#01d4e5; --nf-sky-tint-100:#a9f0f5; --nf-sky-tint-200:#74e6ef; --nf-sky-tint-300:#2bd8e6;
   --nf-cobalt:#065eff; --nf-lilac:#c1b5ff; --nf-peach:#ffbc8a; --nf-gold:#fdcb65; --nf-red:#f84747;
   --nf-pink:#ff3d9c; --nf-orange:#ff7542; --nf-lime:#bbee3c; --nf-green:#3fb66b;
+  --nf-turquoise:#10ddc4; --nf-deep-teal:#0a77a2; --nf-purple:#4e49ff; --nf-plum:#612d68;
   --nf-warm-grey-50:#f7f6f4; --nf-warm-grey-100:#f0eeea; --nf-warm-grey-200:#e7e5e0; --nf-warm-grey-300:#dad8d2;
   --nf-warm-grey-400:#b8b4ad; --nf-warm-grey-500:#949087; --nf-warm-grey-600:#736f67; --nf-warm-grey-700:#56534c;
   --nf-warm-grey-800:#3d3a35; --nf-warm-grey-850:#33302c; --nf-warm-grey-900:#282622; --nf-warm-grey-950:#1b1a17;

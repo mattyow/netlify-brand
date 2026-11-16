@@ -65,7 +65,7 @@
     const groups = NAV.map(g => `<nav class="nav-group" aria-label="${g.title}"><h2>${g.title}</h2>${g.items.map(([href, label, icon]) =>
       `<a href="${href}"${isCurrent(href) ? ' aria-current="page"' : ""}>${label}${icon ? ico("ph-" + icon, "icon-s") : ""}</a>`).join("")}</nav>`).join("");
     side.innerHTML = `
-      <a class="brand" href="/" aria-label="Netlify Brand Hub home">${ico("nf-mark")}<svg class="wm" viewBox="0 0 420 144" aria-hidden="true"><use href="${ICONS}#nf-wordmark"></use></svg><span>Brand</span></a>
+      <a class="brand" href="/" aria-label="Netlify Brand Hub home">${ico("nf-mark")}<svg class="wm" viewBox="0 0 413.4 137.3" aria-hidden="true"><use href="${ICONS}#nf-wordmark"></use></svg><span>Brand</span></a>
       ${groups}
       <div class="side-foot">
         <div class="theme-toggle" role="group" aria-label="Color mode">
