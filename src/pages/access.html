@@ -1,0 +1,78 @@
+<!-- title: Get access · Netlify Brand Hub | desc: How to get access to Netlify's licensed fonts, gradient generator and source files. | out: access.html -->
+<section class="panel acc-wrap" aria-labelledby="t">
+  <div class="acc-intro">
+    <p class="lock-pill"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#ph-lock-simple"></use></svg>Locked assets</p>
+    <h1 class="h-m" id="t" style="margin-top:16px">Get access</h1>
+    <p class="b-l muted" style="margin-top:16px">Systemia, the gradient generator, Figma source files and brand strategy are for Netlify work only. They’re unlocked with a password from the design team.</p>
+    <ol class="steps b-m">
+      <li><b>Ask the design team</b><span>Message the Design team on Slack, or email <a class="link" href="mailto:design@netlify.com">design@netlify.com</a>. Say who you are and what you’re making.</span></li>
+      <li><b>Get the password</b><span>They’ll send it to you directly.</span></li>
+      <li><b>Unlock</b><span>Enter it here. This browser stays unlocked for 90 days.</span></li>
+    </ol>
+    <a class="btn tertiary" style="margin-top:28px" href="mailto:design@netlify.com?subject=Brand%20hub%20access&amp;body=Hi%20Design%20team%2C%0A%0AName%3A%20%0ATeam%20or%20company%3A%20%0AWhat%20I%E2%80%99m%20making%3A%20%0A%0AThanks!"><svg class="icon-s"><use href="/assets/icons/sprite.svg#ph-arrow-square-out"></use></svg>Email design@netlify.com</a>
+  </div>
+
+  <div class="acc-form-card">
+    <div class="note" id="flash" hidden role="status" style="margin-bottom:20px;background:var(--bg-surface)"><svg><use href="/assets/icons/sprite.svg#ph-info"></use></svg><span></span></div>
+
+    <div id="signed-in" hidden>
+      <svg class="done-ic" aria-hidden="true"><use href="/assets/icons/sprite.svg#ph-check-circle"></use></svg>
+      <h2 class="h-xs" style="margin-top:14px">You’re unlocked</h2>
+      <p class="b-m muted" style="margin-top:10px">This browser has access to everything in locked assets.</p>
+      <div class="form-foot" style="margin-top:20px"><a class="btn secondary" href="/locked/">Open locked assets</a><a class="btn tertiary" href="/api/access/signout">Sign out</a></div>
+    </div>
+
+    <form id="unlock" novalidate>
+      <h2 class="h-xs">Have the password?</h2>
+      <div class="field" style="margin-top:20px">
+        <label for="pw">Password</label>
+        <input class="input" id="pw" name="password" type="password" autocomplete="current-password" required>
+        <span class="help" id="pw-help">Passwords change from time to time. If yours stops working, ask the design team for the new one.</span>
+      </div>
+      <div class="form-foot" style="margin-top:20px"><button class="btn secondary" type="submit" id="go">Unlock</button><span class="b-s muted" role="status" id="status"></span></div>
+    </form>
+  </div>
+</section>
+
+<style>
+.acc-wrap { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:var(--space-4xl); align-items:start; }
+.steps { list-style:none; counter-reset:s; margin:32px 0 0; padding:0; display:flex; flex-direction:column; gap:18px; }
+.steps li { counter-increment:s; display:grid; grid-template-columns:32px 1fr; column-gap:12px; }
+.steps li::before { content:counter(s); grid-row:span 2; width:28px; height:28px; border-radius:50%; background:var(--bg-subtle); display:grid; place-items:center; font:500 12px/1 var(--font-mono); }
+.steps b { font-weight:500; }
+.steps span { font-size:var(--size-body-s); line-height:20px; color:var(--text-secondary); }
+.acc-form-card { background:var(--bg-subtle); border-radius:var(--radius-md); padding:32px; }
+.form-foot { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.done-ic { width:40px; height:40px; color:var(--status-success); }
+@media (max-width:1000px){ .acc-wrap { grid-template-columns:1fr; } .acc-form-card { padding:20px; } }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const q = new URLSearchParams(location.search);
+  const next = (q.get("next") || "").startsWith("/locked") ? q.get("next") : "/locked/";
+  const flash = msg => { const n = document.getElementById("flash"); n.hidden = false; n.querySelector("span").textContent = msg; };
+  if (q.has("signedout")) flash("You’re signed out on this browser.");
+  else if (q.has("next")) flash("That page is locked. Enter the password to continue.");
+
+  fetch("/api/access/status").then(r => r.json()).then(s => {
+    if (s.access && !q.has("next")) { document.getElementById("unlock").hidden = true; document.getElementById("signed-in").hidden = false; }
+  }).catch(() => {});
+
+  const f = document.getElementById("unlock"), pw = document.getElementById("pw"), status = document.getElementById("status"), go = document.getElementById("go"), field = pw.closest(".field");
+  f.addEventListener("submit", async e => {
+    e.preventDefault();
+    if (!pw.value.trim()) { field.classList.add("invalid"); pw.setAttribute("aria-invalid", "true"); status.textContent = "Enter the password."; pw.focus(); return; }
+    go.disabled = true; status.textContent = "Checking…";
+    try {
+      const r = await fetch("/api/access/unlock", { method:"POST", headers:{ "Content-Type":"application/json" }, body:JSON.stringify({ password: pw.value }) });
+      const j = await r.json().catch(() => ({}));
+      if (r.status === 429) throw new Error("Too many tries. Wait a minute, then try again.");
+      if (!r.ok) throw new Error(j.error || "Something went wrong. Try again.");
+      status.textContent = "Unlocked. Opening…"; location.assign(next);
+    } catch (err) {
+      field.classList.add("invalid"); pw.setAttribute("aria-invalid", "true"); status.textContent = err.message; go.disabled = false; pw.select();
+    }
+  });
+  pw.addEventListener("input", () => { field.classList.remove("invalid"); pw.setAttribute("aria-invalid", "false"); });
+});
+</script>

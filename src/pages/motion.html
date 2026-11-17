@@ -1,0 +1,88 @@
+<!-- title: Motion · Netlify Brand Hub | desc: Netlify motion principles, easing curves, timing and interaction presets. | out: motion.html -->
+<section class="hero" data-grad="05" aria-labelledby="t">
+  <div class="hero-top"><svg aria-hidden="true"><use href="/assets/icons/sprite.svg#nf-mark"></use></svg><p class="eyebrow">08 · Motion</p></div>
+  <div><h1 class="h-l" id="t">Motion</h1>
+  <p class="b-l lede">Motion brings the joy of making into the interface. Elements respond, rearrange and settle with ease, connecting each action to its result.</p></div>
+</section>
+
+<section class="panel" aria-labelledby="pr">
+  <div class="panel-head"><h2 class="h-xs" id="pr">Principles</h2><div class="prose b-l"><p>Every animation should do one of these four jobs. If it doesn't, cut it.</p></div></div>
+  <div class="grid g4">
+    <div class="tile"><p class="eyebrow">Magical</p><h3 class="h-xxs medium" style="margin:10px 0 8px">Reveal possibility</h3><p class="b-s muted">Brief color reveals and unexpected continuity between states.</p></div>
+    <div class="tile"><p class="eyebrow">Mighty</p><h3 class="h-xxs medium" style="margin:10px 0 8px">Move with purpose</h3><p class="b-s muted">Confident transitions settle decisively and keep the interface ready for real work.</p></div>
+    <div class="tile"><p class="eyebrow">Human</p><h3 class="h-xxs medium" style="margin:10px 0 8px">Respond warmly</h3><p class="b-s muted">Small lifts, soft acceleration and restrained spring motion feel approachable.</p></div>
+    <div class="tile"><p class="eyebrow">Guiding</p><h3 class="h-xxs medium" style="margin:10px 0 8px">Show what changed</h3><p class="b-s muted">Motion connects the action to its result and keeps the next step clear.</p></div>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="ease">
+  <div class="panel-head"><h2 class="h-xs" id="ease">Easing</h2><div class="prose b-l"><p>Easing describes the character of movement. Duration describes its pace. Keep them separate, then pair them in presets. Expressive spring motion is reserved for illustration and success moments. Press play to compare.</p></div></div>
+  <div class="ease-list">
+    <div class="ease"><div><b>Direct</b><code>cubic-bezier(0.20, 0, 0, 1)</code><span>Immediate response, clean finish.</span></div><div class="track"><i style="--e:var(--ease-direct)"></i></div></div>
+    <div class="ease"><div><b>Settle</b><code>cubic-bezier(0.22, 1, 0.36, 1)</code><span>Soft arrival without overshoot.</span></div><div class="track"><i style="--e:var(--ease-settle)"></i></div></div>
+    <div class="ease"><div><b>Standard</b><code>cubic-bezier(0.40, 0, 0.2, 1)</code><span>Continuous change between states.</span></div><div class="track"><i style="--e:var(--ease-standard)"></i></div></div>
+  </div>
+  <button class="btn secondary" type="button" id="play" style="margin-top:24px">Play</button>
+</section>
+
+<section class="panel" aria-labelledby="dur">
+  <div class="panel-head"><h2 class="h-xs" id="dur">Duration</h2><div class="prose b-l"><p>Choose timing by how far the object moves. Under 10px, use Short. Up to 600px, use Subtle. Anything larger, like full-screen transitions, uses Gentle.</p></div></div>
+  <div class="scroll-x"><table class="ttable">
+    <thead><tr><th>Timing</th><th>Range</th><th>Token</th><th>Use for</th></tr></thead>
+    <tbody>
+      <tr><td><b class="medium">Short</b></td><td><code>120–180ms</code></td><td><code>--dur-short</code></td><td class="muted">Button hover, arrow nudge, press, focus</td></tr>
+      <tr><td><b class="medium">Quick</b></td><td><code>220–300ms</code></td><td><code>--dur-quick</code></td><td class="muted">Tabs, prompt modes, navigation menus</td></tr>
+      <tr><td><b class="medium">Subtle</b></td><td><code>320–450ms</code></td><td><code>--dur-subtle</code></td><td class="muted">Attachments, expanding cards, nav on scroll, entrances</td></tr>
+      <tr><td><b class="medium">Gentle</b></td><td><code>800ms</code></td><td><code>--dur-gentle</code></td><td class="muted">Large moves across 600–1280px</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="panel" aria-labelledby="presets">
+  <div class="panel-head"><h2 class="h-xs" id="presets">Interaction presets</h2><div class="prose b-l"><p>Try them. Each preset pairs one easing with one duration.</p></div></div>
+  <div class="grid g3">
+    <div class="tile demo"><div class="stagebox"><a class="btn" href="#presets">Hover me<svg class="icon nudge"><use href="/assets/icons/sprite.svg#ph-arrow-right"></use></svg></a></div><p class="cap"><b>Buttons</b><span>Respond · Direct · 160ms</span></p></div>
+    <div class="tile demo"><div class="stagebox"><div class="pill-tabs" role="tablist" aria-label="Project type"><span class="pill-ind" aria-hidden="true"></span><button role="tab" aria-selected="true">Prototype</button><button role="tab" aria-selected="false">Web app</button><button role="tab" aria-selected="false">Site</button></div></div><p class="cap"><b>Tabs and prompt modes</b><span>Guide · Settle · 240ms</span></p></div>
+    <div class="tile demo"><div class="stagebox"><details class="acc"><summary>What Free includes<svg class="icon"><use href="/assets/icons/sprite.svg#ph-caret-down"></use></svg></summary><div class="acc-body"><p>Deploy previews, forms and a monthly usage allowance. Upgrade any time.</p></div></details></div><p class="cap"><b>Expand question</b><span>Arrange · Settle · 360ms</span></p></div>
+  </div>
+</section>
+
+<style>
+.ease-list { display:flex; flex-direction:column; gap:12px; }
+.ease { display:grid; grid-template-columns:280px minmax(0,1fr); gap:24px; align-items:center; padding:16px; background:var(--bg-subtle); border-radius:var(--radius-sm); }
+.ease b { display:block; font-weight:500; }
+.ease code { display:block; font:400 12px/1.6 var(--font-mono); color:var(--text-secondary); }
+.ease span { font-size:var(--size-body-s); color:var(--text-tertiary); }
+.track { height:48px; position:relative; border-radius:99px; background:var(--bg-surface); }
+.track i { position:absolute; left:4px; top:4px; width:40px; height:40px; border-radius:50%; background:var(--nf-sky); transition:left 600ms var(--e); }
+.playing .track i { left:calc(100% - 44px); }
+.stagebox { height:180px; display:grid; place-items:center; background:var(--bg-surface); border-radius:var(--radius-xs); padding:16px; }
+.pill-tabs { position:relative; display:inline-flex; padding:4px; border-radius:99px; background:var(--bg-subtle); }
+.pill-tabs button { position:relative; z-index:1; border:0; background:none; height:36px; padding:0 14px; border-radius:99px; cursor:pointer; font:400 13px/1 var(--font-mono); letter-spacing:.04em; color:var(--text-secondary); transition:color var(--dur-quick) var(--ease-settle); }
+.pill-tabs button[aria-selected="true"] { color:var(--action-secondary-text); }
+.pill-ind { position:absolute; top:4px; height:36px; border-radius:99px; background:var(--action-secondary); transition:left 240ms var(--ease-settle), width 240ms var(--ease-settle); }
+.acc { width:100%; max-width:300px; background:var(--bg-subtle); border-radius:var(--radius-xs); }
+.acc summary { list-style:none; display:flex; justify-content:space-between; align-items:center; gap:8px; padding:14px 16px; cursor:pointer; font-weight:500; font-size:var(--size-body-s); }
+.acc summary::-webkit-details-marker { display:none; }
+.acc summary svg { width:18px; height:18px; transition:transform 360ms var(--ease-settle); }
+.acc[open] summary svg { transform:rotate(180deg); }
+.acc-body { display:grid; grid-template-rows:0fr; transition:grid-template-rows 360ms var(--ease-settle); }
+.acc[open] .acc-body { grid-template-rows:1fr; }
+.acc-body p { overflow:hidden; padding:0 16px; font-size:var(--size-body-s); line-height:20px; color:var(--text-secondary); }
+.acc[open] .acc-body p { padding-bottom:14px; }
+@media (max-width:767px){ .ease { grid-template-columns:1fr; } }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const list = document.querySelector(".ease-list"), btn = document.getElementById("play");
+  btn.addEventListener("click", () => { list.classList.toggle("playing"); btn.textContent = list.classList.contains("playing") ? "Reverse" : "Play"; });
+  document.querySelectorAll(".pill-tabs").forEach(t => {
+    const ind = t.querySelector(".pill-ind");
+    const place = b => { ind.style.left = b.offsetLeft + "px"; ind.style.width = b.offsetWidth + "px"; };
+    t.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+      t.querySelectorAll("button").forEach(x => x.setAttribute("aria-selected", String(x === b))); place(b);
+    }));
+    requestAnimationFrame(() => place(t.querySelector('[aria-selected="true"]')));
+  });
+});
+</script>

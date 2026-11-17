@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>API docs · Netlify gradient generator</title>
+<meta name="description" content="Generate Netlify brand gradients from your own applications.">
+<link rel="stylesheet" href="/locked/tools/gradient-generator/fonts.css">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/assets/logo/netlify-mark-offblack.svg" type="image/svg+xml">
+<style>
+:root{
+  --bg:#f3f4f4;--surface:#ffffff;--ink:#131619;--muted:#5d6468;--line:#d4d7d9;--soft:#eceeef;--focus:#4e49ff;
+  --ok:#1d7a45;--bad:#c42b2b;--code:#f7f8f8;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0b0e10;--surface:#131619;--ink:#f3f4f4;--muted:#9ba2a6;--line:#2b3135;--soft:#1d2226;--focus:#c1b5ff;--ok:#6fd99b;--bad:#ff8a80;--code:#0f1214;color-scheme:dark}
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.55 "Systemia",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+a{color:inherit;text-underline-offset:3px}
+.mono{font-family:"Systemia Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+code,pre,kbd{font-family:"Systemia Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+:not(pre)>code{background:var(--soft);padding:1px 6px;border-radius:5px;white-space:nowrap}
+
+header.top{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 20px;background:var(--surface);border-bottom:1px solid var(--line)}
+.title{display:flex;align-items:baseline;gap:14px;min-width:0}
+.title b{font-weight:600;font-size:17px;letter-spacing:-.01em}
+.title span{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);cursor:pointer;font-weight:500;white-space:nowrap;text-decoration:none}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.btn:disabled{opacity:.5;cursor:default}
+.btn svg{width:14px;height:14px}
+
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);max-width:1180px;margin:0 auto;gap:48px;padding:40px 24px 96px}
+nav.toc{position:sticky;top:96px;align-self:start;display:flex;flex-direction:column;gap:2px}
+nav.toc .mono{color:var(--muted);margin:0 0 10px}
+nav.toc a{display:block;padding:5px 10px;border-radius:8px;text-decoration:none;color:var(--muted)}
+nav.toc a:hover{background:var(--soft);color:var(--ink)}
+main{min-width:0}
+
+.hero{position:relative;overflow:hidden;border-radius:18px;border:1px solid var(--line);padding:44px 40px;margin-bottom:40px;color:#fff;background:#131619}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero>*:not(img){position:relative}
+.hero .mono{opacity:.85}
+.hero h1{font-weight:500;font-size:clamp(32px,5vw,52px);line-height:1.02;letter-spacing:-.025em;margin:10px 0 14px;max-width:16ch}
+.hero p{margin:0;max-width:52ch;font-size:16px;opacity:.92}
+
+section.doc{padding:8px 0 28px;border-top:1px solid var(--line)}
+section.doc:first-of-type{border-top:0}
+h2{font-weight:500;font-size:26px;letter-spacing:-.015em;margin:28px 0 10px}
+h3{font-weight:600;font-size:16px;margin:26px 0 8px}
+p{margin:0 0 12px;max-width:70ch}
+.muted{color:var(--muted)}
+
+pre{position:relative;background:var(--code);border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow:auto;line-height:1.55;margin:0 0 16px}
+pre .copy{position:absolute;top:8px;right:8px;height:28px;padding:0 10px;font-size:12px;opacity:0;transition:opacity .15s}
+pre:hover .copy,pre .copy:focus-visible{opacity:1}
+@media (hover:none){pre .copy{opacity:1}}
+
+.ep{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:22px 0 8px}
+.verb{font-family:"Systemia Mono",ui-monospace,monospace;font-size:11px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:6px;background:var(--ink);color:var(--surface)}
+.verb.post{background:#4e49ff;color:#fff}
+.ep code{font-size:14px;background:none;padding:0}
+.tag{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:1px 9px}
+
+table{width:100%;border-collapse:collapse;margin:4px 0 18px;font-size:14px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+th{font-weight:500;color:var(--muted);font-size:12px}
+td:first-child{white-space:nowrap}
+td code{white-space:nowrap}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.tablewrap table{margin:0}
+.tablewrap tr:last-child td{border-bottom:0}
+
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin:8px 0 18px}
+.sw{display:flex;align-items:center;gap:10px;padding:8px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:13px}
+.sw i{width:28px;height:28px;border-radius:7px;flex:none;border:1px solid rgba(0,0,0,.08)}
+.sw small{display:block;color:var(--muted);font-family:"Systemia Mono",ui-monospace,monospace;font-size:11px}
+
+.callout{border:1px solid var(--line);border-left:3px solid var(--focus);background:var(--surface);border-radius:10px;padding:12px 16px;margin:0 0 16px;font-size:14px}
+
+/* Playground */
+.play{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;margin:8px 0 20px}
+.field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.field label{font-size:12px;color:var(--muted);font-weight:500}
+.field input,.field select{height:36px;border:1px solid var(--line);border-radius:9px;padding:0 10px;background:var(--bg)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.preview{display:flex;flex-direction:column;gap:10px;min-width:0}
+.frame{aspect-ratio:1;border-radius:12px;border:1px solid var(--line);background:var(--soft);display:grid;place-items:center;overflow:hidden;color:var(--muted);font-size:13px;text-align:center;padding:0}
+.frame img{width:100%;height:100%;object-fit:contain;display:block}
+.status{font-size:13px;min-height:20px}
+.status.bad{color:var(--bad)}.status.ok{color:var(--ok)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.play pre{font-size:12px;margin:0;white-space:pre-wrap;word-break:break-all}
+
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr;gap:20px;padding-top:24px}
+  nav.toc{position:static;flex-direction:row;flex-wrap:wrap}
+  nav.toc .mono{width:100%}
+  .play{grid-template-columns:1fr}
+  .hero{padding:32px 24px}
+}
+@media (max-width:560px){.title span{display:none}}
+.checks{display:flex;gap:16px;margin:2px 0 14px;font-size:13px}
+.checks label{display:inline-flex;align-items:center;gap:6px;font-family:"Systemia Mono",ui-monospace,monospace}
+.tonechip{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.textchip{display:inline-grid;place-items:center;width:28px;height:24px;border-radius:6px;border:1px solid var(--line);font-weight:600;font-size:12px}
+.frame.tiled{background-repeat:repeat}
+.combos{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin:8px 0 18px}
+.combo{display:flex;align-items:center;gap:10px;padding:8px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:13px}
+.combo i{width:44px;height:28px;border-radius:7px;flex:none}
+.combo b{font-weight:600;margin-right:4px;color:var(--muted)}
+.combo small{display:block;color:var(--muted);font-family:"Systemia Mono",ui-monospace,monospace;font-size:11px}
+main ul{margin:0 0 14px;padding-left:20px;max-width:70ch}
+main li{margin-bottom:6px}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="title"><b>Gradient generator</b><span class="mono">API docs</span></div>
+  <a class="btn" href="/locked/tools/gradient-generator/"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>Back to generator</a>
+</header>
+
+<div class="layout">
+  <nav class="toc" aria-label="On this page">
+    <div class="mono">On this page</div>
+    <a href="#start">Getting started</a>
+    <a href="#auth">Authentication</a>
+    <a href="#usage">Usage and limits</a>
+    <a href="#try">Try it</a>
+    <a href="#gradient">Endpoints</a>
+    <a href="#params">Parameters</a>
+    <a href="#collage">Collages</a>
+    <a href="#svg">SVG layers</a>
+    <a href="#tone">Tone and text color</a>
+    <a href="#brand">Brand colors and presets</a>
+    <a href="#caching">Caching</a>
+    <a href="#alpha">Transparency and masks</a>
+    <a href="#tile">Tiling</a>
+    <a href="#batch">Batch</a>
+    <a href="#palette">Palette</a>
+    <a href="#three">Why three colors</a>
+    <a href="#errors">Errors</a>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <img src="/locked/tools/gradient-generator/docs-hero.webp" alt="" width="1100" height="400">
+      <div class="mono">REST API · v1</div>
+      <h1>Brand gradients, on request</h1>
+      <p>Render any gradient from the generator as WebP, JPEG or PNG, up to 4K. Get its settings and the right text color as JSON, or a live animated embed, straight from your own apps and scripts.</p>
+    </div>
+
+    <section class="doc" id="start">
+      <h2>Getting started</h2>
+      <p>All endpoints live under <code id="baseUrl">/api/v1</code>. Ask the generator's owner for the shared API key, then make your first request:</p>
+      <pre><code data-tmpl>curl -H "Authorization: Bearer $GRADIENT_KEY" \
+  "{origin}/api/v1/gradient?preset=5&amp;size=og&amp;output=webp" -o gradient.webp</code></pre>
+      <p>That saves preset 5 as a 1200×630 social card in WebP. Swap <code>preset</code> for <code>random=anything</code>, or send your own colors and mode.</p>
+    </section>
+
+    <section class="doc" id="auth">
+      <h2>Authentication</h2>
+      <p>Every endpoint except <code>GET /api/v1</code> needs the key. Send it in either header:</p>
+      <pre><code>Authorization: Bearer &lt;key&gt;
+X-API-Key: &lt;key&gt;</code></pre>
+      <div class="callout">Keep the key on your server. Browser apps on other domains can call the API, but a key used in a web page can be read by anyone who opens that page.</div>
+    </section>
+
+    <section class="doc" id="usage">
+      <h2>Usage and limits</h2>
+      <h3>License</h3>
+      <p>The shared key is licensed for <b>internal Netlify brand work only</b>. Don't publish it, put it in public client-side code, or pass it to third parties. Use brand palette colors in any combination you like. The presets are starting points, not rules. Add <code>strict=true</code> to reject colors outside the palette.</p>
+      <h3>Rate limit</h3>
+      <p><b>120 requests per minute per client IP address.</b> Requests over the limit get HTTP <code>429</code>; wait a minute and retry. Ask the generator owner if you need a higher limit or your own key.</p>
+      <h3>Fair use</h3>
+      <p>Render each image once and keep it. Deterministic responses are immutable and carry an ETag, so revalidating with <code>If-None-Match</code> returns a <code>304</code> without rendering. To render preset grids, use one <a href="#batch">batch</a> call instead of many single requests.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Limit</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Image size</td><td>Up to 4096 px per side and 9.4 megapixels (3840×2160 and 4096×2160 fit)</td></tr>
+          <tr><td>Response size</td><td>20 MB. Very large grainy PNGs can exceed this; use WebP or JPEG.</td></tr>
+          <tr><td>Render time</td><td>About 0.1 s for a UI card, 1 s for 1920×1080, 4 s for 4K</td></tr>
+          <tr><td>Batch</td><td>48 items and 12 megapixels per call</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="doc" id="try">
+      <h2>Try it</h2>
+      <p class="muted">Your key stays in this browser tab and is only sent to this site's API.</p>
+      <form class="play" id="play">
+        <div>
+          <div class="field"><label for="pKey">API key</label><input id="pKey" type="password" autocomplete="off" spellcheck="false" placeholder="Paste your key"></div>
+          <div class="grid2">
+            <div class="field"><label for="pSource">Start from</label>
+              <select id="pSource"><option value="preset">Preset</option><option value="random">Random (seeded)</option><option value="custom">Custom</option><option value="collage">Collage</option></select></div>
+            <div class="field" id="fPreset"><label for="pPreset">Preset</label><select id="pPreset"></select></div>
+            <div class="field" id="fSeed" hidden><label for="pSeed">Seed text</label><input id="pSeed" value="launch-2026"></div>
+            <div class="field" id="fMode" hidden><label for="pMode">Mode</label>
+              <select id="pMode"><option>linear</option><option>radial</option><option>mesh</option><option>flow</option><option>wave</option></select></div>
+          </div>
+          <div class="field" id="fColors" hidden><label for="pColors">Colors (3: palette names, hex or transparent)</label><input id="pColors" value="cobalt,lilac,turquoise" spellcheck="false"></div>
+          <div class="grid2">
+            <div class="field"><label for="pSize">Size</label>
+              <select id="pSize"><option value="square">Square 1080×1080</option><option value="portrait">4:5 1080×1350</option><option value="wide">16:9 1920×1080</option><option value="story">9:16 1080×1920</option><option value="og">Social card 1200×630</option><option value="card" selected>UI card 424×410</option></select></div>
+            <div class="field"><label for="pOutput">Output</label>
+              <select id="pOutput"><option value="webp">WebP image</option><option value="jpeg">JPEG image</option><option value="png">PNG image</option><option value="svg">SVG layers</option><option value="json">JSON (settings and tone)</option><option value="html">HTML embed</option></select></div>
+          </div>
+          <div class="checks">
+            <label><input type="checkbox" id="pStrict"> strict</label>
+            <label id="lTile"><input type="checkbox" id="pTile"> tile</label>
+            <label id="lMask"><input type="checkbox" id="pMask"> mask</label>
+            <label id="lClear" hidden><input type="checkbox" id="pClear"> transparent background</label>
+          </div>
+          <div class="actions"><button class="btn primary" type="submit">Send request</button><button class="btn" type="button" id="pCopy">Copy as curl</button></div>
+        </div>
+        <div class="preview">
+          <div class="frame" id="pFrame">Send a request to see the result.</div>
+          <div class="status" id="pStatus" role="status" aria-live="polite"></div>
+          <div class="tonechip" id="pTone" hidden></div>
+          <pre id="pCurl"><code></code></pre>
+        </div>
+      </form>
+    </section>
+
+    <section class="doc" id="gradient">
+      <h2>Endpoints</h2>
+
+      <div class="ep"><span class="verb">GET</span><code>/api/v1</code><span class="tag">No key</span></div>
+      <p>Machine-readable summary of the API, including the usage policy.</p>
+
+      <div class="ep"><span class="verb">GET</span><span class="verb post">POST</span><code>/api/v1/gradient</code></div>
+      <p>Generates one gradient. Returns a PNG unless you choose another <code>output</code>. With GET, pass parameters in the query string. With POST, send them as a JSON object.</p>
+      <pre><code data-tmpl>curl -H "Authorization: Bearer $GRADIENT_KEY" \
+  "{origin}/api/v1/gradient?mode=radial&amp;colors=gold,pink,purple&amp;width=3840&amp;height=2160&amp;output=webp&amp;quality=85" -o slide-4k.webp</code></pre>
+      <pre><code data-tmpl>curl -X POST "{origin}/api/v1/gradient" \
+  -H "Authorization: Bearer $GRADIENT_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"mode":"mesh","colors":["ink","lilac","#4e49ff"],"size":"wide","output":"webp"}' \
+  -o mesh.webp</code></pre>
+      <p>Made something you like in the generator? Click <b>Preset JSON</b> under Export and POST the downloaded file as it is. Its gradient and format are used.</p>
+
+      <h3>Response formats</h3>
+      <div class="tablewrap"><table>
+        <thead><tr><th><code>output</code></th><th>Returns</th></tr></thead>
+        <tbody>
+          <tr><td><code>png</code></td><td>Lossless image, the default. Supports transparency. Grain compresses poorly, so a 4K PNG is several MB.</td></tr>
+          <tr><td><code>webp</code></td><td>Recommended for apps. Typically around 5× smaller than PNG, and supports transparency. <code>quality</code> 1–100, default 90.</td></tr>
+          <tr><td><code>jpeg</code></td><td>For tools that don't read WebP. No transparency. <code>quality</code> 1–100, default 88.</td></tr>
+          <tr><td><code>svg</code></td><td>A layered, animated vector file, the same as the generator's <b>SVG layers</b> export. See <a href="#svg">SVG layers</a>.</td></tr>
+          <tr><td><code>json</code></td><td>The fully resolved settings, the <a href="#tone">tone</a>, whether it uses only <a href="#brand">brand colors</a>, which preset trio it matches if any, and <code>urls</code> that reproduce the image exactly in each format.</td></tr>
+          <tr><td><code>html</code></td><td>A self-contained page with the live, looping WebGL gradient that fills its container. Drop it into an <code>&lt;iframe&gt;</code>.</td></tr>
+        </tbody>
+      </table></div>
+      <p class="muted"><code>format=webp</code>, <code>format=jpeg</code>, <code>format=png</code> and <code>format=svg</code> also work. Image responses include <code>ETag</code>, <code>X-Gradient-Tone</code>, <code>X-Gradient-Text-Color</code>, <code>X-Gradient-Luminance</code>, <code>X-Gradient-On-Brand</code>, <code>X-Gradient-Mode</code>, <code>X-Gradient-Seed</code>, <code>X-Gradient-Width</code> and <code>X-Gradient-Height</code> headers.</p>
+
+      <div class="ep"><span class="verb">GET</span><span class="verb post">POST</span><code>/api/v1/collage</code></div>
+      <p>Generates a collage of gradient tiles, like the generator's <b>Collage</b> format. See <a href="#collage">Collages</a>.</p>
+
+      <div class="ep"><span class="verb post">POST</span><code>/api/v1/batch</code></div>
+      <p>Up to 48 gradients or collages in one call. See <a href="#batch">Batch</a>.</p>
+
+      <div class="ep"><span class="verb">GET</span><code>/api/v1/presets</code></div>
+      <p>The 24 built-in presets with every parameter, numbered from 1, the same order as the generator's palette panel.</p>
+
+      <div class="ep"><span class="verb">GET</span><code>/api/v1/preset-colors</code></div>
+      <p>The color trios the 24 presets use, as inspiration. They're optional: any palette combination is fine. The old path <code>/api/v1/combinations</code> still works.</p>
+
+      <div class="ep"><span class="verb">GET</span><code>/api/v1/palette</code></div>
+      <p>The brand palette. Any color key or name can be used in <code>colors</code>.</p>
+    </section>
+
+    <section class="doc" id="params">
+      <h2>Parameters</h2>
+      <p>All parameters are optional. Settings you don't send come from the starting point: preset 1 by default, or whatever <code>preset</code> or <code>random</code> picks. In JSON bodies, booleans can be <code>true</code>; in query strings use <code>true</code> or <code>1</code>.</p>
+      <h3>Starting point, size and output</h3>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Name</th><th>Values</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>preset</code></td><td>1–24</td><td>Start from a built-in preset.</td></tr>
+          <tr><td><code>random</code></td><td>any text, or <code>true</code></td><td>Start from a random gradient. The same text always gives the same gradient. <code>true</code> gives a new one on each call and isn't cached.</td></tr>
+          <tr><td><code>strict</code></td><td><code>true</code></td><td>Reject colors outside the <a href="#brand">brand palette</a>. Any combination of palette colors passes.</td></tr>
+          <tr><td><code>presetColors</code></td><td><code>true</code></td><td>With <code>random</code>, use one of the presets' color trios instead of any palette colors.</td></tr>
+          <tr><td><code>size</code></td><td><code>square</code> <code>portrait</code> <code>wide</code> <code>story</code> <code>og</code> <code>card</code></td><td>Output size, the same as the generator's Format buttons. Defaults to <code>square</code>. <code>format=wide</code> also works.</td></tr>
+          <tr><td><code>width</code>, <code>height</code></td><td>16–4096 px</td><td>Custom size, used instead of <code>size</code>. Up to 9.4 megapixels.</td></tr>
+          <tr><td><code>output</code></td><td><code>png</code> <code>webp</code> <code>jpeg</code> <code>svg</code> <code>json</code> <code>html</code></td><td>Response format.</td></tr>
+          <tr><td><code>quality</code></td><td>1–100</td><td>WebP and JPEG quality.</td></tr>
+          <tr><td><code>t</code></td><td>0–1</td><td>Point in the animation loop to render. Use it to export frames.</td></tr>
+          <tr><td><code>tile</code></td><td><code>true</code></td><td>Make the image <a href="#tile">repeat seamlessly</a>.</td></tr>
+          <tr><td><code>mask</code></td><td><code>true</code></td><td>Return a <a href="#alpha">grayscale mask</a> instead of colors.</td></tr>
+        </tbody>
+      </table></div>
+      <h3>Gradient settings</h3>
+      <p class="muted">In query strings, separate list values with commas (<code>colors=red,gold,plum</code>). In JSON, use arrays.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Name</th><th>Applies to</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>mode</code></td><td>all</td><td><code>linear</code>, <code>radial</code>, <code>mesh</code>, <code>flow</code> or <code>wave</code>.</td></tr>
+          <tr><td><code>colors</code></td><td>all</td><td>Exactly <a href="#three">three</a> colors: hex (<code>#065eff</code>, <code>065eff</code>, <code>#06f</code>), palette names, or <code>transparent</code>. In mesh mode, the first is the base and the other two are the glows.</td></tr>
+          <tr><td><code>stops</code></td><td>linear, radial, flow, wave</td><td>Three ramp positions, e.g. <code>0.1,0.5,0.9</code>.</td></tr>
+          <tr><td><code>angle</code></td><td>linear, flow, wave</td><td>Direction in degrees.</td></tr>
+          <tr><td><code>center</code></td><td>radial</td><td>Center point <code>x,y</code> from 0 to 1.</td></tr>
+          <tr><td><code>sizeX</code>, <code>sizeY</code></td><td>radial</td><td>Ellipse width and height.</td></tr>
+          <tr><td><code>points</code></td><td>mesh</td><td>Glow positions <code>x1,y1,x2,y2</code> from 0 to 1.</td></tr>
+          <tr><td><code>radii</code></td><td>mesh</td><td>Glow sizes <code>r1,r2</code>.</td></tr>
+          <tr><td><code>amp</code>, <code>freq</code></td><td>flow, wave</td><td>Wave amplitude and frequency.</td></tr>
+          <tr><td><code>warp</code>, <code>warpScale</code></td><td>all</td><td>Strength and scale of the organic distortion.</td></tr>
+          <tr><td><code>grain</code></td><td>all</td><td>Film grain amount, 0–0.5. Lower grain also means smaller files.</td></tr>
+          <tr><td><code>seed</code></td><td>all</td><td>Noise pattern, the same as the generator's "New pattern" button.</td></tr>
+          <tr><td><code>motion</code>, <code>loop</code></td><td>all</td><td>Animation strength and loop length in seconds. Affects <code>t</code> and the HTML embed.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="doc" id="collage">
+      <h2>Collages</h2>
+      <p><code>GET|POST /api/v1/collage</code> lays out rounded gradient tiles, some with toothed edges, on a white or transparent canvas. The layout and the tile gradients each come from a seed, and the API uses the same seeds as the generator, so a collage you like in the generator can be fetched again by its seeds. Collages default to the 16:9 <code>wide</code> size and to PNG.</p>
+      <pre><code data-tmpl>curl -H "Authorization: Bearer $GRADIENT_KEY" \
+  "{origin}/api/v1/collage?size=wide&amp;count=10&amp;source=presets&amp;layoutSeed=7&amp;gradientSeed=11&amp;output=webp" -o collage.webp</code></pre>
+      <p>Click <b>Preset JSON</b> while the generator is in Collage mode and POST the file as it is. Its tiles and gradients are used exactly, whatever the seeds.</p>
+      <pre><code data-tmpl>curl -X POST "{origin}/api/v1/collage?output=svg" \
+  -H "Authorization: Bearer $GRADIENT_KEY" -H "Content-Type: application/json" \
+  --data @netlify-collage-wide.json -o collage.svg</code></pre>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Parameter</th><th>Values</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td><code>output</code></td><td><code>png</code> <code>webp</code> <code>jpeg</code> <code>svg</code> <code>json</code></td><td>Response format. <code>json</code> returns each tile's pixel box and gradient, the settings, a <code>preset</code> you can POST back, and <code>urls</code> for every format.</td></tr>
+          <tr><td><code>size</code>, <code>width</code>, <code>height</code></td><td>as for gradients</td><td>Canvas size. Default <code>wide</code>.</td></tr>
+          <tr><td><code>count</code></td><td>1–20, default 8</td><td>Number of tiles. Fewer may fit on small or narrow canvases.</td></tr>
+          <tr><td><code>tileSize</code></td><td>0.1–0.6, default 0.46</td><td>Large tile size as a share of the canvas's short edge.</td></tr>
+          <tr><td><code>smallShare</code></td><td>0–0.75, default 0.5</td><td>Share of tiles that are small.</td></tr>
+          <tr><td><code>smallScale</code></td><td>0.3–0.85, default 0.55</td><td>Small tile size relative to large tiles.</td></tr>
+          <tr><td><code>variance</code></td><td>0–0.4, default 0.22</td><td>How much tile sizes vary (±).</td></tr>
+          <tr><td><code>edges</code></td><td>0–1, default 0.3</td><td>Chance that a tile gets toothed edges.</td></tr>
+          <tr><td><code>source</code></td><td><code>mix</code> <code>presets</code> <code>random</code></td><td>Where tile gradients come from: brand presets, random gradients, or a mix (default). <code>presets</code> uses the 24 presets, lightly varied.</td></tr>
+          <tr><td><code>background</code></td><td><code>white</code> <code>transparent</code></td><td>Canvas behind the tiles. Transparent works with PNG, WebP and SVG.</td></tr>
+          <tr><td><code>layoutSeed</code>, <code>gradientSeed</code></td><td>integer or text</td><td>Seeds for the layout and the gradients (defaults 7 and 11). Integers match the generator's seeds.</td></tr>
+          <tr><td><code>random</code></td><td><code>true</code> or text</td><td>New seeds for each call, or seeds derived from the text. Explicit seeds take precedence.</td></tr>
+          <tr><td><code>grain</code>, <code>motion</code>, <code>warp</code>, <code>warpScale</code>, <code>loop</code></td><td>as for gradients</td><td>Texture and motion applied to every tile.</td></tr>
+          <tr><td><code>t</code></td><td>0–1</td><td>Position in the animation loop. Each tile runs at its own phase.</td></tr>
+          <tr><td><code>strict</code></td><td><code>true</code></td><td>Reject tile gradients with colors outside the brand palette.</td></tr>
+          <tr><td><code>presetColors</code></td><td><code>true</code></td><td>Random tile gradients use the presets' color trios.</td></tr>
+          <tr><td><code>quality</code></td><td>1–100</td><td>For WebP and JPEG.</td></tr>
+        </tbody>
+      </table></div>
+      <p class="muted">Collage images carry <code>X-Collage-Tiles</code>, <code>X-Collage-Layout-Seed</code>, <code>X-Collage-Gradient-Seed</code>, <code>X-Gradient-Width</code>, <code>X-Gradient-Height</code> and <code>X-Gradient-On-Brand</code> headers. Collages don't include text, and tiles can't use transparent colors. The tiles together may cover at most 9.4 megapixels.</p>
+    </section>
+
+    <section class="doc" id="svg">
+      <h2>SVG layers</h2>
+      <p><code>output=svg</code> works for both <code>/gradient</code> and <code>/collage</code>. It returns the same file as the generator's <b>SVG layers</b> export. A gradient is one named layer, and a collage has an optional background layer plus one clipped layer per tile, named <code>Tile 01</code>, <code>Tile 02</code> and so on, in stacking order. Motion is built in as SVG animation, so the file loops when opened in a browser. Design tools such as Figma import the first frame and may drop the grain and warp filters. <code>t</code> sets where the animation starts.</p>
+      <pre><code data-tmpl>curl -H "Authorization: Bearer $GRADIENT_KEY" \
+  "{origin}/api/v1/gradient?preset=12&amp;size=og&amp;output=svg" -o gradient.svg</code></pre>
+      <p class="muted">SVG gradients support neither <code>mask</code>, <code>tile</code> nor transparent colors. The text and logo from the generator are not part of API output.</p>
+    </section>
+
+    <section class="doc" id="tone">
+      <h2>Tone and text color</h2>
+      <p>You don't need to analyze pixels to pick a text color. Every JSON response includes a <code>tone</code> object, and image responses carry the same information in headers:</p>
+      <pre><code>"tone": {
+  "tone": "dark",            // the background: dark → use white text, light → use #131619
+  "textColor": "#ffffff",
+  "luminance": 0.308,        // average relative luminance, 0 (black) to 1 (white)
+  "contrast": { "white": 4.9, "dark": 2.1 },
+  "zones": [ { "zone": "top-left", "tone": "light", "textColor": "#131619", "luminance": 0.385 }, … ]
+}</code></pre>
+      <p><code>contrast</code> uses the generator's own check: the WCAG contrast ratio that 90% of the area reaches for white and for <code>#131619</code> text. Aim for 4.5 for body text and 3 for large headlines. <code>zones</code> splits the image into a 3×3 grid (top-left first, row by row), so you can pick the color for wherever your text actually sits. On transparent gradients, mostly transparent pixels are ignored. Masks have no tone.</p>
+    </section>
+
+    <section class="doc" id="brand">
+      <h2>Brand colors and presets</h2>
+      <p>Any combination of <a href="#palette">brand palette</a> colors is on brand. Pick your own three, in any order, and use <code>transparent</code> wherever you like. Mode, stops, angle and texture are all yours to set.</p>
+      <p>The 24 presets are the gradient tiles from the brand guidelines. They're good starting points, and their color trios are listed below and at <code>GET /api/v1/preset-colors</code> for inspiration. You don't have to use them.</p>
+      <ul>
+        <li><code>onBrand</code> in JSON responses, and the <code>X-Gradient-On-Brand</code> header on images, are <code>true</code> when every color is from the palette.</li>
+        <li><code>presetMatch</code> lists the presets that use the same colors. An empty list just means it's your own combination.</li>
+        <li><code>strict=true</code> rejects colors outside the palette with a <code>400</code>. It never rejects a combination.</li>
+        <li><code>presetColors=true</code> with <code>random</code> picks one of the preset trios, if you want something closer to the guidelines.</li>
+      </ul>
+      <h3>Preset color trios</h3>
+      <div class="combos" id="combos"></div>
+    </section>
+
+    <section class="doc" id="caching">
+      <h2>Caching</h2>
+      <p>A request is deterministic when it names a preset or a seed (<code>random=some-text</code>) and the same parameters. Deterministic responses never change, so they're sent with:</p>
+      <pre><code>Cache-Control: private, max-age=31536000, immutable
+ETag: "g2-…"</code></pre>
+      <p>Store the image and the ETag. To check a URL again, send <code>If-None-Match</code> with the ETag: a match returns <code>304 Not Modified</code> with no body and no rendering. ETags change if the renderer itself changes, so a <code>200</code> on revalidation means there's a new image. <code>random=true</code> responses are <code>no-store</code>; ask for <code>output=json</code> to get a reproducible URL for one you want to keep.</p>
+      <p class="muted">Responses are also cached on Netlify's CDN for the same key. A request without the key never sees a cached copy, and the cache is cleared on every deploy.</p>
+    </section>
+
+    <section class="doc" id="alpha">
+      <h2>Transparency and masks</h2>
+      <h3>Transparent color stops</h3>
+      <p>Use <code>transparent</code> as any of the three colors to fade the gradient into whatever sits behind it. You get PNG or WebP with an alpha channel (JPEG can't do transparency).</p>
+      <pre><code data-tmpl>curl -H "Authorization: Bearer $GRADIENT_KEY" \
+  "{origin}/api/v1/gradient?preset=2&amp;colors=transparent,green,turquoise&amp;output=webp" -o fade.webp</code></pre>
+      <h3>Masks</h3>
+      <p><code>mask=true</code> returns a grayscale image with the gradient's shape instead of its colors. For linear, radial, flow and wave, the first stop is black, the second 50% gray and the third white. For mesh, the base is black and the glows are white. Use it as a luminance mask on your own shapes, or as an alpha channel. Set <code>grain=0</code> for a clean mask.</p>
+    </section>
+
+    <section class="doc" id="tile">
+      <h2>Tiling</h2>
+      <p><code>tile=true</code> makes the image repeat seamlessly in both directions, which suits card and page backgrounds. The API renders past the right and bottom edges and cross-fades that margin into the opposite edges. The grain pattern repeats exactly too. Soft gradients (mesh, radial, flow) tile best. A strong linear ramp has to blend back to its start, so expect a soft band near the left and top edges.</p>
+      <pre><code data-tmpl>curl -H "Authorization: Bearer $GRADIENT_KEY" \
+  "{origin}/api/v1/gradient?preset=5&amp;width=512&amp;height=512&amp;tile=true&amp;output=webp" -o tile.webp</code></pre>
+    </section>
+
+    <section class="doc" id="batch">
+      <h2>Batch</h2>
+      <p><code>POST /api/v1/batch</code> renders up to 48 gradients (12 megapixels in total) in one call. Send <code>items</code>, each accepting the same fields as <code>/gradient</code>, plus optional <code>defaults</code> applied to every item. Add <code>"kind": "collage"</code> to an item (or send a generator collage export as the item) to render a <a href="#collage">collage</a> with the <code>/collage</code> fields instead. Batch items default to WebP and can also be SVG. Each result carries its settings, tone, ETag and the image as a base64 <code>data:</code> URI. An invalid item returns <code>ok: false</code> without failing the rest.</p>
+      <pre><code data-tmpl>curl -X POST "{origin}/api/v1/batch" \
+  -H "Authorization: Bearer $GRADIENT_KEY" -H "Content-Type: application/json" \
+  -d '{"defaults":{"size":"card","quality":80},"items":[{"id":"p1","preset":1},{"id":"p2","preset":2},{"id":"mine","random":"kit","strict":true}]}'</code></pre>
+      <pre><code>{ "count": 3, "items": [ { "index": 0, "id": "p1", "ok": true, "etag": "\"g2-…\"", "contentType": "image/webp",
+    "bytes": 31810, "data": "data:image/webp;base64,…", "tone": { … }, "gradient": { … }, "urls": { … } }, … ] }</code></pre>
+      <p class="muted">All 24 presets at UI-card size come back in one call in about 2 seconds (around 1 MB). Batch responses aren't cached, so store what you need.</p>
+    </section>
+
+    <section class="doc" id="palette">
+      <h2>Palette</h2>
+      <p>Use the key (for example <code>cobalt</code>) or the display name (for example <code>Deep teal</code>) anywhere a color is accepted.</p>
+      <div class="swatches" id="swatches"></div>
+    </section>
+
+    <section class="doc" id="three">
+      <h2>Why three colors</h2>
+      <p>Every gradient uses exactly three colors, and that's deliberate:</p>
+      <ul>
+        <li><b>It's the brand system.</b> All 24 gradient tiles in the brand guidelines are three-color, so a palette trio of your own sits naturally beside them.</li>
+        <li><b>It round-trips.</b> The generator, its Preset JSON export, the HTML embed and the API share one model. A three-color result from the API can be opened, edited and re-exported anywhere; a fourth color would only exist in the API.</li>
+        <li><b>You can still get variety.</b> Repeat a color (as presets 3 and 17 do) for a band or a symmetric glow, push stops past 0 or 1 to shift the balance, or use <code>transparent</code> to layer two gradients.</li>
+      </ul>
+      <p>Requests with more than three colors get a <code>400</code> that points here.</p>
+    </section>
+
+    <section class="doc" id="errors">
+      <h2>Errors</h2>
+      <p>Errors come back as JSON with a stable <code>code</code> and a readable <code>message</code>:</p>
+      <pre><code>{ "error": { "code": "invalid_request", "message": "\"colors\" needs exactly 3 colors" } }</code></pre>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Status</th><th>Code</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td>304</td><td></td><td>Not modified: your <code>If-None-Match</code> ETag is current.</td></tr>
+          <tr><td>400</td><td><code>invalid_request</code></td><td>A parameter is missing, malformed or out of range, or <code>strict=true</code> found a color outside the palette.</td></tr>
+          <tr><td>401</td><td><code>missing_key</code> / <code>invalid_key</code></td><td>No key was sent, or the key is wrong.</td></tr>
+          <tr><td>404</td><td><code>not_found</code></td><td>Unknown endpoint.</td></tr>
+          <tr><td>405</td><td><code>method_not_allowed</code></td><td>Wrong HTTP method for this endpoint.</td></tr>
+          <tr><td>413</td><td><code>too_large</code></td><td>The response would exceed 20 MB. Use WebP or JPEG, or a smaller size.</td></tr>
+          <tr><td>429</td><td></td><td>Rate limit reached. Wait a minute and retry.</td></tr>
+          <tr><td>503</td><td><code>not_configured</code></td><td>The site owner hasn't set an API key yet.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+  </main>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const origin = location.origin;
+$('baseUrl').textContent = origin + '/api/v1';
+document.querySelectorAll('code[data-tmpl]').forEach(c => { c.textContent = c.textContent.split('{origin}').join(origin); });
+
+// Copy buttons on code blocks
+document.querySelectorAll('main pre:not(#pCurl)').forEach(pre => {
+  const b = document.createElement('button'); b.type = 'button'; b.className = 'btn copy'; b.textContent = 'Copy';
+  b.addEventListener('click', async () => { try{ await navigator.clipboard.writeText(pre.querySelector('code').textContent); b.textContent = 'Copied'; }catch(e){ b.textContent = 'Press Ctrl+C'; } setTimeout(() => b.textContent = 'Copy', 1600); });
+  pre.appendChild(b);
+});
+
+// Palette and preset color trios (static copies so they render without a key)
+const PAL = [['black','Blue black','#131619'],['ink','Night','#071b22'],['red','Red','#f84747'],['orange','Orange','#ff7542'],['peach','Peach','#ffbc8a'],['gold','Gold','#fdcb65'],['lime','Lime','#bbee3c'],['green','Green','#3fb66b'],['turquoise','Turquoise','#10ddc4'],['sky','Sky','#01d4e5'],['teal','Deep teal','#0a77a2'],['cobalt','Cobalt','#065eff'],['purple','Purple','#4e49ff'],['lilac','Lilac','#c1b5ff'],['plum','Plum','#612d68'],['pink','Pink','#ff3d9c'],['mist','Mist','#f3f4f4'],['white','White','#ffffff']];
+const HEX = Object.fromEntries(PAL.map(([k,,h]) => [k, h])), NAME = Object.fromEntries(PAL.map(([k,n]) => [k, n]));
+const sw = $('swatches');
+PAL.forEach(([k, n, h]) => { const d = document.createElement('div'); d.className = 'sw';
+  d.innerHTML = `<i style="background:${h}"></i><span>${n}<small>${k} · ${h}</small></span>`; sw.appendChild(d); });
+const COMBOS = ['lilac,cobalt,turquoise','lime,green,turquoise','purple,peach,purple','ink,red,orange','ink,lilac,purple','lime,teal,peach','ink,red,cobalt','teal,sky,orange','pink,plum,peach','gold,pink,purple','plum,lime,teal','pink,turquoise,black','sky,cobalt,red','ink,turquoise,gold','orange,plum,lilac','peach,purple,ink','black,lilac,lilac','pink,plum,turquoise','cobalt,lilac,red','peach,red,ink','green,gold,teal','turquoise,purple,lime','orange,pink,orange','ink,gold,peach'];
+const cb = $('combos');
+COMBOS.forEach((c, i) => { const k = c.split(','), d = document.createElement('div'); d.className = 'combo';
+  d.innerHTML = `<i style="background:linear-gradient(90deg,${k.map(x => HEX[x]).join(',')})"></i><span><b>${i+1}</b> ${[...new Set(k)].map(x => NAME[x]).join(' · ')}<small>${c}</small></span>`; cb.appendChild(d); });
+
+// Playground
+const KEY_STORE = 'gradient-api-key';
+const keyIn = $('pKey');
+try{ keyIn.value = sessionStorage.getItem(KEY_STORE) || ''; }catch(e){}
+keyIn.addEventListener('input', () => { try{ sessionStorage.setItem(KEY_STORE, keyIn.value); }catch(e){} update(); });
+for(let i = 1; i <= 24; i++) $('pPreset').add(new Option('Preset ' + i, i));
+$('pPreset').value = '5';
+
+function query(){
+  const p = new URLSearchParams(), src = $('pSource').value;
+  if(src === 'collage'){
+    if($('pSeed').value.trim()) p.set('random', $('pSeed').value.trim());
+    p.set('size', $('pSize').value); p.set('output', $('pOutput').value);
+    if($('pStrict').checked) p.set('strict', 'true');
+    if($('pClear').checked) p.set('background', 'transparent');
+    return p;
+  }
+  if(src === 'preset') p.set('preset', $('pPreset').value);
+  if(src === 'random') p.set('random', $('pSeed').value.trim() || 'true');
+  if(src === 'custom'){ p.set('mode', $('pMode').value); p.set('colors', $('pColors').value.replace(/\s+/g, '')); }
+  p.set('size', $('pSize').value);
+  p.set('output', $('pOutput').value);
+  for(const k of ['strict','tile','mask']) if($('p' + k[0].toUpperCase() + k.slice(1)).checked) p.set(k, 'true');
+  return p;
+}
+const EXT = {webp:'webp', jpeg:'jpg', png:'png', svg:'svg'};
+const isCollage = () => $('pSource').value === 'collage';
+const url = () => `${origin}/api/v1/${isCollage() ? 'collage' : 'gradient'}?${query()}`;
+const curl = () => `curl -H "Authorization: Bearer $GRADIENT_KEY" \\\n  "${url()}"` + (EXT[$('pOutput').value] ? ` -o ${isCollage() ? 'collage' : 'gradient'}.${EXT[$('pOutput').value]}` : '');
+function update(){
+  const src = $('pSource').value;
+  $('fPreset').hidden = src !== 'preset'; $('fSeed').hidden = src !== 'random' && src !== 'collage';
+  $('lTile').hidden = $('lMask').hidden = src === 'collage'; $('lClear').hidden = src !== 'collage';
+  if(src === 'collage'){ $('pTile').checked = $('pMask').checked = false; }
+  $('pOutput').querySelector('option[value="html"]').disabled = src === 'collage';
+  if(src === 'collage' && $('pOutput').value === 'html') $('pOutput').value = 'webp';
+  $('fMode').hidden = $('fColors').hidden = src !== 'custom';
+  $('pCurl').firstChild.textContent = curl();
+}
+['pSource','pPreset','pSeed','pMode','pColors','pSize','pOutput','pStrict','pTile','pMask','pClear'].forEach(id => $(id).addEventListener('input', update));
+update();
+
+$('pCopy').addEventListener('click', async () => { try{ await navigator.clipboard.writeText(curl()); setStatus('Copied curl command', 'ok'); }catch(e){ setStatus('Couldn’t copy. Select the command and copy it by hand.', 'bad'); } });
+function setStatus(msg, cls){ const s = $('pStatus'); s.textContent = msg; s.className = 'status ' + (cls || ''); }
+function showTone(tone, lum, onBrand){
+  const el = $('pTone');
+  if(!tone){ el.hidden = true; return; }
+  el.hidden = false;
+  el.innerHTML = '';
+  const chip = document.createElement('span'); chip.className = 'textchip'; chip.style.background = tone === 'dark' ? '#131619' : '#f3f4f4'; chip.style.color = tone === 'dark' ? '#fff' : '#131619'; chip.textContent = 'Aa';
+  el.append(chip, document.createTextNode(` ${tone} background → ${tone === 'dark' ? 'white' : '#131619'} text · luminance ${lum}` + (onBrand != null ? ` · ${onBrand === 'true' || onBrand === true ? 'brand palette colors' : 'includes custom colors'}` : '')));
+}
+
+let lastObj = null;
+$('play').addEventListener('submit', async e => {
+  e.preventDefault();
+  const key = keyIn.value.trim();
+  if(!key){ setStatus('Paste your API key first.', 'bad'); keyIn.focus(); return; }
+  const frame = $('pFrame'), out = $('pOutput').value, t0 = performance.now();
+  setStatus('Generating…'); showTone(null);
+  try{
+    const res = await fetch(url(), {headers:{Authorization:'Bearer ' + key}});
+    const ms = Math.round(performance.now() - t0);
+    if(!res.ok){ let m = res.statusText; try{ m = (await res.json()).error.message; }catch(_){} setStatus(`${res.status}: ${m}`, 'bad'); return; }
+    if(lastObj){ URL.revokeObjectURL(lastObj); lastObj = null; }
+    frame.innerHTML = '';
+    const w = +res.headers.get('X-Gradient-Width'), h = +res.headers.get('X-Gradient-Height');
+    if(w && h) frame.style.aspectRatio = `${w} / ${h}`;
+    let size = '';
+    if(EXT[out]){
+      const blob = await res.blob(); size = ` · ${(blob.size/1024).toFixed(0)} KB`;
+      lastObj = URL.createObjectURL(blob);
+      const img = new Image(); img.src = lastObj; img.alt = isCollage() ? `Generated collage of ${res.headers.get('X-Collage-Tiles')} gradient tiles` : `Generated ${res.headers.get('X-Gradient-Mode')} gradient`;
+      if($('pTile').checked){ frame.style.backgroundImage = `url(${lastObj})`; frame.style.backgroundSize = '50% 50%'; frame.classList.add('tiled'); }
+      else { frame.style.backgroundImage = ''; frame.classList.remove('tiled'); frame.appendChild(img); }
+      showTone(res.headers.get('X-Gradient-Tone'), res.headers.get('X-Gradient-Luminance'), res.headers.get('X-Gradient-On-Brand'));
+    } else if(out === 'html'){
+      frame.style.backgroundImage = '';
+      const f = document.createElement('iframe'); f.title = 'Gradient embed'; f.style.cssText = 'border:0;width:100%;height:100%';
+      f.setAttribute('sandbox', 'allow-scripts'); f.srcdoc = await res.text(); frame.appendChild(f);
+    } else {
+      frame.style.backgroundImage = '';
+      const data = await res.json(); frame.style.aspectRatio = 'auto';
+      const pre = document.createElement('pre'); pre.style.cssText = 'margin:0;border:0;border-radius:0;width:100%;max-height:420px;text-align:left';
+      pre.textContent = JSON.stringify(data, null, 2); frame.appendChild(pre);
+      if(data.tone) showTone(data.tone.tone, data.tone.luminance, data.onBrand);
+    }
+    setStatus(`200 OK · ${w}×${h}${size} · ${ms} ms` + ($('pTile').checked && EXT[out] ? ' · shown tiled 2×2' : ''), 'ok');
+  }catch(err){ setStatus('Request failed: ' + err.message, 'bad'); }
+});
+</script>
+
+</body>
+</html>
